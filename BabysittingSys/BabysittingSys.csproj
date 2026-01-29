@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8046B40A-A09F-4B6B-A348-B5320282FD36}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BabysittingSys</RootNamespace>
+    <AssemblyName>BabysittingSys</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmCancelBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCancelBooking.Designer.cs">
+      <DependentUpon>frmCancelBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGenerateYearlyBookingAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGenerateYearlyBookingAnalysis.Designer.cs">
+      <DependentUpon>frmGenerateYearlyBookingAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGenerateYearlySitterAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGenerateYearlySitterAnalysis.Designer.cs">
+      <DependentUpon>frmGenerateYearlySitterAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMakeBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMakeBooking.Designer.cs">
+      <DependentUpon>frmMakeBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegisterClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegisterClient.Designer.cs">
+      <DependentUpon>frmRegisterClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegisterSitter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegisterSitter.Designer.cs">
+      <DependentUpon>frmRegisterSitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRemoveClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRemoveClient.Designer.cs">
+      <DependentUpon>frmRemoveClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRemoveSitter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRemoveSitter.Designer.cs">
+      <DependentUpon>frmRemoveSitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateBooking.Designer.cs">
+      <DependentUpon>frmUpdateBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateClient.Designer.cs">
+      <DependentUpon>frmUpdateClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateSitter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateSitter.Designer.cs">
+      <DependentUpon>frmUpdateSitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCancelBooking.resx">
+      <DependentUpon>frmCancelBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGenerateYearlyBookingAnalysis.resx">
+      <DependentUpon>frmGenerateYearlyBookingAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGenerateYearlySitterAnalysis.resx">
+      <DependentUpon>frmGenerateYearlySitterAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMakeBooking.resx">
+      <DependentUpon>frmMakeBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegisterClient.resx">
+      <DependentUpon>frmRegisterClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegisterSitter.resx">
+      <DependentUpon>frmRegisterSitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRemoveClient.resx">
+      <DependentUpon>frmRemoveClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRemoveSitter.resx">
+      <DependentUpon>frmRemoveSitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateBooking.resx">
+      <DependentUpon>frmUpdateBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateClient.resx">
+      <DependentUpon>frmUpdateClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateSitter.resx">
+      <DependentUpon>frmUpdateSitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

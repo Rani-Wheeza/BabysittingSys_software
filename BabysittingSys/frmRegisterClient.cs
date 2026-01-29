@@ -1,0 +1,290 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace BabysittingSys
+{
+    public partial class frmRegisterClient : Form
+    {
+        frmHome Parent;
+
+        private static int firstClientID = 1000; //this is the startin ID
+
+        public frmRegisterClient()
+        {
+            InitializeComponent();
+
+        }
+
+        public frmRegisterClient(frmHome parent)
+        {
+            InitializeComponent();
+
+            this.Parent = parent;
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            //Get confirmation from user on if they would kie to exit the app/form
+            DialogResult dialog = MessageBox.Show("Are you sure you want to exit?", "Conformation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //check if user clicked yes
+            if (dialog == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void mnuBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Parent.Visible = true;
+        }
+
+        private void mnuUpdateClient_Click(object sender, EventArgs e)
+        {
+
+            frmUpdateClient nextForm = new frmUpdateClient();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuRemoveClient_Click(object sender, EventArgs e)
+        {
+            frmRemoveClient nextForm = new frmRemoveClient();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuMakeBooking_Click(object sender, EventArgs e)
+        {
+            frmMakeBooking nextForm = new frmMakeBooking();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuUpdateBooking_Click(object sender, EventArgs e)
+        {
+            frmUpdateBooking nextForm = new frmUpdateBooking();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuCancelBooking_Click(object sender, EventArgs e)
+        {
+            frmCancelBooking nextForm = new frmCancelBooking();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuHome_Click(object sender, EventArgs e)
+        {
+            frmHome nextForm = new frmHome();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void frmRegisterClient_Load(object sender, EventArgs e)
+        {
+            txtClientID.Text = firstClientID.ToString();
+        }
+
+        private void btnRegisterClient_Click(object sender, EventArgs e)
+        {
+            //Validate the data
+
+            if (txtFirstName.Text.Equals(""))
+            {
+                MessageBox.Show("First Name must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFirstName.Focus();
+                return;
+            }
+            else if (txtFirstName.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("First Name cannot contain numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFirstName.Focus();
+                return;
+            }
+
+            if (txtLastName.Text.Equals(""))
+            {
+                MessageBox.Show("Last Name must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLastName.Focus();
+                return;
+            }
+            else if (txtLastName.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("Last Name cannot contain numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLastName.Focus();
+                return;
+            }
+
+            //Validate email
+
+            string email = txtEmail.Text;
+
+            string emailPattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+
+            if (txtEmail.Text.Equals(""))
+            {
+                MessageBox.Show("Email must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(email, emailPattern))
+            {
+                MessageBox.Show("Invalid email format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
+            }
+
+            if (txtPhoneNo.Text.Equals(""))
+            {
+                MessageBox.Show("Phone Number must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhoneNo.Focus();
+                return;
+            }
+            else if (!txtPhoneNo.Text.All(char.IsDigit) || !txtPhoneNo.Text.StartsWith("08"))
+            {
+                MessageBox.Show("Phone number is invalid! Phone number has to be all digits and start with 08", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhoneNo.Focus();
+                return;
+            }
+            else if (txtPhoneNo.Text.Length != 10)
+            {
+                MessageBox.Show("Phone number must be 10 characters long!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPhoneNo.Focus();
+                return;
+            }
+
+            if (txtCounty.Text.Equals(""))
+            {
+                MessageBox.Show("County must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCounty.Focus();
+                return;
+            }
+            else if (txtCounty.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("County cannot contain numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCounty.Focus();
+                return;
+            }
+
+            if (txtTown.Text.Equals(""))
+            {
+                MessageBox.Show("Town must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTown.Focus();
+                return;
+            }
+            else if (txtTown.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("Town cannot contain numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTown.Focus();
+                return;
+            }
+
+            if (txtStreet.Text.Equals(""))
+            {
+                MessageBox.Show("Street must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtStreet.Focus();
+                return;
+            }
+            else if (txtStreet.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("Street cannot contain numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtStreet.Focus();
+                return;
+            }
+
+            string eircode = txtEirCode.Text;
+
+            string eircodePattern = @"(?:^[AC-FHKNPRTV-Y][0-9]{2}|D6W)[ -]?[0-9AC-FHKNPRTV-Y]{4}$";
+
+            /*
+             Title: Validation for Irish Eircode
+             Author: Asunez
+             Site ownwer/sponcer: Stackoverflow
+             Date: Oct 29, 2015
+             Code version: edited Mar 26, 2021 by user Andrew
+             Availability: https://stackoverflow.com/questions/33391412/validation-for-irish-eircode
+             (Accessed 24/11/2025)
+             Modified: No*/
+
+            if (txtEirCode.Text.Equals(""))
+            {
+                MessageBox.Show("EirCode must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEirCode.Focus();
+                return;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(eircode, eircodePattern))
+            {
+                MessageBox.Show("Invalid Eircode format! Eircode must be all CAPS with no spaces", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEirCode.Focus();
+                return;
+            }
+
+            if (cboNoOfChildren.Text.Equals(""))
+            {
+                MessageBox.Show("Choose number of child(ren)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboNoOfChildren.Focus();
+                return;
+            }
+
+            if (cboAgeOfChild.Text.Equals(""))
+            {
+                MessageBox.Show("Choose age of child(ren)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboAgeOfChild.Focus();
+                return;
+            }
+
+
+            if (cboLanguage.Text.Equals(""))
+            {
+                MessageBox.Show("Choose prefered language(s)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboLanguage.Focus();
+                return;
+            }
+
+
+            if (txtDescription.Text.Equals(""))
+            {
+                MessageBox.Show("Description must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDescription.Focus();
+                return;
+            }
+
+            //save data - 2nd semester
+
+
+            //Cormation message
+            MessageBox.Show("Client has been registered","Success",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Reset UI
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtEmail.Clear();
+            txtPhoneNo.Clear();
+            txtCounty.Clear();
+            txtTown.Clear();
+            txtStreet.Clear();
+            txtEirCode.Clear();
+            cboNoOfChildren.SelectedIndex = -1;
+            cboAgeOfChild.SelectedIndex = -1;
+            cboLanguage.SelectedIndex = -1;
+            txtDescription.Clear();
+
+            firstClientID++;
+            txtClientID.Text = firstClientID.ToString();
+
+            txtFirstName.Focus();
+        }
+
+        
+    }
+}
