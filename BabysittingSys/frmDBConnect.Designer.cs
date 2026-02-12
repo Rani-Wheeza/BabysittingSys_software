@@ -51,6 +51,7 @@
             this.lbClosed.Size = new System.Drawing.Size(79, 25);
             this.lbClosed.TabIndex = 1;
             this.lbClosed.Text = "Closed";
+            
             // 
             // frmDBConnect
             // 

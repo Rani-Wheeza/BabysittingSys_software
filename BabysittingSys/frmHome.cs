@@ -50,17 +50,23 @@ namespace BabysittingSys
 
         private void mnuLoginClient_Click(object sender, EventArgs e)
         {
-
+            frmLogin nextForm = new frmLogin();
+            this.Hide();
+            nextForm.Show();
         }
 
         private void mnuLoginSitter_Click(object sender, EventArgs e)
         {
-
+            frmLogin nextForm = new frmLogin();
+            this.Hide();
+            nextForm.Show();
         }
 
         private void mnuLoginAdmin_Click(object sender, EventArgs e)
         {
-
+            frmLogin nextForm = new frmLogin();
+            this.Hide();
+            nextForm.Show();
         }
     }
 }

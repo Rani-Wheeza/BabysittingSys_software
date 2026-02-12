@@ -26,7 +26,7 @@ namespace BabysittingSys
             if (conn.State == ConnectionState.Open) 
             { 
                 conn.Close();
-                lbClosed.Text = "ClOSED";
+                lbClosed.Text = "CLOSED";
                 lbClosed.ForeColor = Color.Red;
             }
 
@@ -38,5 +38,7 @@ namespace BabysittingSys
             }
 
         }
+
+        
     }
 }

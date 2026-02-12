@@ -129,6 +129,12 @@
     <Compile Include="frmListSitters.Designer.cs">
       <DependentUpon>frmListSitters.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMakeBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,12 @@
     </Compile>
     <Compile Include="frmRemoveSitter.Designer.cs">
       <DependentUpon>frmRemoveSitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResetPassword.Designer.cs">
+      <DependentUpon>frmResetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUpdateBooking.cs">
       <SubType>Form</SubType>
@@ -201,6 +213,9 @@
     <EmbeddedResource Include="frmListSitters.resx">
       <DependentUpon>frmListSitters.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMakeBooking.resx">
       <DependentUpon>frmMakeBooking.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRemoveSitter.resx">
       <DependentUpon>frmRemoveSitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResetPassword.resx">
+      <DependentUpon>frmResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateBooking.resx">
       <DependentUpon>frmUpdateBooking.cs</DependentUpon>
