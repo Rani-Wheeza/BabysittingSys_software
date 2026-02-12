@@ -1,4 +1,7 @@
-﻿namespace BabysittingSys
+﻿using System;
+using System.Windows.Forms;
+
+namespace BabysittingSys
 {
     partial class frmDBConnect
     {
@@ -30,6 +33,7 @@
         {
             this.btnConnectDisconnect = new System.Windows.Forms.Button();
             this.lbClosed = new System.Windows.Forms.Label();
+            this.btnHome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConnectDisconnect
@@ -51,25 +55,42 @@
             this.lbClosed.Size = new System.Drawing.Size(79, 25);
             this.lbClosed.TabIndex = 1;
             this.lbClosed.Text = "Closed";
-            
+            // 
+            // btnHome
+            // 
+            this.btnHome.BackColor = System.Drawing.Color.LightBlue;
+            this.btnHome.Location = new System.Drawing.Point(285, 297);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(223, 42);
+            this.btnHome.TabIndex = 2;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmDBConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnHome);
             this.Controls.Add(this.lbClosed);
             this.Controls.Add(this.btnConnectDisconnect);
             this.Name = "frmDBConnect";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDBConnect";
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDBConnect_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+      
+
         #endregion
 
         private System.Windows.Forms.Button btnConnectDisconnect;
         private System.Windows.Forms.Label lbClosed;
+        private System.Windows.Forms.Button btnHome;
     }
 }

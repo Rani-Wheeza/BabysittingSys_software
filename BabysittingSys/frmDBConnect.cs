@@ -28,6 +28,7 @@ namespace BabysittingSys
                 conn.Close();
                 lbClosed.Text = "CLOSED";
                 lbClosed.ForeColor = Color.Red;
+                Application.Exit();
             }
 
             else
@@ -39,6 +40,20 @@ namespace BabysittingSys
 
         }
 
-        
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            frmHome nextForm = new frmHome();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        /*private void frmDBConnect_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+            Console.WriteLine("The was closed");
+        }*///this was not nesscary
+
+       
     }
 }

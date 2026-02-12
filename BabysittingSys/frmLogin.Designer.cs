@@ -44,6 +44,8 @@
             this.mnuHome = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.mnuMainMenu.SuspendLayout();
@@ -63,7 +65,7 @@
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(197, 269);
+            this.lbEmail.Location = new System.Drawing.Point(197, 286);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(41, 16);
             this.lbEmail.TabIndex = 1;
@@ -73,7 +75,7 @@
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPassword.Location = new System.Drawing.Point(197, 311);
+            this.lbPassword.Location = new System.Drawing.Point(197, 328);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(67, 16);
             this.lbPassword.TabIndex = 2;
@@ -83,7 +85,7 @@
             // 
             this.btnLogin.BackColor = System.Drawing.Color.LightBlue;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(314, 380);
+            this.btnLogin.Location = new System.Drawing.Point(314, 397);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(144, 39);
             this.btnLogin.TabIndex = 3;
@@ -93,17 +95,18 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(284, 269);
+            this.txtEmail.Location = new System.Drawing.Point(284, 286);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(211, 20);
             this.txtEmail.TabIndex = 4;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(284, 308);
+            this.txtPassword.Location = new System.Drawing.Point(284, 325);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(211, 20);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // lbSignIn
             // 
@@ -120,7 +123,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Controls.Add(this.lbRegister);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(257, 464);
+            this.panel1.Location = new System.Drawing.Point(257, 481);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(238, 46);
             this.panel1.TabIndex = 7;
@@ -151,7 +154,7 @@
             // 
             this.lbForgotPassword.AutoSize = true;
             this.lbForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbForgotPassword.Location = new System.Drawing.Point(397, 341);
+            this.lbForgotPassword.Location = new System.Drawing.Point(397, 358);
             this.lbForgotPassword.Name = "lbForgotPassword";
             this.lbForgotPassword.Size = new System.Drawing.Size(98, 13);
             this.lbForgotPassword.TabIndex = 8;
@@ -198,12 +201,31 @@
             this.mnuBack.Text = "Back";
             this.mnuBack.Click += new System.EventHandler(this.mnuBack_Click);
             // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(284, 250);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(106, 20);
+            this.txtID.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(197, 250);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 16);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "ID";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(717, 552);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.mnuMainMenu);
             this.Controls.Add(this.lbForgotPassword);
             this.Controls.Add(this.panel1);
@@ -243,5 +265,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuHome;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.ToolStripMenuItem mnuBack;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label label2;
     }
 }

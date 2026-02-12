@@ -21,7 +21,7 @@ namespace BabysittingSys
         {
             frmHome nextForm = new frmHome();
             this.Hide();
-            nextForm.Show();
+            nextForm.Show(); 
         }
 
         private void mnuBack_Click(object sender, EventArgs e)
@@ -49,12 +49,21 @@ namespace BabysittingSys
 
         private void lbForgotPassword_Click(object sender, EventArgs e)
         {
-
+            frmResetPassword nextForm = new frmResetPassword();
+            this.Hide();
+            nextForm.Show();
         }
 
         private void lbRegister_Click(object sender, EventArgs e)
         {
+            frmRegisterClient nextForm = new frmRegisterClient();
+            this.Hide();
+            nextForm.Show();
+        }
 
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = '*';
         }
     }
 }
