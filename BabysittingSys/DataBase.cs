@@ -10,7 +10,7 @@ namespace BabysittingSys
     {
         //The first connection string below is used when using your laptop/PC. Check the host name and use the username and password set when 
         //you installed Oracle.
-        public const String connectionString = "Data Source = localhost/orcl; User ID = T00244793; Password = ca4#mptyxU9i;"; //school desktop
+        public const String connectionString = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;"; //school desktop
 
         //public const String connectionString = "Data Source = localhost/orcl; User ID = C##User1; Password = 123456;"; // home desktop
 
