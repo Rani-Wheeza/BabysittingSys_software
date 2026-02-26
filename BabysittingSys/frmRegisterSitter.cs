@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace BabysittingSys
 {
-    public partial class frmRegisterSitter : Form
+    public partial class frmRegisterSitter : Form  //Sitters
     {
         frmHome Parent;
 
@@ -69,6 +70,29 @@ namespace BabysittingSys
         private void frmRegisterSitter_Load(object sender, EventArgs e)
         {
             txtSitterID.Text = firstSitterID.ToString();
+
+            //Get the next Product ID
+
+
+            txtSitterID.Text = firstSitterID.GetNextSitterID().ToString("0000");
+
+
+            //Load TypeCodes into ComboBox
+
+
+            DataSet ds = Type.getSitterID();
+
+
+            /*cboTypes.Items.Clear();
+
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+
+            {
+
+                cboTypes.Items.Add(ds.Tables[0].Rows[i][0] + " - " + ds.Tables[0].Rows[i][1]);
+
+            }*/
         }
 
         private void btnRegisterSitter_Click(object sender, EventArgs e)
@@ -235,15 +259,35 @@ namespace BabysittingSys
                 return;
             }
 
-            
+            //Validate ALL the input data first
+
+
+            //Create a sitter object and initialise with values from form controls
+
+
+            /*Product aProduct = new Product(Convert.ToInt32(txtProdId.Text), txtName.Text, txtDescription.Text, txtManufacturer.Text,
+
+            Convert.ToInt32(txtQty.Text), Convert.ToDecimal(txtPrice.Text),
+
+            cboTypes.Text.Substring(0, 2));
+
+
+            //Call the method to add the data to the Products table
+
+
+            aProduct.AddProduct();*/
+
+
+
 
             //save data - 2nd semester
 
 
-            //Cormation message
-            MessageBox.Show("Sitter has been registered", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            //display confirmation message
+            MessageBox.Show("Sitter " + txtSitterID.Text + " has been registered successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
+            //txtSitterID.Text = firstSitterID.GetNextSitterID().ToString("0000");
             txtFirstName.Clear();
             txtLastName.Clear();
             txtEmail.Clear();
