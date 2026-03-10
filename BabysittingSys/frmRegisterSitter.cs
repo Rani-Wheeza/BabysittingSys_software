@@ -74,13 +74,13 @@ namespace BabysittingSys
             //Get the next Product ID
 
 
-            txtSitterID.Text = firstSitterID.GetNextSitterID().ToString("0000");
+            //txtSitterID.Text = firstSitterID.GetNextSitterID().ToString("0000");
 
 
             //Load TypeCodes into ComboBox
 
 
-            DataSet ds = Type.getSitterID();
+            //DataSet ds = Type.getSitterID();
 
 
             /*cboTypes.Items.Clear();

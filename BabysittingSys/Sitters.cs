@@ -130,7 +130,7 @@ namespace BabysittingSys
 
         }
 
-        public static int GetNextSitterID()
+        /*public static int GetNextSitterID()
 
         {
 
@@ -169,7 +169,7 @@ namespace BabysittingSys
 
             return nextId;
 
-        }
+        }*/
 
     }
 }
