@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BabysittingSys
 {
@@ -27,9 +28,9 @@ namespace BabysittingSys
         public string AgeOfChild;
         public string Language;
         public string Description;
-         
-        public Clients() 
-        { 
+
+        public Clients()
+        {
             this.ClientID = 0;
             this.FirstName = "";
             this.LastName = "";
@@ -43,7 +44,7 @@ namespace BabysittingSys
             this.AgeOfChild = "";
             this.Language = "en-US";
             this.Description = "";
-        
+
         }
 
         public Clients(int clientID, string firstName, string lastName, string email, string phoneNo, string county, string town, string street, string eirCode, string noOfChildren, string ageOfChild, string language, string description)
@@ -64,9 +65,9 @@ namespace BabysittingSys
         }
 
         //GETTERS
-        public int getClientID() {  return ClientID; }
+        public int getClientID() { return ClientID; }
         public string getFirstName() { return FirstName; }
-        public string getLastName() { return LastName; } 
+        public string getLastName() { return LastName; }
         public string getEmail() { return Email; }
         public string getPhoneNo() { return PhoneNo; }
         public string getCounty() { return County; }
@@ -99,7 +100,9 @@ namespace BabysittingSys
             DataSet ds = new DataSet();
 
             //to open the db connection
-            OracleConnection conn = new OracleConnection(/*connectionString*/);
+            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+
+            OracleConnection conn = new OracleConnection(orabd);
 
             conn.Open();
 
@@ -115,7 +118,63 @@ namespace BabysittingSys
             return ds;
 
         }
-    }
 
-    
+        
+
+        public bool addClient()
+        {
+            //to open the db connection
+            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+
+
+            string strSQL = "INSERT INTO CLIENTS (ClientID,FirstName, LastName, Email, PhoneNo, County, Town, Street, EirCode, NoOfChildren, AgeOfChild, Language, Description) " +
+                "VALUES (:ClientID, :FirstName, :LastName, :Email, :PhoneNo, :County, :Town, :Street, :EirCode, :NoOfChildren, :AgeOfChild, :Language, :Description)";
+
+            try
+            {
+                using (OracleConnection conn = new OracleConnection(orabd))
+                {
+                    conn.Open();
+
+                    using (OracleCommand cmd = new OracleCommand(strSQL, conn))
+                    {
+                        cmd.Parameters.Add(":ClientID", OracleDbType.Int32).Value = ClientID;
+                        cmd.Parameters.Add(":FirstName", OracleDbType.Varchar2).Value = FirstName;
+                        cmd.Parameters.Add(":LastName", OracleDbType.Varchar2).Value = LastName;
+                        cmd.Parameters.Add(":Email", OracleDbType.Varchar2).Value = Email;
+                        cmd.Parameters.Add(":PhoneNo", OracleDbType.Varchar2).Value = PhoneNo;
+                        cmd.Parameters.Add(":County", OracleDbType.Varchar2).Value = County;
+                        cmd.Parameters.Add(":Town", OracleDbType.Varchar2).Value = Town;
+                        cmd.Parameters.Add(":Street", OracleDbType.Varchar2).Value = Street;
+                        cmd.Parameters.Add(":EirCode", OracleDbType.Varchar2).Value = EirCode;
+                        cmd.Parameters.Add(":NoOfChildren", OracleDbType.Varchar2).Value = NoOfChildren;
+                        cmd.Parameters.Add(":AgeOfChildren", OracleDbType.Varchar2).Value = AgeOfChild;
+                        cmd.Parameters.Add(":Language", OracleDbType.Varchar2).Value = Language;
+                        cmd.Parameters.Add(":Description", OracleDbType.Varchar2).Value = Description;
+                        //cmd.Parameters.Add(new OracleParameter("Description", client.Description));
+
+                        int rowsInserted = cmd.ExecuteNonQuery();
+
+                        if (rowsInserted > 0)
+                        {
+                            return true;
+                            //Console.WriteLine("Client added successfully.");
+                        }
+                        else
+                        {
+                            return false;
+                            //Console.WriteLine("Failed to add client.");
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding client: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+    }
 }
