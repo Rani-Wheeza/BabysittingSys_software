@@ -15,8 +15,7 @@ namespace BabysittingSys
     {
         frmHome Parent;
 
-        private static int firstClientID = 1000; //this is the startin ID
-
+        
         public frmRegisterClient()
         {
             InitializeComponent();
@@ -91,9 +90,39 @@ namespace BabysittingSys
             nextForm.Show();
         }
 
+        public int GetNextClientID()
+        {
+            int nextID = 0;
+
+            //to open the db connection
+            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+
+            OracleConnection conn = new OracleConnection(orabd);
+
+            conn.Open();
+
+            string strSQL = "SELECT MAX(ClientID) FROM Client";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != DBNull.Value)
+            {
+                nextID = Convert.ToInt32(result) + 1;
+            }
+            else
+            {
+                nextID = 1005; // Start from 1 if there are no clients in the database
+            }
+            conn.Close();
+
+            return nextID;
+        }
+
         private void frmRegisterClient_Load(object sender, EventArgs e)
         {
-            txtClientID.Text = firstClientID.ToString();
+            txtClientID.Text = GetNextClientID().ToString();
         }
 
         private void btnRegisterClient_Click(object sender, EventArgs e)
@@ -260,48 +289,58 @@ namespace BabysittingSys
                 return;
             }
 
-            //save data - 2nd semester
+            //save data 
+            Clients client = new Clients();
 
-            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+            client.ClientID = Convert.ToInt32(txtClientID.Text);
+            client.FirstName = txtFirstName.Text;
+            client.LastName = txtLastName.Text;
+            client.Email = txtEmail.Text;
+            client.PhoneNo = txtPhoneNo.Text;
+            client.County = txtCounty.Text;
+            client.Town = txtTown.Text;
+            client.Street = txtStreet.Text;
+            client.EirCode = txtEirCode.Text;
+            client.NoOfChildren = cboNoOfChildren.Text;
+            client.AgeOfChild = cboAgeOfChild.Text;
+            client.Language = cboLanguage.Text;
+            client.Description = txtDescription.Text;
 
-            using (OracleConnection conn = new OracleConnection(orabd))
-            {
-                conn.Open();
-
-                string sql = @"INSERT INTO Clients(ClientID, FirstName, LastName, Email, PhoneNo, County, Town, Street, Eircode, NoOfChildren, AgeOfChild, Languages, Description) 
-                               VALUES(:ClientID, :FirstName, :LastName, :Email, :PhoneNo, :County, :Town, :Street, :Eircode, :NoOfChildren, :AgeOfChild, :Languages, :Description)";
-
-                /*using (OracleConnection connection = new OracleConnection(sql, conn)) 
-                {
-                    cmd.Para
-                 
-                }*/
-            }
-
+            bool success = client.AddClient();
 
             //Cormation message
-            MessageBox.Show("Client has been registered","Success",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (success)
+            {
+                MessageBox.Show("Client has been registered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Reset UI
-            txtFirstName.Clear();
-            txtLastName.Clear();
-            txtEmail.Clear();
-            txtPhoneNo.Clear();
-            txtCounty.Clear();
-            txtTown.Clear();
-            txtStreet.Clear();
-            txtEirCode.Clear();
-            cboNoOfChildren.SelectedIndex = -1;
-            cboAgeOfChild.SelectedIndex = -1;
-            cboLanguage.SelectedIndex = -1;
-            txtDescription.Clear();
+                //Reset UI
+                txtFirstName.Clear();
+                txtLastName.Clear();
+                txtEmail.Clear();
+                txtPhoneNo.Clear();
+                txtCounty.Clear();
+                txtTown.Clear();
+                txtStreet.Clear();
+                txtEirCode.Clear();
+                cboNoOfChildren.SelectedIndex = -1;
+                cboAgeOfChild.SelectedIndex = -1;
+                cboLanguage.SelectedIndex = -1;
+                txtDescription.Clear();
 
-            firstClientID++;
-            txtClientID.Text = firstClientID.ToString();
+                txtClientID.Text = GetNextClientID().ToString();
+                txtFirstName.Focus();
+            }
+            else
+            {
+                MessageBox.Show("An error occurred while registering the client. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
 
-            txtFirstName.Focus();
-        }
+                
+            }
 
+                     
+        
         
     }
 }

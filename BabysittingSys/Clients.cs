@@ -119,9 +119,9 @@ namespace BabysittingSys
 
         }
 
-        
 
-        public bool addClient()
+
+        public bool AddClient()
         {
             //to open the db connection
             string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
@@ -172,9 +172,56 @@ namespace BabysittingSys
             catch (Exception ex)
             {
                 MessageBox.Show("Error adding client: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
+        public static Clients GetClientByID(int clientID)
+        {
+            Clients client = null;
+                        
+            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
 
+           
+            using (OracleConnection conn = new OracleConnection(orabd))
+            {
+                conn.Open();
+
+                string strSQL = "SELECT * FROM CLIENTS WHERE ClientID = :ClientID";
+
+                using (OracleCommand cmd = new OracleCommand(strSQL, conn))
+                {
+                    cmd.Parameters.Add(":ClientID", OracleDbType.Int32).Value = clientID;
+
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            client = new Clients();
+
+                            client.ClientID = reader.GetInt32(0);
+                            client.FirstName = reader.GetString(1);
+                            client.LastName = reader.GetString(2);
+                            client.Email = reader.GetString(3);
+                            client.PhoneNo = reader.GetString(4);
+                            client.County = reader.GetString(5);
+                            client.Town = reader.GetString(6);
+                            client.Street = reader.GetString(7);
+                            client.EirCode = reader.GetString(8);
+                            client.NoOfChildren = reader.GetString(9);
+                            client.AgeOfChild = reader.GetString(10);
+                            client.Language = reader.GetString(11);
+                            client.Description = reader.GetString(12);
+                            //Description = reader.GetString(reader.GetOrdinal("Description"))
+                            
+                        }
+                    }
+                }
+
+            }
+            return client;
+
+
+        }
     }
 }
