@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -260,6 +261,22 @@ namespace BabysittingSys
             }
 
             //save data - 2nd semester
+
+            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+
+            using (OracleConnection conn = new OracleConnection(orabd))
+            {
+                conn.Open();
+
+                string sql = @"INSERT INTO Clients(ClientID, FirstName, LastName, Email, PhoneNo, County, Town, Street, Eircode, NoOfChildren, AgeOfChild, Languages, Description) 
+                               VALUES(:ClientID, :FirstName, :LastName, :Email, :PhoneNo, :County, :Town, :Street, :Eircode, :NoOfChildren, :AgeOfChild, :Languages, :Description)";
+
+                /*using (OracleConnection connection = new OracleConnection(sql, conn)) 
+                {
+                    cmd.Para
+                 
+                }*/
+            }
 
 
             //Cormation message
