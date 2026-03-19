@@ -1,0 +1,213 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7EFDDC6A-2813-CD52-0772-65AC8E1F65B7" schemaObject="8BB54043-1932-452F-7545-160FDFEDC802" name="BOOKINGS">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>1734B00A-9ADF-EE58-2ED1-2A4DBFC1F7C3</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="BOOKINGID" id="DDAABC63-EDC2-537C-5EB0-6726BF9BE4E2">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>FD8DF755-4CEC-B6A6-A303-ED7AD5B67640</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLIENTID" id="B5631674-14CF-31BC-BE29-B8D6DB946CBD">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>61D71DCA-DA7C-BECB-9271-55B8C0F1C265</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLIENTNAME" id="30F23BDF-D69C-E283-941A-812E3E7286AD">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>DD6DFDDC-E85A-5313-ECA2-3444D72E2151</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLIENTEMAIL" id="B185DF5C-1BDF-1895-C7F8-09237446418D">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>7928F46A-18ED-A100-640A-EF40B8AB15FF</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLIENTPHONENO" id="88C425EC-BDDA-F5D1-B33F-F36F49E88876">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>CA76797A-0F79-3C39-821A-AAB5235F947D</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SITTERID" id="C1FE5E71-3FD3-DEE7-1E59-21E041DD1A3A">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>1D9E293F-560E-631C-D305-5EF013C9AD11</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SITTERNAME" id="0532A137-A0A8-53AA-4212-078FA0D96A60">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>FA2AC1D1-559C-513F-D244-D17A0D3DC0AA</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SITTEREMAIL" id="5BC8E2CC-02C6-5014-4D11-ADBFADF64710">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>5FAD4D83-EB53-EBD7-F962-2622C6B9B58A</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SITTERPHONENO" id="B00E1E16-BA23-6416-009D-AB27664FAC80">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>2981691A-BA22-864F-1D61-F3628F9AA6B9</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HOURLYRATE" id="B8FD7CAB-AC8A-B34D-A053-A4A46C29527F">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>01547A38-F1D0-D983-83C5-AC65DBEEE475</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5 BYTE</dataTypeSize>
+<ownDataTypeParameters>5 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BOOKDATE" id="855125D9-65A3-3234-264B-9F3E2DD60A07">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>29D92561-8368-A610-D603-0A94652C7B4D</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BOOKTIME" id="AE40FA9B-6951-CE24-B887-D9EDD93B2E58">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>B06A4900-68F6-AA40-7AE7-2647B0613856</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DURATION" id="CFA7F85B-3F02-DA65-12FB-500FC1B57237">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>3D20249A-5FEF-63C3-252D-CD2D537865AE</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,2,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TOTALCOST" id="5A1141EE-73E8-E27E-A692-7F90BD75D93D">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>D163E6FD-645A-E185-AEC5-E153B0C6D9A3</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PAYEMENT" id="612C97D1-96A4-E41A-C762-94F8F4D5145B">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>F6FF998C-85FC-6897-6A31-E5906BD9CDE5</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4 BYTE</dataTypeSize>
+<ownDataTypeParameters>4 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A9787C8B-DBD2-0B31-86B2-4738BA59FDB3" schemaObject="8BB54043-1932-452F-7545-160FDFEDC802" name="BOOKINGS_PK">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<importedID>2A177AA1-59A4-C9DC-E66D-6784EAEFFE2E</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DDAABC63-EDC2-537C-5EB0-6726BF9BE4E2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="BOOKINGS" directorySegmentName="seg_0" id="7EFDDC6A-2813-CD52-0772-65AC8E1F65B7">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<schemaObject>8BB54043-1932-452F-7545-160FDFEDC802</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3336E0B0-69C5-41FF-99AD-BFB80F8B4635</segment>
+<tableSpace>9BF31C30-991F-9CC1-5FD2-A6DAA3A1F315</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="SITTERNAME" id="0532A137-A0A8-53AA-4212-078FA0D96A60">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLIENTNAME" id="30F23BDF-D69C-E283-941A-812E3E7286AD">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TOTALCOST" id="5A1141EE-73E8-E27E-A692-7F90BD75D93D">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SITTEREMAIL" id="5BC8E2CC-02C6-5014-4D11-ADBFADF64710">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PAYEMENT" id="612C97D1-96A4-E41A-C762-94F8F4D5145B">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BOOKDATE" id="855125D9-65A3-3234-264B-9F3E2DD60A07">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLIENTPHONENO" id="88C425EC-BDDA-F5D1-B33F-F36F49E88876">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BOOKTIME" id="AE40FA9B-6951-CE24-B887-D9EDD93B2E58">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SITTERPHONENO" id="B00E1E16-BA23-6416-009D-AB27664FAC80">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLIENTEMAIL" id="B185DF5C-1BDF-1895-C7F8-09237446418D">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLIENTID" id="B5631674-14CF-31BC-BE29-B8D6DB946CBD">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="HOURLYRATE" id="B8FD7CAB-AC8A-B34D-A053-A4A46C29527F">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SITTERID" id="C1FE5E71-3FD3-DEE7-1E59-21E041DD1A3A">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DURATION" id="CFA7F85B-3F02-DA65-12FB-500FC1B57237">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BOOKINGID" id="DDAABC63-EDC2-537C-5EB0-6726BF9BE4E2">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="BOOKINGS_PK" id="A9787C8B-DBD2-0B31-86B2-4738BA59FDB3">
+<createdBy>LAB</createdBy>
+<createdTime>2026-03-19 12:24:43 UTC</createdTime>
+<ownerDesignName>new</ownerDesignName>
+<schemaObject>8BB54043-1932-452F-7545-160FDFEDC802</schemaObject>
+<segment>4B8658B9-61DC-971F-0CEE-880F33C477A6</segment>
+<tableSpace>9BF31C30-991F-9CC1-5FD2-A6DAA3A1F315</tableSpace>
+<indexSegment>4B8658B9-61DC-971F-0CEE-880F33C477A6</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
