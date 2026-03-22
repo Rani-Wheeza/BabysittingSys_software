@@ -3,16 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BabysittingSys
 {
-    /*internal class Clients
-    {
-    }*/
-
+   
     public class Clients
     {
         private int ClientID;
@@ -119,6 +117,36 @@ namespace BabysittingSys
 
         }
 
+        public static int GetNextClientID()
+        {
+            int nextID = 0;
+
+            //to open the db connection
+            //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+
+            conn.Open();
+
+            string strSQL = "SELECT MAX(ClientID) FROM Client";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != DBNull.Value)
+            {
+                nextID = Convert.ToInt32(result) + 1;
+            }
+            else
+            {
+                nextID = 1005; // Start from 1 if there are no clients in the database
+            }
+            conn.Close();
+
+            return nextID;
+        }
+
 
 
         public void AddClient()
@@ -139,97 +167,31 @@ namespace BabysittingSys
 
             conn.Close() ;
 
-            /* try
-             {
-                 using (OracleConnection conn = new OracleConnection(DataBase.connectionString))
-                 {
-                     conn.Open();,
-
-                     using (OracleCommand cmd = new OracleCommand(strSQL, conn))
-                     {
-                         cmd.Parameters.Add(":ClientID", OracleDbType.Int32).Value = ClientID;
-                         cmd.Parameters.Add(":FirstName", OracleDbType.Varchar2).Value = FirstName;
-                         cmd.Parameters.Add(":LastName", OracleDbType.Varchar2).Value = LastName;
-                         cmd.Parameters.Add(":Email", OracleDbType.Varchar2).Value = Email;
-                         cmd.Parameters.Add(":PhoneNo", OracleDbType.Varchar2).Value = PhoneNo;
-                         cmd.Parameters.Add(":County", OracleDbType.Varchar2).Value = County;
-                         cmd.Parameters.Add(":Town", OracleDbType.Varchar2).Value = Town;
-                         cmd.Parameters.Add(":Street", OracleDbType.Varchar2).Value = Street;
-                         cmd.Parameters.Add(":EirCode", OracleDbType.Varchar2).Value = EirCode;
-                         cmd.Parameters.Add(":NoOfChildren", OracleDbType.Varchar2).Value = NoOfChildren;
-                         cmd.Parameters.Add(":AgeOfChildren", OracleDbType.Varchar2).Value = AgeOfChild;
-                         cmd.Parameters.Add(":Language", OracleDbType.Varchar2).Value = Language;
-                         cmd.Parameters.Add(":Description", OracleDbType.Varchar2).Value = Description;
-                         //cmd.Parameters.Add(new OracleParameter("Description", client.Description));
-
-                         int rowsInserted = cmd.ExecuteNonQuery();
-
-                         if (rowsInserted > 0)
-                         {
-                             return true;
-                             //Console.WriteLine("Client added successfully.");
-                         }
-                         else
-                         {
-                             return false;
-                             //Console.WriteLine("Failed to add client.");
-
-                         }
-                     }
-                 }
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show("Error adding client: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 return false;
-             }*/
+           
         }
 
-        public static Clients GetClientByID(int clientID)
+        public static DataSet GetClientByID(int clientID)
         {
-            Clients client = null;
-                        
-            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+            DataSet ds = new DataSet();
 
-           
-            using (OracleConnection conn = new OracleConnection(orabd))
-            {
-                conn.Open();
+            //to open the db connection
+            //String orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";// is redundant
 
-                string strSQL = "SELECT * FROM CLIENTS WHERE ClientID = :ClientID";
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
-                using (OracleCommand cmd = new OracleCommand(strSQL, conn))
-                {
-                    cmd.Parameters.Add(":ClientID", OracleDbType.Int32).Value = clientID;
+            conn.Open();
 
-                    using (OracleDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            client = new Clients();
+            String strSQL = "SELECT * FROM Client WHERE ClientID = " + clientID;
 
-                            client.ClientID = reader.GetInt32(0);
-                            client.FirstName = reader.GetString(1);
-                            client.LastName = reader.GetString(2);
-                            client.Email = reader.GetString(3);
-                            client.PhoneNo = reader.GetString(4);
-                            client.County = reader.GetString(5);
-                            client.Town = reader.GetString(6);
-                            client.Street = reader.GetString(7);
-                            client.EirCode = reader.GetString(8);
-                            client.NoOfChildren = reader.GetString(9);
-                            client.AgeOfChild = reader.GetString(10);
-                            client.Language = reader.GetString(11);
-                            client.Description = reader.GetString(12);
-                            //Description = reader.GetString(reader.GetOrdinal("Description"))
-                            
-                        }
-                    }
-                }
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
 
-            }
-            return client;
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
 
+            da.Fill(ds, "Client_by_ID");
+
+            conn.Close();
+
+            return ds;
 
         }
     }

@@ -15,22 +15,22 @@ namespace BabysittingSys
 
     public class Sitters
     {
-        public int SitterID;
-        public string FirstName;
-        public string LastName;
-        public string Email;
-        public string PhoneNo;
-        public DateTime DOB;
-        public string County;
-        public string Town;
-        public string Street;
-        public string EirCode;
-        public string Language;
-        public string ChildCareCertified;
-        public string MedicalCertified;
-        public string Availabilty;
-        public string Description;
-        public string HourlyRate;
+        private int SitterID;
+        private string FirstName;
+        private string LastName;
+        private string Email;
+        private string PhoneNo;
+        private DateTime DOB;
+        private string County;
+        private string Town;
+        private string Street;
+        private string EirCode;
+        private string Language;
+        private string ChildCareCertified;
+        private string MedicalCertified;
+        private string Availabilty;
+        private string Description;
+        private string HourlyRate;
 
         public Sitters() 
         { 
@@ -55,21 +55,21 @@ namespace BabysittingSys
 
         public Sitters(int sitterID,string firstName, string lastName, string email, string phoneNo, DateTime dob, string county, string town, string street, string eirCode, string language, string childCareCertified, string medicalCertified, string availabilty, string description, string hourlyRate)
         {
-            SitterID = sitterID;
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            PhoneNo = phoneNo;
-            DOB = dob;
-            County = county;
-            Town = town;
-            Street = street;
-            EirCode = eirCode;
-            Language = language;
-            ChildCareCertified = childCareCertified;
-            MedicalCertified = medicalCertified;
-            Description = description;
-            HourlyRate = hourlyRate;
+            setSitterID(sitterID);
+            setFirstName(firstName);
+            setLastName(lastName);
+            setEmail(email);
+            setPhoneNo(phoneNo);
+            setDOB(dob);
+            setCounty(county);
+            setTown(town);
+            setStreet(street);
+            setEirCode(eirCode);
+            setLanguage(language);
+            setChildCareCertified(childCareCertified);
+            setMedicalCertified(medicalCertified);
+            setDescription(description);
+            setHourlyRate(hourlyRate);
 
 
         }
@@ -108,12 +108,12 @@ namespace BabysittingSys
         public void setDescription(string description) { Description = description; }
         public void setHourlyRate(string hourlyRate) { HourlyRate = hourlyRate; }
 
-        public static DataSet getSitterID(int sitterID)
+        public static DataSet getSitters()
         {
             DataSet ds = new DataSet();
 
             //to open the db connection
-            OracleConnection conn = new OracleConnection(/*connectionString*/);
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
             conn.Open();
 
@@ -130,46 +130,83 @@ namespace BabysittingSys
 
         }
 
-        /*public static int GetNextSitterID()
-
+        public static int GetNextSitterID()
         {
+            int nextID = 0;
 
+            //to open the db connection
+            //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
 
-            //Define the SQL query to be executed - only one value returned here
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
-            string sqlQuery = "SELECT MAX(SitterID) FROM Sitters";
+            conn.Open();
 
+            string strSQL = "SELECT MAX(SitterID) FROM Slitter";
 
-            //Execute the SQL query
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
 
-            //OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery); // not sure what to change check later
+            object result = cmd.ExecuteScalar();
 
-
-            //Does data reader contain a value or is it null?
-
-            int nextId;
-
-
-            dr.Read();
-
-
-            if (dr.IsDBNull(0)) //the data reader is empty so no rows have yet been added to the table
-
-                nextId = 1;
-
+            if (result != DBNull.Value)
+            {
+                nextID = Convert.ToInt32(result) + 1;
+            }
             else
+            {
+                nextID = 1005; // Start from 1 if there are no sitters in the database
+            }
+            conn.Close();
 
-                nextId = dr.GetInt32(0) + 1;
+            return nextID;
+        }
 
 
-            //close the OracleDataReader and the DB connection
 
-            dr.Close();
+        public void AddSitter()
+        {
+            //to open the db connection
+            //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
 
 
-            return nextId;
+            string strSQL = "INSERT INTO SITTERS VALUES (" + this.SitterID + ",'" + this.FirstName + "','" + this.LastName + "','" + this.Email + "','" + this.PhoneNo + "','" + this.DOB + "','" + this.County + "','" + this.Town + "','" + this.Street + "','" + this.EirCode + "','" + this.ChildCareCertified + "','" + this.MedicalCertified + "','" + this.Language + "','" + this.Description + "','" + this.HourlyRate + "')";
 
-        }*/
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+
+            conn.Open();
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+
+        }
+
+        public static DataSet GetSitterByID(int sitterID)
+        {
+            DataSet ds = new DataSet();
+
+            //to open the db connection
+            //String orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";// is redundant
+
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+
+            conn.Open();
+
+            String strSQL = "SELECT * FROM Sitter WHERE SitterID = " + sitterID;
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.Fill(ds, "Sitter_by_ID");
+
+            conn.Close();
+
+            return ds;
+
+        }
 
     }
 }

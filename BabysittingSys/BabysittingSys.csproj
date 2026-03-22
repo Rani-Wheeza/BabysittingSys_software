@@ -117,11 +117,11 @@
     <Compile Include="frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListBookings.cs">
+    <Compile Include="frmSearchClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListBookings.Designer.cs">
-      <DependentUpon>frmListBookings.cs</DependentUpon>
+    <Compile Include="frmSearchClient.Designer.cs">
+      <DependentUpon>frmSearchClient.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListSitters.cs">
       <SubType>Form</SubType>
@@ -207,8 +207,8 @@
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListBookings.resx">
-      <DependentUpon>frmListBookings.cs</DependentUpon>
+    <EmbeddedResource Include="frmSearchClient.resx">
+      <DependentUpon>frmSearchClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListSitters.resx">
       <DependentUpon>frmListSitters.cs</DependentUpon>

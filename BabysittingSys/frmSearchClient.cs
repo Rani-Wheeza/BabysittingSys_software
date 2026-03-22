@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BabysittingSys
 {
-    public partial class frmListBookings : Form
+    public partial class frmSearchClient : Form
     {
-        public frmListBookings()
+        public frmSearchClient()
         {
             InitializeComponent();
         }

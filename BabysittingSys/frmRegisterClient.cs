@@ -90,39 +90,11 @@ namespace BabysittingSys
             nextForm.Show();
         }
 
-        public int GetNextClientID()
-        {
-            int nextID = 0;
-
-            //to open the db connection
-            string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
-
-            OracleConnection conn = new OracleConnection(orabd);
-
-            conn.Open();
-
-            string strSQL = "SELECT MAX(ClientID) FROM Client";
-
-            OracleCommand cmd = new OracleCommand(strSQL, conn);
-
-            object result = cmd.ExecuteScalar();
-
-            if (result != DBNull.Value)
-            {
-                nextID = Convert.ToInt32(result) + 1;
-            }
-            else
-            {
-                nextID = 1005; // Start from 1 if there are no clients in the database
-            }
-            conn.Close();
-
-            return nextID;
-        }
-
+       
         private void frmRegisterClient_Load(object sender, EventArgs e)
         {
-            txtClientID.Text = GetNextClientID().ToString();
+            txtClientID.Text = Clients.GetNextClientID().ToString();
+
         }
 
         private void btnRegisterClient_Click(object sender, EventArgs e)
@@ -312,7 +284,7 @@ namespace BabysittingSys
             cboLanguage.SelectedIndex = -1;
             txtDescription.Clear();
 
-            txtClientID.Text = GetNextClientID().ToString();
+            txtClientID.Text = Clients.GetNextClientID().ToString();
             txtFirstName.Focus();
            
                
