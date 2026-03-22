@@ -290,52 +290,32 @@ namespace BabysittingSys
             }
 
             //save data 
-            Clients client = new Clients();
+            Clients client = new Clients(Convert.ToInt32(txtClientID.Text), txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtPhoneNo.Text, txtCounty.Text, txtTown.Text,txtStreet.Text,txtEirCode.Text, cboNoOfChildren.Text, cboAgeOfChild.Text, cboLanguage.Text, txtDescription.Text);
 
-            client.ClientID = Convert.ToInt32(txtClientID.Text);
-            client.FirstName = txtFirstName.Text;
-            client.LastName = txtLastName.Text;
-            client.Email = txtEmail.Text;
-            client.PhoneNo = txtPhoneNo.Text;
-            client.County = txtCounty.Text;
-            client.Town = txtTown.Text;
-            client.Street = txtStreet.Text;
-            client.EirCode = txtEirCode.Text;
-            client.NoOfChildren = cboNoOfChildren.Text;
-            client.AgeOfChild = cboAgeOfChild.Text;
-            client.Language = cboLanguage.Text;
-            client.Description = txtDescription.Text;
+           
+            client.AddClient();
 
-            bool success = client.AddClient();
+           
+            MessageBox.Show("Client has been registered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Cormation message
-            if (success)
-            {
-                MessageBox.Show("Client has been registered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Reset UI
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtEmail.Clear();
+            txtPhoneNo.Clear();
+            txtCounty.Clear();
+            txtTown.Clear();
+            txtStreet.Clear();
+            txtEirCode.Clear();
+            cboNoOfChildren.SelectedIndex = -1;
+            cboAgeOfChild.SelectedIndex = -1;
+            cboLanguage.SelectedIndex = -1;
+            txtDescription.Clear();
 
-                //Reset UI
-                txtFirstName.Clear();
-                txtLastName.Clear();
-                txtEmail.Clear();
-                txtPhoneNo.Clear();
-                txtCounty.Clear();
-                txtTown.Clear();
-                txtStreet.Clear();
-                txtEirCode.Clear();
-                cboNoOfChildren.SelectedIndex = -1;
-                cboAgeOfChild.SelectedIndex = -1;
-                cboLanguage.SelectedIndex = -1;
-                txtDescription.Clear();
-
-                txtClientID.Text = GetNextClientID().ToString();
-                txtFirstName.Focus();
-            }
-            else
-            {
-                MessageBox.Show("An error occurred while registering the client. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-
+            txtClientID.Text = GetNextClientID().ToString();
+            txtFirstName.Focus();
+           
+               
                 
             }
 
