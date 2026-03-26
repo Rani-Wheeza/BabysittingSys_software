@@ -9,12 +9,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace BabysittingSys
 {
-    /*internal class Sitters
-    {
-    }*/
-
+   
     public class Sitters
     {
+        private int AvailabilityID;
         private int SitterID;
         private string FirstName;
         private string LastName;
@@ -40,6 +38,7 @@ namespace BabysittingSys
 
         public Sitters() 
         { 
+            AvailabilityID = 0;
             SitterID = 0;
             FirstName = "";
             LastName = "";
@@ -65,8 +64,9 @@ namespace BabysittingSys
         
         }
 
-        public Sitters(int sitterID,string firstName, string lastName, string email, string phoneNo, DateTime dob, string county, string town, string street, string eirCode, string language, string childCareCertified, string medicalCertified, string monday, string tuesday, string wednesday, string thursday, string friday, string saturday, string sunday, string description, string hourlyRate)
+        public Sitters(int AvailabilityID,int sitterID,string firstName, string lastName, string email, string phoneNo, DateTime dob, string county, string town, string street, string eirCode, string language, string childCareCertified, string medicalCertified, string monday, string tuesday, string wednesday, string thursday, string friday, string saturday, string sunday, string description, string hourlyRate)
         {
+            setAvailabilityID(AvailabilityID);
             setSitterID(sitterID);
             setFirstName(firstName);
             setLastName(lastName);
@@ -94,6 +94,7 @@ namespace BabysittingSys
         }
 
         //GETTERS
+        public int getAvailabilityID() { return AvailabilityID; }
         public int getSitterID() { return SitterID; }
         public string getFirstName() { return FirstName;} 
         public string getLastName() { return LastName;}
@@ -118,6 +119,7 @@ namespace BabysittingSys
         public string getHourlyRate() { return HourlyRate;}
 
         //SETTERS
+        public void setAvailabilityID(int availabilityID) {AvailabilityID = availabilityID;}
         public void setSitterID(int sitterID) { SitterID = sitterID; }
         public void setFirstName(string firstName) { FirstName = firstName; }
         public void setLastName(string lastName) { LastName = lastName; }
@@ -150,7 +152,7 @@ namespace BabysittingSys
 
             conn.Open();
 
-            string strSQL = "SELECT * FROM Sitter ORDER BY SitterID";
+            string strSQL = "SELECT * FROM Sitters ORDER BY SitterID";
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
             OracleDataAdapter da = new OracleDataAdapter(cmd);
@@ -174,7 +176,7 @@ namespace BabysittingSys
 
             conn.Open();
 
-            string strSQL = "SELECT MAX(SitterID) FROM Slitter";
+            string strSQL = "SELECT MAX(SitterID) FROM Sitters";
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 
@@ -186,7 +188,7 @@ namespace BabysittingSys
             }
             else
             {
-                nextID = 1005; // Start from 1 if there are no sitters in the database
+                nextID = 2005; // Start from 1 if there are no sitters in the database
             }
             conn.Close();
 
@@ -200,16 +202,23 @@ namespace BabysittingSys
             //to open the db connection
             //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
 
-
-            string strSQL = "INSERT INTO SITTERS VALUES (" + this.SitterID + ",'" + this.FirstName + "','" + this.LastName + "','" + this.Email + "','" + this.PhoneNo + "','" + this.DOB + "','" + this.County + "','" + this.Town + "','" + this.Street + "','" + this.EirCode + "','" + this.ChildCareCertified + "','" + this.MedicalCertified + "','" + this.Language + "','" + this.Monday + "','" + this.Tuesday + "','" + this.Wednesday + "','" + this.Thursday + "','" + this.Friday + "','" + this.Saturday + "','" + this.Sunday + "','" + this.Description + "','" + this.HourlyRate + "')";
+            //Insert into Sitters table
+            string strSQL1 = "INSERT INTO SITTERS VALUES (" + this.SitterID + ",'" + this.FirstName + "','" + this.LastName + "','" + this.Email + "','" + this.PhoneNo + "','" + "TO_DATE('" + this.DOB.ToString("dd-mm-yyyy") + "','DD-MM-YYYY'),'" + this.County + "','" + this.Town + "','" + this.Street + "','" + this.EirCode + "','" + this.ChildCareCertified + "','" + this.MedicalCertified + "','" + this.Language + "','" + this.Description + "','" + this.HourlyRate + "')";
+                    
 
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
             conn.Open();
 
-            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            OracleCommand cmd1 = new OracleCommand(strSQL1, conn);
 
-            cmd.ExecuteNonQuery();
+            cmd1.ExecuteNonQuery();
+
+            //Insert Into S_Availability table
+            string strSQL2 = "INSERT INTO S_Availability VALUES (" + this.AvailabilityID + ",'" + this.SitterID + "','" + this.Monday + "','" + this.Tuesday + "','" + this.Wednesday + "','" + this.Thursday + "','" + this.Friday + "','" + this.Saturday + "','" + this.Sunday + "')";
+
+            OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
+            cmd2.ExecuteNonQuery();
 
             conn.Close();
 
@@ -227,7 +236,7 @@ namespace BabysittingSys
 
             conn.Open();
 
-            String strSQL = "SELECT * FROM Sitter WHERE SitterID = " + sitterID;
+            String strSQL = "SELECT * FROM Sitters WHERE SitterID = " + sitterID;
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 

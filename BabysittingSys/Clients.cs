@@ -104,7 +104,7 @@ namespace BabysittingSys
 
             conn.Open();
 
-            String strSQL = "SELECT * FROM Client ORDER BY ClientID";
+            String strSQL = "SELECT * FROM Clients ORDER BY ClientID";
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
             OracleDataAdapter da = new OracleDataAdapter(cmd);
@@ -128,7 +128,7 @@ namespace BabysittingSys
 
             conn.Open();
 
-            string strSQL = "SELECT MAX(ClientID) FROM Client";
+            string strSQL = "SELECT MAX(ClientID) FROM Clients";
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 
@@ -181,7 +181,7 @@ namespace BabysittingSys
 
             conn.Open();
 
-            String strSQL = "SELECT * FROM Client WHERE ClientID = " + clientID;
+            String strSQL = "SELECT * FROM Clients WHERE ClientID = " + clientID;
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 

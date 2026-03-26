@@ -29,7 +29,7 @@ Town VARCHAR2 (50) NOT NULL,
 Street VARCHAR2 (50) NOT NULL,
 Eircode VARCHAR2 (8) NOT NULL,
 NoOfChildren NUMBER (2) NOT NULL,
-AgeOfChild VARCHAR2 (4) NOT NULL,
+AgeOfChild VARCHAR2 (15) NOT NULL,
 Languages VARCHAR2 (30) NOT NULL,
 Description VARCHAR2 (130) NOT NULL);
 
@@ -48,7 +48,7 @@ Eircode VARCHAR2 (30) NOT NULL,
 ChildCareCertified VARCHAR2 (30) NOT NULL,
 MedicalCertified VARCHAR2 (30) NOT NULL,
 Languages VARCHAR2 (30) NOT NULL,
---Availability VARCHAR2 (30) NOT NULL,
+--Availability VARCHAR2 (30) NOT NULL,not needed
 Description VARCHAR2 (130) NOT NULL,
 HourlyRate VARCHAR2 (5) NOT NULL);
 
@@ -74,10 +74,6 @@ Payement VARCHAR2 (4) NOT NULL);
 CREATE TABLE S_Availability(
 VailablityID NUMBER  PRIMARY KEY,
 SitterID NUMBER (4) NOT NULL,
-FirstName VARCHAR2 (30) NOT NULL,
-LastName VARCHAR2 (30) NOT NULL,
-Email VARCHAR2 (30) NOT NULL UNIQUE,
-PhoneNo VARCHAR2 (10) NOT NULL,
 Monday VARCHAR2 (5) NOT NULL,
 Tuesday VARCHAR2 (5) NOT NULL,
 Wednesday VARCHAR2 (5) NOT NULL,
@@ -158,24 +154,24 @@ VALUES(3004,1004, 'Lily Brenda','lily.banda99@example.com','0894307786', 2002,'C
 
 --Add data to the S_Availability table
 --1A
-INSERT INTO S_Availability(VailablityID,SitterID,FirstName,LastName, Email,PhoneNo,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
-VALUES(4000,2000, 'Sarah', 'O Grady', 'sarah2@gmail.com', '0848261852', 'Yes', 'No', 'No','No', 'No', 'Yes', 'Yes');
+INSERT INTO S_Availability(VailablityID,SitterID,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
+VALUES(4000,2000, 'Yes', 'No', 'No','No', 'No', 'Yes', 'Yes');
 
 --2A
-INSERT INTO S_Availability(VailablityID,SitterID,FirstName,LastName, Email,PhoneNo,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
-VALUES(4001,2001, 'Aoife','Murphy','murphy.a@gmail.com','0850379963', 'No', 'Yes', 'Yes', 'Yes', 'No', 'Yes', 'No');
+INSERT INTO S_Availability(VailablityID,SitterID,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
+VALUES(4001,2001, 'No', 'Yes', 'Yes', 'Yes', 'No', 'Yes', 'No');
 
 --3A
-INSERT INTO S_Availability(VailablityID,SitterID,FirstName,LastName, Email,PhoneNo,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
-VALUES(4002,2002,'Ciara','Donnelly','ciaradonnelly@gmail.com','0827386277', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No');
+INSERT INTO S_Availability(VailablityID,SitterID,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
+VALUES(4002,2002,'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No');
 
 --4A
-INSERT INTO S_Availability(VailablityID,SitterID,FirstName,LastName, Email,PhoneNo,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
-VALUES(4003,2003,'Saoirse','O Sullivan','saoirseos@gmail.com','0869781639', 'No', 'No', 'No', 'No', 'No', 'Yes', 'Yes');
+INSERT INTO S_Availability(VailablityID,SitterID,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
+VALUES(4003,2003,'No', 'No', 'No', 'No', 'No', 'Yes', 'Yes');
 
 --5A
-INSERT INTO S_Availability(VailablityID,SitterID,FirstName,LastName, Email,PhoneNo,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
-VALUES(4004,2004,'Caoimhe','Walsh','walshc@gmail.com', '0813960070','Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'No');
+INSERT INTO S_Availability(VailablityID,SitterID,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
+VALUES(4004,2004,'Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'No');
 
 
 
