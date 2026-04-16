@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -238,13 +239,16 @@ namespace BabysittingSys
 
             conn.Open();
 
-            String strSQL = "SELECT * FROM Sitters WHERE SitterID = " + sitterID;
+            //String strSQL = "SELECT * FROM Sitters WHERE SitterID = " + sitterID;
 
-            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            //This is being used since sitters information is split between 2 tables.
+            string strSQl = "SELECT s.*, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, a.Friday, a.Saturday, a.Sunday " + "FROM Sitters s " + "JOIN S_Availability a ON s.SitterID = a.SitterID " + "WHERE s.SitterID = " + sitterID;
+
+            OracleCommand cmd = new OracleCommand(strSQl, conn);
 
             OracleDataAdapter da = new OracleDataAdapter(cmd);
 
-            da.Fill(ds, "Sitter_by_ID");
+            da.Fill(ds, "Sitter_By_ID");
 
             conn.Close();
 

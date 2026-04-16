@@ -188,7 +188,7 @@ namespace BabysittingSys
 
             OracleDataAdapter da = new OracleDataAdapter(cmd);
 
-            da.Fill(ds, "Client_by_ID");
+            da.Fill(ds, "Client_By_ID");
 
             conn.Close();
 
@@ -202,6 +202,19 @@ namespace BabysittingSys
 
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
             conn.Open();
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void DeleteClient()
+        {
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "DELETE FROM CLIENTS WHERE ClientID = " + this.ClientID;
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 

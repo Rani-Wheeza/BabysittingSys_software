@@ -37,7 +37,7 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.23.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.23.26.200\lib\net472\Oracle.ManagedDataAccess.dll</HintPath>
+      <HintPath>..\packages\Oracle.ManagedDataAccess.23.9.1\lib\net472\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
     <Compile Include="Bookings.cs" />
     <Compile Include="Clients.cs" />
     <Compile Include="DataBase.cs" />
@@ -120,6 +121,24 @@
     <Compile Include="frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListBookings.Designer.cs">
+      <DependentUpon>frmListBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLIstClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLIstClients.Designer.cs">
+      <DependentUpon>frmLIstClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchBookings.Designer.cs">
+      <DependentUpon>frmSearchBookings.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSearchClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,11 +151,11 @@
     <Compile Include="frmListSitters.Designer.cs">
       <DependentUpon>frmListSitters.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="frmAdminLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="frmAdminLogin.Designer.cs">
+      <DependentUpon>frmAdminLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMakeBooking.cs">
       <SubType>Form</SubType>
@@ -174,6 +193,12 @@
     <Compile Include="frmResetPassword.Designer.cs">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSearchSitters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchSitters.Designer.cs">
+      <DependentUpon>frmSearchSitters.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUpdateBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,14 +235,23 @@
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListBookings.resx">
+      <DependentUpon>frmListBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLIstClients.resx">
+      <DependentUpon>frmLIstClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchBookings.resx">
+      <DependentUpon>frmSearchBookings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSearchClient.resx">
       <DependentUpon>frmSearchClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListSitters.resx">
       <DependentUpon>frmListSitters.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="frmAdminLogin.resx">
+      <DependentUpon>frmAdminLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMakeBooking.resx">
       <DependentUpon>frmMakeBooking.cs</DependentUpon>
@@ -236,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchSitters.resx">
+      <DependentUpon>frmSearchSitters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateBooking.resx">
       <DependentUpon>frmUpdateBooking.cs</DependentUpon>

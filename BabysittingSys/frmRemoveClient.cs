@@ -86,12 +86,12 @@ namespace BabysittingSys
 
         private void frmRemoveClient_Load(object sender, EventArgs e)
         {
-            cboClientID.Items.Add("1013");
+            /*cboClientID.Items.Add("1013");
             cboClientID.Items.Add("1024");
-            cboClientID.Items.Add("1015");
+            cboClientID.Items.Add("1015");*/
         }
 
-        private void cboClientID_SelectedIndexChanged(object sender, EventArgs e)
+        /*private void cboClientID_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboClientID.Text == "1013")
             {
@@ -141,110 +141,90 @@ namespace BabysittingSys
                 txtDescription.Text = "Family of three looking for someone patient and " +
                     "energetic to mind our toddler a few hours a week";
             }
+        }*/
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtClientID.Text.Equals(""))
+            {
+                MessageBox.Show("Client ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
+            }
+
+            DataSet ds = Clients.GetClientByID(Convert.ToInt32(txtClientID.Text));
+
+            if (ds.Tables["Client_By_ID"].Rows.Count == 0)
+            {
+                MessageBox.Show("No Client found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
+            }
+
+            DataRow dr = ds.Tables["Client_By_ID"].Rows[0];
+
+            txtFirstName.Text = dr["FirstName"].ToString();
+            txtLastName.Text = dr["LastName"].ToString();
+            txtEmail.Text = dr["Email"].ToString();
+            txtPhoneNo.Text = dr["PhoneNo"].ToString();
+            txtCounty.Text = dr["County"].ToString();
+            txtTown.Text = dr["Town"].ToString();
+            txtStreet.Text = dr["Street"].ToString();
+            txtEirCode.Text = dr["EirCode"].ToString();
+            cboNoOfChildren.Text = dr["NoOfChildren"].ToString();
+            cboAgeOfChild.Text = dr["AgeOfChild"].ToString();
+            cboLanguage.Text = dr["Language"].ToString();
+            txtDescription.Text = dr["Description"].ToString();
+
         }
 
         private void btnRemoveClient_Click(object sender, EventArgs e)
         {
-            //Validate the data
-
-            if (txtFirstName.Text.Equals(""))
-            {
-                MessageBox.Show("First Name must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtFirstName.Focus();
-                return;
-            }
-
-            if (txtLastName.Text.Equals(""))
-            {
-                MessageBox.Show("Last Name must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtLastName.Focus();
-                return;
-            }
-
-            if (txtEmail.Text.Equals(""))
-            {
-                MessageBox.Show("Email must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Focus();
-                return;
-            }
-
-            if (txtPhoneNo.Text.Equals(""))
-            {
-                MessageBox.Show("Phone Number must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPhoneNo.Focus();
-                return;
-            }
-
-            if (txtCounty.Text.Equals(""))
-            {
-                MessageBox.Show("County must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtCounty.Focus();
-                return;
-            }
-
-            if (txtTown.Text.Equals(""))
-            {
-                MessageBox.Show("Town must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTown.Focus();
-                return;
-            }
-
-            if (txtStreet.Text.Equals(""))
-            {
-                MessageBox.Show("Street must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtStreet.Focus();
-                return;
-            }
-
-            if (txtEirCode.Text.Equals(""))
-            {
-                MessageBox.Show("EirCode must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEirCode.Focus();
-                return;
-            }
-
-            if (cboNoOfChildren.Text.Equals(""))
-            {
-                MessageBox.Show("Choose number of child(ren)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboNoOfChildren.Focus();
-                return;
-            }
-
-            if (cboAgeOfChild.Text.Equals(""))
-            {
-                MessageBox.Show("Choose age of child(ren)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboAgeOfChild.Focus();
-                return;
-            }
-
-
-            if (cboLanguage.Text.Equals(""))
-            {
-                MessageBox.Show("Choose prefered language(s)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboLanguage.Focus();
-                return;
-            }
-
-
-            if (txtDescription.Text.Equals(""))
-            {
-                MessageBox.Show("Description must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDescription.Focus();
-                return;
-            }
-
+            
             //save data - 2nd semester
-
+            if (txtClientID.Text.Equals(""))
+            {
+                MessageBox.Show("Client ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
+            }
 
             //Cormation message
-            MessageBox.Show("Are you sure you want to delete client details", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to delete client details", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (dialog == DialogResult.No) 
+            { 
+                return;
+            }
+
+            Clients client = new Clients();
+            client.ClientID = Convert.ToInt32(txtClientID.Text);
+
+            client.DeleteClient();
+
+            MessageBox.Show("Client deleted sucessfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             //Reset UI
-           
+            txtClientID.Clear();
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtEmail.Clear();
+            txtPhoneNo.Clear();
+            txtCounty.Clear();
+            txtTown.Clear();
+            txtStreet.Clear();
+            txtEirCode.Clear();
+            cboNoOfChildren.SelectedIndex = -1;
+            cboAgeOfChild.SelectedIndex = -1;
+            cboLanguage.SelectedIndex = -1;
+            txtDescription.Clear();
+
+            txtClientID.Focus();
 
             grpRemoveClient.Visible = false;
         }
 
-        
+       
     }
 }
