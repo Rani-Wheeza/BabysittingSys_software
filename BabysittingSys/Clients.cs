@@ -13,19 +13,20 @@ namespace BabysittingSys
    
     public class Clients
     {
-        private int ClientID;
-        private string FirstName;
-        private string LastName;
-        private string Email;
-        private string PhoneNo;
-        private string County;
-        private string Town;
-        private string Street;
-        private string EirCode;
-        private string NoOfChildren;
-        private string AgeOfChild;
-        private string Language;
-        private string Description; //switched from public to private
+        public int ClientID;
+        public string FirstName;
+        public string LastName;
+        public string Email;
+        public string PhoneNo;
+        public string County;
+        public string Town;
+        public string Street;
+        public string EirCode;
+        public string NoOfChildren;
+        public string AgeOfChild;
+        public string Language;
+        public string Description; //switched from public to private
+        //changed back to public because i was getting errors
 
         public Clients()
         {
@@ -193,6 +194,19 @@ namespace BabysittingSys
 
             return ds;
 
+        }
+
+        public void UpdateClient()
+        {
+            string strSQL = "UPDATE CLIENTS SET " + "FirstName = '" + this.FirstName + "'," + "LastName = '" + this.LastName + "'," + "Email = '" + this.Email + "'," + "PhoneNo = '" + this.PhoneNo + "'," + "County = '" + this.County + "'," + "Town = '" + this.Town + "'," + "Street = '" + this.Street + "'," + "EirCode = '" + this.EirCode + "'," + "NoOfChildren = '" + this.NoOfChildren + "'," + "AgeOfChild = '" + this.AgeOfChild + "'," + "Language = '" + this.Language + "'," + "Description = '" + this.Description + "' " + "WHERE ClientID = " + this.ClientID;
+
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

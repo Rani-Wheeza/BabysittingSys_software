@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Windows.Forms;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace BabysittingSys
 {
@@ -215,7 +217,7 @@ namespace BabysittingSys
             cmd1.ExecuteNonQuery();
 
             //Insert Into S_Availability table
-            string strSQL2 = "INSERT INTO S_Availability VALUES (" + this.AvailabilityID + ",'" + this.SitterID + "','" + this.Monday + "','" + this.Tuesday + "','" + this.Wednesday + "','" + this.Thursday + "','" + this.Friday + "','" + this.Saturday + "','" + this.Sunday + "')";
+            string strSQL2 = "INSERT INTO S_Availability VALUES (" + this.AvailabilityID + "," + this.SitterID + ",'" + this.Monday + "','" + this.Tuesday + "','" + this.Wednesday + "','" + this.Thursday + "','" + this.Friday + "','" + this.Saturday + "','" + this.Sunday + "')";
 
             OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
             cmd2.ExecuteNonQuery();
@@ -248,6 +250,34 @@ namespace BabysittingSys
 
             return ds;
 
+        }
+
+        public static int GetNextAvailabilityID()
+        {
+            int nextID = 0;
+
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "SELECT MAX(AvailabilityID) FROM S_Availability";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != DBNull.Value)
+            {
+                nextID = Convert.ToInt32(result) + 1;
+
+            }
+            else
+            {
+                nextID = 4005;
+
+            }
+
+            conn.Close();
+            return nextID;
         }
 
     }

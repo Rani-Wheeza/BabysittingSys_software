@@ -240,11 +240,11 @@ namespace BabysittingSys
 
 
             //save data - 2nd semester
-            /*int nextAvailabilityID = Sitters.GetNextAvailabilityID();
+            int nextAvailabilityID = Sitters.GetNextAvailabilityID();
 
             Sitters sitter = new Sitters(nextAvailabilityID,Convert.ToInt32(txtSitterID.Text), txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtPhoneNo.Text, dtpDOB.Value, txtCounty.Text, txtTown.Text, txtStreet.Text, txtEirCode.Text, cboLanguage.Text, cboChildCareCertified.Text, cboMedicalCertified.Text, chkMonday.Checked ? "Yes" : "No", chkTuesday.Checked ? "Yes" : "No", chkWednesday.Checked ? "Yes" : "No", chkThursday.Checked ? "Yes" : "No", chkFriday.Checked ? "Yes" : "No", chkSaturday.Checked ? "Yes" : "No", chkSunday.Checked ? "Yes" : "No", txtDescription.Text, txtHourlyRate.Text);
 
-            sitter.AddSitter();*/
+            sitter.AddSitter();
 
             //display confirmation message
             MessageBox.Show("Sitter " + txtSitterID.Text + " has been registered successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

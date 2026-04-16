@@ -65,14 +65,14 @@ namespace BabysittingSys
 
         private void frmUpdateClient_Load(object sender, EventArgs e)
         {
-            cboClientID.Items.Add("1013");
+            /*cboClientID.Items.Add("1013");
             cboClientID.Items.Add("1024");
             cboClientID.Items.Add("1015");
             cboClientID.Items.Add("1036");
-            cboClientID.Items.Add("1017");
+            cboClientID.Items.Add("1017");*/
         }
 
-        private void cboClientID_SelectedIndexChanged(object sender, EventArgs e)
+        /*private void cboClientID_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboClientID.Text == "1013")
             {
@@ -154,6 +154,41 @@ namespace BabysittingSys
                 txtDescription.Text = "Busy working parents seeking a caring, punctual " +
                     "babysitter who can help with after-school care.";
             }
+        }*/
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtClientID.Text.Equals(""))
+            {
+                MessageBox.Show("Client ID must be entered", "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
+            }
+
+            DataSet ds = Clients.GetClientByID(Convert.ToInt32(txtClientID.Text));
+
+            if(ds.Tables["Client_By_ID"].Rows.Count == 0)
+            {
+                MessageBox.Show("No Client found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
+            }
+
+            DataRow dr = ds.Tables["Client_By_ID"].Rows[0];
+
+            txtFirstName.Text = dr["FirstName"].ToString();
+            txtLastName.Text = dr["LastName"].ToString();
+            txtEmail.Text = dr["Email"].ToString();
+            txtPhoneNo.Text = dr["PhoneNo"].ToString();
+            txtCounty.Text = dr["County"].ToString();
+            txtTown.Text = dr["Town"].ToString();
+            txtStreet.Text = dr["Street"].ToString();
+            txtEirCode.Text = dr["EirCode"].ToString();
+            cboNoOfChildren.Text = dr["NoOfChildren"].ToString();
+            cboAgeOfChild.Text = dr["AgeOfChild"].ToString();
+            cboLanguage.Text = dr["Language"].ToString();
+            txtDescription.Text = dr["Description"].ToString();
+
         }
 
         private void btnUpdateClient_Click(object sender, EventArgs e)
@@ -320,15 +355,38 @@ namespace BabysittingSys
                 return;
             }
 
-            //save data - 2nd semester
+            //Cormation message
+            DialogResult dialog = MessageBox.Show("Are you sure you want to update client details", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dialog == DialogResult.No) 
+            { 
+                return;
+            }
 
+            //save data - 2nd semester
+            Clients client = new Clients();
+
+            client.ClientID = Convert.ToInt32(txtClientID.Text);
+            client.FirstName = txtFirstName.Text;
+            client.LastName = txtLastName.Text;
+            client.Email = txtEmail.Text;
+            client.PhoneNo = txtPhoneNo.Text;
+            client.County = txtCounty.Text;
+            client.Town = txtTown.Text;
+            client.Street = txtStreet.Text;
+            client.EirCode = txtEirCode.Text;
+            client.NoOfChildren = cboNoOfChildren.Text;
+            client.AgeOfChild = cboAgeOfChild.Text;
+            client.Language = cboLanguage.Text;
+            client.Description = txtDescription.Text;
+
+            client.UpdateClient();
 
             //Cormation message
-            MessageBox.Show("Are you sure you want to update client details", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            MessageBox.Show("Client details updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            
+
             //Reset UI
-            cboClientID.SelectedIndex = -1;
+            txtClientID.Clear();
             txtFirstName.Clear();
             txtLastName.Clear();
             txtEmail.Clear();
@@ -342,11 +400,11 @@ namespace BabysittingSys
             cboLanguage.SelectedIndex = -1;
             txtDescription.Clear();
 
-            cboClientID.Focus();
+            txtClientID.Focus();
 
         }
 
-       
+        
     }
 }
 
