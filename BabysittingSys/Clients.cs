@@ -221,5 +221,24 @@ namespace BabysittingSys
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public static DataSet GetAllClients() 
+        { 
+            DataSet ds = new DataSet();
+
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "SELECT * FROM Clients ORDER BY ClientID";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.Fill(ds, "Clients");
+
+            conn.Close();
+
+            return ds;
+        }
     }
 }

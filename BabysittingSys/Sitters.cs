@@ -284,5 +284,27 @@ namespace BabysittingSys
             return nextID;
         }
 
+        public static DataSet GetAllSitters() 
+        {
+            DataSet ds = new DataSet();
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "SELECT s.SitterID, s.FirstName, s.LastName, s.Email, s.PhoneNo, s.DOB, s.County, s.Town, s.Street, s.EirCode, s.ChildCareCertified, s.MedicalCertified, s.Language, s.Description, s.HourlyRate, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, a.Friday, a.Saturday, a.Sunday " +
+                            "FROM Sitters s, S_Availability a " +
+                            "WHERE s.SitterID = a.SitterID" +
+                            "ORDER BY s.SitterID";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.Fill(ds, "All_Sitters");
+
+            conn.Close();
+
+            return ds;
+        }
+
     }
 }

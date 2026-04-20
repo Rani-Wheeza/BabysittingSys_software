@@ -43,5 +43,23 @@ namespace BabysittingSys
 
         }
 
+        private void frmListSitters_Load(object sender, EventArgs e)
+        {
+            dgvDisplaySitters.ReadOnly = true;
+            dgvDisplaySitters.AllowUserToAddRows = false;
+            dgvDisplaySitters.AllowUserToDeleteRows = false;
+            dgvDisplaySitters.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void btnDisplaySitters_Click(object sender, EventArgs e)
+        {
+            DataSet ds = Sitters.GetAllSitters();
+            dgvDisplaySitters.DataSource = ds.Tables["All_Sitters"];
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            dgvDisplaySitters.DataSource = null;
+        }
     }
 }
