@@ -198,7 +198,11 @@ namespace BabysittingSys
 
         public void UpdateClient()
         {
-            string strSQL = "UPDATE CLIENTS SET " + "FirstName = '" + this.FirstName + "'," + "LastName = '" + this.LastName + "'," + "Email = '" + this.Email + "'," + "PhoneNo = '" + this.PhoneNo + "'," + "County = '" + this.County + "'," + "Town = '" + this.Town + "'," + "Street = '" + this.Street + "'," + "EirCode = '" + this.EirCode + "'," + "NoOfChildren = '" + this.NoOfChildren + "'," + "AgeOfChild = '" + this.AgeOfChild + "'," + "Language = '" + this.Language + "'," + "Description = '" + this.Description + "' " + "WHERE ClientID = " + this.ClientID;
+            string strSQL = "UPDATE CLIENTS SET " + "FirstName = '" + this.FirstName + "'," + "LastName = '" + this.LastName + "'," + 
+                "Email = '" + this.Email + "'," + "PhoneNo = '" + this.PhoneNo + "'," + "County = '" + this.County + "'," + "Town = '" + this.Town + "'," + 
+                "Street = '" + this.Street + "'," + "EirCode = '" + this.EirCode + "'," + "NoOfChildren = '" + this.NoOfChildren + "'," + 
+                "AgeOfChild = '" + this.AgeOfChild + "'," + "Language = '" + this.Language + "'," + "Description = '" + this.Description + "' " + 
+                "WHERE ClientID = " + this.ClientID;
 
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
             conn.Open();
