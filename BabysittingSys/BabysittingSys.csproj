@@ -91,6 +91,12 @@
     <Compile Include="Bookings.cs" />
     <Compile Include="Clients.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="frmAdminDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminDashBoard.Designer.cs">
+      <DependentUpon>frmAdminDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCancelBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sitters.cs" />
+    <EmbeddedResource Include="frmAdminDashBoard.resx">
+      <DependentUpon>frmAdminDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCancelBooking.resx">
       <DependentUpon>frmCancelBooking.cs</DependentUpon>
     </EmbeddedResource>

@@ -104,6 +104,7 @@ namespace BabysittingSys
             }
 
             DataSet ds = Admin.CheckAdminLogin(Convert.ToInt32(txtID.Text), txtEmail.Text, txtPassword.Text);
+
             if (ds.Tables["Admin_Login"].Rows.Count == 0) 
             {
                 MessageBox.Show("Invalid admin login details", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -113,6 +114,12 @@ namespace BabysittingSys
             }
 
             MessageBox.Show("Login successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Open dashboard
+            frmAdminDashBoard dashBoard = new frmAdminDashBoard();
+            dashBoard.Show();
+
+            this.Hide();
             
         }
 

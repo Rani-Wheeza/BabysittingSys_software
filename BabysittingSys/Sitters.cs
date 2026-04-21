@@ -242,7 +242,8 @@ namespace BabysittingSys
             //String strSQL = "SELECT * FROM Sitters WHERE SitterID = " + sitterID;
 
             //This is being used since sitters information is split between 2 tables.
-            string strSQl = "SELECT s.*, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, a.Friday, a.Saturday, a.Sunday " + "FROM Sitters s " + "JOIN S_Availability a ON s.SitterID = a.SitterID " + "WHERE s.SitterID = " + sitterID;
+            string strSQl = "SELECT s.*, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, a.Friday, a.Saturday, a.Sunday " + 
+                            "FROM Sitters s " + "JOIN S_Availability a ON s.SitterID = a.SitterID " + "WHERE s.SitterID = " + sitterID;
 
             OracleCommand cmd = new OracleCommand(strSQl, conn);
 
@@ -308,5 +309,36 @@ namespace BabysittingSys
             return ds;
         }
 
+        public void DeleteSitter()
+        {
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "DELETE FROM SITTERS WHERE SitterID = " + this.SitterID;
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+
+        public static DataSet GetAvailableSitters(string dayName) 
+        {
+            DataSet ds = new DataSet();
+            OracleConnection conn = new OracleConnection( DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "SELECT s.SitterID, s.FirstName || ' ' || s.LastName AS SitterName" +
+                "FROM SITTERS s, S_Availability a" + "WHERE s.SitterID = a.SitterID AND " + dayName + " = 'Yes ' " + 
+                "ORDER BY s.SitterID";
+
+            OracleCommand cmd = new OracleCommand( strSQL, conn);
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+            da.Fill(ds, "AvailableSitters");
+
+            conn.Close();
+            return ds;
+        }
     }
 }
