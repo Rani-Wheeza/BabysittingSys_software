@@ -91,99 +91,12 @@ namespace BabysittingSys
 
         private void frmMakeBooking_Load(object sender, EventArgs e)
         {
-            /*txtBookingID.Text = firstBookingID.ToString();
-
-            cboClientID.Items.Add("1013");
-            cboClientID.Items.Add("1015");
-            cboClientID.Items.Add("1017");
-            cboClientID.Items.Add("1024");
-            cboClientID.Items.Add("1036");
-
-            cboSitterName.Items.Add("Sarah O'Grady");
-            cboSitterName.Items.Add("Aoife Murphy");
-            cboSitterName.Items.Add("Ciara Donnelly");
-            cboSitterName.Items.Add("Saoirse O'Sullivan");
-            cboSitterName.Items.Add("Caoimhe Walsh");*/
+            
         }
-
-        /*private void cboClientID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboClientID.Text == "1013")
-            {
-                txtClientName.Text = "Anna Joy";
-                txtClientEmail.Text = "anna.joy23@example.com";
-                txtClientPhoneNo.Text = "0832451129";
-            }
-            else if (cboClientID.Text == "1024")
-            {
-                txtClientName.Text = "Mark Kim";
-                txtClientEmail.Text = "mark.kim89@example.com";
-                txtClientPhoneNo.Text = "0856729041";
-            }
-            else if (cboClientID.Text == "1015")
-            {
-                txtClientName.Text = "Sarah Cole";
-                txtClientEmail.Text = "sarah.cole04@example.com";
-                txtClientPhoneNo.Text = "0873195570";
-            }
-            else if (cboClientID.Text == "1036")
-            {
-                txtClientName.Text = "Daniel O'Reilly";
-                txtClientEmail.Text = "daniel.oreilly@example.com";
-                txtClientPhoneNo.Text = "0869102234";
-            }
-            else if (cboClientID.Text == "1017")
-            {
-                txtClientName.Text = "Lily Brenda";
-                txtClientEmail.Text = "lily.banda99@example.com";
-                txtClientPhoneNo.Text = "0894307786";
-            }
-
-        }*/
-
 
 
         private void cboSitterName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*if (cboSitterName.Text == "Sarah O'Grady")
-            {
-                txtSitterID.Text = "2003";
-                txtSitterEmail.Text = "sarah2@gmail.com";
-                txtSitterPhoneNo.Text = "0848261852";
-                txtHourlyRate.Text = "12";
-            }
-
-            else if (cboSitterName.Text == "Aoife Murphy")
-            {
-                txtSitterID.Text = "2004";
-                txtSitterEmail.Text = "murphy.a@gmail.com";
-                txtSitterPhoneNo.Text = "0850379963";
-                txtHourlyRate.Text = "24";
-            }
-
-            else if (cboSitterName.Text == "Ciara Donnelly")
-            {
-                txtSitterID.Text = "2005";
-                txtSitterEmail.Text = "ciaradonnelly@gmail.com";
-                txtSitterPhoneNo.Text = "0827386277";
-                txtHourlyRate.Text = "15.50";
-            }
-
-            else if (cboSitterName.Text == "Saoirse O'Sullivan")
-            {
-                txtSitterID.Text = "2006";
-                txtSitterEmail.Text = "saoirseos@gmail.com";
-                txtSitterPhoneNo.Text = "0869781639";
-                txtHourlyRate.Text = "13.50";
-            }
-
-            else if (cboSitterName.Text == "Caoimhe Walsh")
-            {
-                txtSitterID.Text = "2007";
-                txtSitterEmail.Text = "walshc@gmail.com";
-                txtSitterPhoneNo.Text = "0813960070";
-                txtHourlyRate.Text = "18";
-            }*/
+        {                       
 
             if (cboSitterName.SelectedIndex != -1) 
             {
@@ -211,19 +124,25 @@ namespace BabysittingSys
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            /*DataSet ds = Sitters.GetSitterByID(sitterID);
+            if (txtClientID.Text.Equals(""))
+            {
+                MessageBox.Show("Client ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
+            }
 
-            if (ds.Tables["Sitter_By_ID"].Rows.Count > 0)
+            DataSet ds = Clients.GetClientByID(Convert.ToInt32(txtClientID.Text));
+
+            if (ds.Tables["Client_By_ID"].Rows.Count > 0)
             {
                 DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
 
-                txtSitterID.Text = dr["SitterID"].ToString();
-                txtSitterEmail.Text = dr["SiterEmail"].ToString();
-                txtSitterPhoneNo.Text = dr["SitterPhoneNo"].ToString();
-                txtHourlyRate.Text = dr["HourlyRate"].ToString();
-
+                txtClientName.Text = dr["ClientName"].ToString();
+                txtClientEmail.Text = dr["ClientEmail"].ToString();
+                txtClientPhoneNo.Text = dr["ClientPhoneNo"].ToString();
+                
                 calculateTotal();
-            }*/
+            }
         }
 
         private void btnMakeBooking_Click(object sender, EventArgs e)
@@ -322,13 +241,15 @@ namespace BabysittingSys
             }
 
             //save data - 2nd semester
+            //Bookings booking = new Bookings(Convert.ToInt32(txtBookingID.Text), Convert.ToInt32(txtClientID.Text),txtClientName,txtClientEmail,txtClientPhoneNo, Convert.ToInt32(txtSitterID.Text),cboSitterName,txtSitterEmail,txtSitterPhoneNo,txtHourlyRate);
 
+                       
 
             //Cormation message
             MessageBox.Show("A Booking has been made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-
+            
             txtClientID.Clear();
             txtClientName.Clear();
             txtClientPhoneNo.Clear();

@@ -106,8 +106,7 @@ namespace BabysittingSys
             DataSet ds = new DataSet();
 
             //to open the db connection
-            //String orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";// is redundant
-
+            
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
             conn.Open();
@@ -130,8 +129,7 @@ namespace BabysittingSys
             int nextID = 0;
 
             //to open the db connection
-            //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
-
+           
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
             conn.Open();
@@ -160,10 +158,12 @@ namespace BabysittingSys
         public void AddBooking()
         {
             //to open the db connection
-            //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
+           
 
-
-            string strSQL = "INSERT INTO BOOKINGS VALUES (" + this.BookingID + ",'" + this.ClientID + "','" + this.ClientName +  "','" + this.ClientEmail + "','" + this.ClientPhoneNo + "','" + this.SitterID+ "','" + this.SitterName + "','" + this.SitterEmail + "','" + this.SitterPhoneNo + "','" + this.HourlyRate + "','" + this.BookDate + "','" + this.BookTime + "','" + this.Duration + "','" + this.TotalCost + "','" + this.Payement + "')";
+            string strSQL = "INSERT INTO BOOKINGS VALUES (" + this.BookingID + ",'" + this.ClientID + "','" + this.ClientName +  "','" + this.ClientEmail + "','" + 
+                            this.ClientPhoneNo + "','" + this.SitterID+ "','" + this.SitterName + "','" + this.SitterEmail + "','" + this.SitterPhoneNo + "','" + 
+                            this.HourlyRate + "','" + "TO_DATE('" + this.BookDate.ToString("dd-MM-yyyy") + "','DD-MM-YYYY')," + 
+                            "TO_DATE('" + this.BookTime.ToString("HH:mm") + "','HH24:MI')," + this.Duration + "','" + this.TotalCost + "','" + this.Payement + "')";
 
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
@@ -183,8 +183,7 @@ namespace BabysittingSys
             DataSet ds = new DataSet();
 
             //to open the db connection
-            //String orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";// is redundant
-
+            
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
             conn.Open();
@@ -202,6 +201,8 @@ namespace BabysittingSys
             return ds;
 
         }
+
+
 
     }
             
