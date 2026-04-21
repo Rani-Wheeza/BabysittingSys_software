@@ -2,6 +2,7 @@ DROP TABLE Clients;
 DROP TABLE Sitters;
 DROP TABLE Bookings;
 DROP TABLE S_Availability;
+DROP TABLE Admin;
 
 
 /*BEGIN
@@ -72,7 +73,7 @@ Payement VARCHAR2 (4) NOT NULL);
 
 -- Sitters Availaiblity Table
 CREATE TABLE S_Availability(
-VailablityID NUMBER  PRIMARY KEY,
+VailablityID NUMBER (4)  PRIMARY KEY,
 SitterID NUMBER (4) NOT NULL,
 Monday VARCHAR2 (5) NOT NULL,
 Tuesday VARCHAR2 (5) NOT NULL,
@@ -82,6 +83,13 @@ Friday VARCHAR2 (5) NOT NULL,
 Saturday VARCHAR2 (5) NOT NULL,
 Sunday VARCHAR2 (5) NOT NULL);
 
+
+--Admin Table
+CREATE TABLE ADMIN(
+ID NUMBER (4) PRIMARY KEY,
+Email VARCHAR2 (30) NOT NULL,
+Password VARCHAR2 (30) NOT NULL
+);
 
 
 --Add data to the Clients table
@@ -173,7 +181,10 @@ VALUES(4003,2003,'No', 'No', 'No', 'No', 'No', 'Yes', 'Yes');
 INSERT INTO S_Availability(VailablityID,SitterID,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
 VALUES(4004,2004,'Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'No');
 
-
+--Add data to the Admin table
+--1A
+INSERT INTO ADMIN(ID,Email,Password)
+VALUES(9718,'admin@gmail.com', 'Rw1811317!');
 
 
 
