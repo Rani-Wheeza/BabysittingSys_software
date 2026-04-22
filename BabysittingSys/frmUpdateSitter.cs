@@ -63,146 +63,58 @@ namespace BabysittingSys
             nextForm.Show();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSitterID.Text.Equals(""))
+            {
+                MessageBox.Show("Sitter ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSitterID.Focus();
+                return;
+            }
+
+            DataSet ds = Sitters.GetSitterByID(Convert.ToInt32(txtSitterID.Text));
+
+            if (ds.Tables["Sitter_By_ID"].Rows.Count == 0)
+            {
+                MessageBox.Show("No Sitter found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSitterID.Focus();
+                return;
+            }
+
+            DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
+
+            txtFirstName.Text = dr["FirstName"].ToString();
+            txtLastName.Text = dr["LastName"].ToString();
+            txtEmail.Text = dr["Email"].ToString();
+            txtPhoneNo.Text = dr["PhoneNo"].ToString();
+            dtpDOB.Text = dr["DOB"].ToString();
+            txtCounty.Text = dr["County"].ToString();
+            txtTown.Text = dr["Town"].ToString();
+            txtStreet.Text = dr["Street"].ToString();
+            txtEirCode.Text = dr["EirCode"].ToString();
+            cboLanguage.Text = dr["Language"].ToString();
+            cboChildCareCertified.Text = dr["ChildCareCertified"].ToString();
+            cboMedicalCertified.Text = dr["MedicalCertified"].ToString();
+            txtDescription.Text = dr["Description"].ToString();
+            txtHourlyRate.Text = dr["HourlyRate"].ToString();
+
+            chkMonday.Checked = dr["Monday"].ToString() == "Yes";
+            chkTuesday.Checked = dr["Tuesday"].ToString() == "Yes";
+            chkWednesday.Checked = dr["Wednesday"].ToString() == "Yes";
+            chkThursday.Checked = dr["Thursday"].ToString() == "Yes";
+            chkFriday.Checked = dr["Friday"].ToString() == "Yes";
+            chkSaturday.Checked = dr["Saturday"].ToString() == "Yes";
+            chkSunday.Checked = dr["Sunday"].ToString() == "Yes";
+        }
+
         private void cboSitterID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboSitterID.Text == "2003")
-            {
-                txtFirstName.Text = "Sarah";
-                txtLastName.Text = "O'Grady";
-                txtEmail.Text = "sarah2@gmail.com";
-                txtPhoneNo.Text = "0848261852";
-                dtpDOB.Value = new DateTime(2004, 4, 21);
-                txtCounty.Text = "Dublin";
-                txtTown.Text = "Swords";
-                txtStreet.Text = "14 Oakview Drive";
-                txtEirCode.Text = "K67 A9F2";
-                cboLanguage.SelectedIndex = 2;
-                cboChildCareCertified.SelectedIndex = 0;
-                cboMedicalCertified.SelectedIndex = 0;
-                chkMonday.Checked = true;
-                chkTuesday.Checked = false;
-                chkWednesday.Checked = false;
-                chkThursday.Checked = false;
-                chkFriday.Checked = false;
-                chkSaturday.Checked = true;
-                chkSunday.Checked = true;
-                txtDescription.Text = "Friendly and responsible sitter with 3+ years of experience caring for " +
-                    "children of all ages. I love crafts, outdoor play, and keeping kids engaged.";
-                txtHourlyRate.Text = "13.50";
-            }
-
-            else if (cboSitterID.Text == "2004")
-            {
-                txtFirstName.Text = "Aoife";
-                txtLastName.Text = "Murphy";
-                txtEmail.Text = "murphy.a@gmail.com";
-                txtPhoneNo.Text = "0850379963";
-                dtpDOB.Value = new DateTime(2006, 6, 23);
-                txtCounty.Text = "Cork";
-                txtTown.Text = "Midleton";
-                txtStreet.Text = "22 Riverside Walk";
-                txtEirCode.Text = "P25 D3K4";
-                cboLanguage.SelectedIndex = 4;
-                cboChildCareCertified.SelectedIndex = 0;
-                cboMedicalCertified.SelectedIndex = 1;
-                chkMonday.Checked = false;
-                chkTuesday.Checked = true;
-                chkWednesday.Checked = true;
-                chkThursday.Checked = true;
-                chkFriday.Checked = false;
-                chkSaturday.Checked = true;
-                chkSunday.Checked = false;
-                txtDescription.Text = "Qualified childcare worker with first-aid training, available for evening and " +
-                    "weekend babysitting. I’m patient, reliable, and great with routines.";
-                txtHourlyRate.Text = "15.00";
-            }
-
-            else if (cboSitterID.Text == "2005")
-            {
-                txtFirstName.Text = "Ciara";
-                txtLastName.Text = "Donnelly";
-                txtEmail.Text = "ciaradonnelly@gmail.com";
-                txtPhoneNo.Text = "0827386277";
-                dtpDOB.Value = new DateTime(2000, 2, 27);
-                txtCounty.Text = "Galway";
-                txtTown.Text = "Oranmore";
-                txtStreet.Text = "8 Castle Road";
-                txtEirCode.Text = "H91 T2W7";
-                cboLanguage.SelectedIndex = 9;
-                cboChildCareCertified.SelectedIndex = 0;
-                cboMedicalCertified.SelectedIndex = 0;
-                chkMonday.Checked = true;
-                chkTuesday.Checked = true;
-                chkWednesday.Checked = true;
-                chkThursday.Checked = true;
-                chkFriday.Checked = true;
-                chkSaturday.Checked = false;
-                chkSunday.Checked = false;
-                txtDescription.Text = "Energetic college student studying early childhood education. I enjoy " +
-                    "helping with homework, light meals, and fun activities.";
-                txtHourlyRate.Text = "14.80";
-            }
-
-            else if (cboSitterID.Text == "2006")
-            {
-                txtFirstName.Text = "Saoirse";
-                txtLastName.Text = "O'Sullivan";
-                txtEmail.Text = "saoirseos@gmail.com";
-                txtPhoneNo.Text = "0869781639";
-                dtpDOB.Value = new DateTime(2001, 10, 3);
-                txtCounty.Text = "Wexford";
-                txtTown.Text = "Gorey";
-                txtStreet.Text = "5 Meadowbrook Lane";
-                txtEirCode.Text = "Y25 R9C8";
-                cboLanguage.SelectedIndex = 11;
-                cboChildCareCertified.SelectedIndex = 1;
-                cboMedicalCertified.SelectedIndex = 0;
-                chkMonday.Checked = false;
-                chkTuesday.Checked = false;
-                chkWednesday.Checked = false;
-                chkThursday.Checked = false;
-                chkFriday.Checked = false;
-                chkSaturday.Checked = true;
-                chkSunday.Checked = true;
-                txtDescription.Text = "Calm, dependable babysitter experienced with infants and toddlers. Comfortable" +
-                    " with bedtime routines and creating a safe, warm environment.";
-                txtHourlyRate.Text = "20.00";
-            }
-
-            else if (cboSitterID.Text == "2007")
-            {
-                txtFirstName.Text = "Caoimhe";
-                txtLastName.Text = "Walsh";
-                txtEmail.Text = "walshc@gmail.com";
-                txtPhoneNo.Text = "0813960070";
-                dtpDOB.Value = new DateTime(1999,5,12);
-                txtCounty.Text = "Limerick";
-                txtTown.Text = "Newcastle West";
-                txtStreet.Text = "31 Ashwood Grove";
-                txtEirCode.Text = "V42 P6H0";
-                cboLanguage.SelectedIndex = 7;
-                cboChildCareCertified.SelectedIndex = 1;
-                cboMedicalCertified.SelectedIndex = 1;
-                chkMonday.Checked = true;
-                chkTuesday.Checked = false;
-                chkWednesday.Checked = true;
-                chkThursday.Checked = false;
-                chkFriday.Checked = true;
-                chkSaturday.Checked = false;
-                chkSunday.Checked = false;
-                txtDescription.Text = "Creative and upbeat sitter who loves games, storytelling, and supporting kids’ interests. " +
-                    "Available for regular or last-minute bookings.";
-                txtHourlyRate.Text = "14.00";
-            }
+           
         }
 
         private void frmUpdateSitter_Load(object sender, EventArgs e)
         {
-            cboSitterID.Items.Add("2003");
-            cboSitterID.Items.Add("2004");
-            cboSitterID.Items.Add("2005");
-            cboSitterID.Items.Add("2006");
-            cboSitterID.Items.Add("2007");
+            
         }
 
         private void btnUpdateSitter_Click(object sender, EventArgs e)
@@ -372,14 +284,41 @@ namespace BabysittingSys
 
 
             //save data - 2nd semester
+            Sitters sitter = new Sitters();
 
+            sitter.setSitterID(Convert.ToInt32(txtSitterID.Text));
+            sitter.setFirstName(txtFirstName.Text);
+            sitter.setLastName(txtLastName.Text);
+            sitter.setEmail(txtEmail.Text);
+            sitter.setPhoneNo(txtPhoneNo.Text);
+            sitter.setDOB(dtpDOB.Value);
+            sitter.setCounty(txtCounty.Text);
+            sitter.setTown(txtTown.Text);
+            sitter.setStreet(txtStreet.Text);
+            sitter.setEirCode(txtEirCode.Text);
+            sitter.setLanguage(cboLanguage.Text);
+            sitter.setChildCareCertified(cboChildCareCertified.Text);
+            sitter.setMedicalCertified(cboMedicalCertified.Text);
+            sitter.setDescription(txtDescription.Text);
+            sitter.setHourlyRate(txtHourlyRate.Text);
+
+            sitter.setMonday(chkMonday.Checked ? "Yes" : "No");
+            sitter.setTuesday(chkTuesday.Checked ? "Yes" : "No");
+            sitter.setWednesday(chkWednesday.Checked ? "Yes" : "No");
+            sitter.setThursday(chkThursday.Checked ? "Yes" : "No");
+            sitter.setFriday(chkFriday.Checked ? "Yes" : "No");
+            sitter.setSaturday(chkSaturday.Checked ? "Yes" : "No");
+            sitter.setSunday(chkSunday.Checked ? "Yes" : "No");
+
+
+            sitter.UpdateSitter();
 
             //Cormation message
             MessageBox.Show("Are you sure you want to update sitter details", "Conformation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
 
             //Reset UI
-            cboSitterID.SelectedIndex = -1;
+            txtSitterID.Clear();
             txtFirstName.Clear();
             txtLastName.Clear();
             txtEmail.Clear();
@@ -403,10 +342,10 @@ namespace BabysittingSys
             chkSunday.Checked = false;
 
 
-            cboSitterID.Focus();
+            txtSitterID.Focus();
 
         }
 
-       
+        
     }
 }

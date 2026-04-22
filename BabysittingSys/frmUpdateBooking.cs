@@ -66,106 +66,45 @@ namespace BabysittingSys
 
         private void frmUpdateBooking_Load(object sender, EventArgs e)
         {
-            cboBookingID.Items.Add("3004");
-            cboBookingID.Items.Add("3005");
-            cboBookingID.Items.Add("3007");
-            cboBookingID.Items.Add("3009");
-            cboBookingID.Items.Add("3014");
+           
         }
 
-        private void cboBookingID_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (cboBookingID.Text == "3004")
+            if (txtBookingID.Text.Equals(""))
             {
-                cboClientID.Text = "1013";
-                txtClientName.Text = "Anna Joy";
-                txtClientEmail.Text = "anna.joy23@example.com";
-                txtClientPhoneNo.Text = "0832451129";
-                cboSitterName.Text = "Aoife Murphy";
-                txtSitterID.Text = "2004";
-                txtSitterEmail.Text = "murphy.a@gmail.com";
-                txtSitterPhoneNo.Text = "0850379963";
-                txtHourlyRate.Text = "24";
-                /*dtpDate.Value = new DateTime(2025, 4, 06);
-                dtpTime.Value = new DateTime(2025, 4, 06, 19, 30, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 3;
-                txtTotalCost.Text = "72";
-                chkPayment.Checked = true;
+                MessageBox.Show("Booking ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBookingID.Focus();
+                return;
             }
 
-            else if (cboBookingID.Text == "3005")
+            DataSet ds = Bookings.GetBookingByID(Convert.ToInt32(txtBookingID.Text));
+
+            if (ds.Tables["Booking_By_ID"].Rows.Count == 0) 
             {
-                cboClientID.Text = "1024";
-                txtClientName.Text = "Mark Kim";
-                txtClientEmail.Text = "mark.kim89@example.com";
-                txtClientPhoneNo.Text = "0856729041";
-                cboSitterName.Text = "Caoimhe Walsh";
-                txtSitterID.Text = "2007";
-                txtSitterEmail.Text = "walshc@gmail.com";
-                txtSitterPhoneNo.Text = "0813960070";
-                txtHourlyRate.Text = "18";
-                /*dtpDate.Value = new DateTime(2025, 8, 23);
-                dtpTime.Value = new DateTime(2025, 8, 23, 12, 00, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 5;
-                txtTotalCost.Text = "130";
-                chkPayment.Checked = true;
+                MessageBox.Show("No Booking found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBookingID.Focus();
+                return;
             }
 
-            else if (cboBookingID.Text == "3007")
-            {
-                cboClientID.Text = "1015";
-                txtClientName.Text = "Sarah Cole";
-                txtClientEmail.Text = "sarah.cole04@example.com";
-                txtClientPhoneNo.Text = "0873195570";
-                cboSitterName.Text = "Sarah O'Grady";
-                txtSitterID.Text = "2003";
-                txtSitterEmail.Text = "sarah2@gmail.com";
-                txtSitterPhoneNo.Text = "0848261852";
-                txtHourlyRate.Text = "12";
-                /** dtpDate.Value = new DateTime(2025, 6, 10);
-                 dtpTime.Value = new DateTime(2025, 6, 10, 7, 45, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 2;
-                txtTotalCost.Text = "48";
-                chkPayment.Checked = true;
+            DataRow dr = ds.Tables["Booking_By_ID"].Rows[0];
 
-            }
-            else if (cboBookingID.Text == "3009")
-            {
-                cboClientID.Text = "1036";
-                txtClientName.Text = "Daniel O'Reilly";
-                txtClientEmail.Text = "daniel.oreilly@example.com";
-                txtClientPhoneNo.Text = "0869102234";
-                cboSitterName.Text = "Saoirse O'Sullivan";
-                txtSitterID.Text = "2006";
-                txtSitterEmail.Text = "saoirseos@gmail.com";
-                txtSitterPhoneNo.Text = "0869781639";
-                txtHourlyRate.Text = "13.50";
-                /*dtpDate.Value = new DateTime(2025, 9, 16);
-                dtpTime.Value = new DateTime(2025, 9, 16, 17, 30, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 1;
-                txtTotalCost.Text = "25";
-                chkPayment.Checked = true;
-            }
-
-            else if (cboBookingID.Text == "3014")
-            {
-                cboClientID.Text = "1017";
-                txtClientName.Text = "Lily Brenda";
-                txtClientEmail.Text = "lily.banda99@example.com";
-                txtClientPhoneNo.Text = "0894307786";
-                cboSitterName.Text = "Ciara Donnelly";
-                txtSitterID.Text = "2005";
-                txtSitterEmail.Text = "ciaradonnelly@gmail.com";
-                txtSitterPhoneNo.Text = "0827386277";
-                txtHourlyRate.Text = "15.50";
-                /*  dtpDate.Value = new DateTime(2025, 5, 27);
-                  dtpTime.Value = new DateTime(2025, 5, 27, 20, 15, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 3;
-                txtTotalCost.Text = "72";
-                chkPayment.Checked = true;
-            }
-            
+            txtClientID.Text = dr["ClientID"].ToString();
+            txtClientName.Text = dr["ClientName"].ToString();
+            txtClientEmail.Text = dr["ClientEmail"].ToString();
+            txtClientPhoneNo.Text = dr["ClientPhone"].ToString();
+            txtSitterID.Text = dr["SitterID"].ToString();
+            cboSitterName.Text = dr["SitterName"].ToString();
+            txtSitterEmail.Text = dr["SitterEmail"].ToString();
+            txtSitterPhoneNo.Text = dr["SitterPhoneNo"].ToString();
+            txtHourlyRate.Text = dr["HourlyRate"].ToString();
+            dtpDate.Value = Convert.ToDateTime(dr["BookDate"]);
+            dtpTime.Value = Convert.ToDateTime(dr["BookTime"]);
+            cboDuration.Text = dr["Duration"].ToString();
+            txtTotalCost.Text = dr["TotalCost"].ToString();
+            chkPayment.Checked = dr["Payment"].ToString() == "Yes";
         }
+
 
         private void btnUpdateBooking_Click(object sender, EventArgs e)
         {
@@ -263,14 +202,22 @@ namespace BabysittingSys
             }
 
             //save data - 2nd semester
+            DialogResult dialog = MessageBox.Show("Are you sure you want to update this booking?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.No) 
+            {
+                return;
+            }
 
+            Bookings booking = new Bookings(Convert.ToInt32(txtBookingID.Text), Convert.ToInt32(txtClientID.Text), txtClientName.Text, txtClientEmail.Text, txtClientPhoneNo.Text, Convert.ToInt32(txtSitterID.Text), cboSitterName.Text, txtSitterEmail.Text, txtSitterPhoneNo.Text, txtHourlyRate.Text, dtpDate.Value, dtpTime.Value, Convert.ToInt32(cboDuration.Text), Convert.ToDecimal(txtTotalCost.Text), "Yes");
+
+            booking.UpdateBooking();
 
             //Cormation message
             MessageBox.Show("Booking has been updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-            cboBookingID.SelectedIndex = -1;
-            cboClientID.SelectedIndex = -1;
+            txtBookingID.Clear();
+            txtClientID.Clear();
             txtClientName.Clear();
             txtClientPhoneNo.Clear();
             txtClientEmail.Clear();
@@ -284,29 +231,46 @@ namespace BabysittingSys
             dtpTime.Value = DateTime.Now;
             chkPayment.Checked = false;
 
+            txtBookingID.Focus();
 
         }
 
         private void calculateTotal()
         {
-            if (decimal.TryParse(txtHourlyRate.Text, out decimal rate))
+            if (txtHourlyRate.Text.Equals("") || cboDuration.Text.Equals(""))
             {
-                int hours = cboDuration.SelectedIndex + 1;
-                txtTotalCost.Text = (rate * hours).ToString("0.00");
+                txtTotalCost.Text = "";
+                return;
             }
-        }
 
-        private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
+            decimal rate = Convert.ToDecimal(txtHourlyRate.Text);
+            int hours = Convert.ToInt32(cboDuration.Text);
+
+            txtTotalCost.Text = (rate * hours).ToString("0.00");
+        }
+               
+        private void cboDuration_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             calculateTotal();
         }
 
-        private void txtTotalCost_TextChanged(object sender, EventArgs e)
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
-            calculateTotal();
-        }
+            string dayName = dtpDate.Value.DayOfWeek.ToString();
 
-        
+            DataSet ds = Sitters.GetAvailableSitters(dayName);
+
+            cboSitterName.DataSource = ds.Tables["Available_Sitters"];
+            cboSitterName.DisplayMember = "SitterName";
+            cboSitterName.ValueMember = "SitterID";
+            cboSitterName.SelectedIndex = -1;
+
+            txtSitterID.Clear();
+            txtSitterEmail.Clear();
+            txtSitterPhoneNo.Clear();
+            txtHourlyRate.Clear();
+            txtTotalCost.Clear();
+        }
     }
 }
 

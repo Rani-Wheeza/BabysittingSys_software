@@ -270,9 +270,10 @@ namespace BabysittingSys
             }
 
             //save data - 2nd semester
-            //Bookings booking = new Bookings(Convert.ToInt32(txtBookingID.Text), Convert.ToInt32(txtClientID.Text),txtClientName,txtClientEmail,txtClientPhoneNo, Convert.ToInt32(txtSitterID.Text),cboSitterName,txtSitterEmail,txtSitterPhoneNo,txtHourlyRate,);
+            Bookings booking = new Bookings(Convert.ToInt32(txtBookingID.Text),Convert.ToInt32(txtClientID.Text),txtClientName.Text,txtClientEmail.Text,txtClientPhoneNo.Text, Convert.ToInt32(txtSitterID.Text),cboSitterName.Text,txtSitterEmail.Text,txtSitterPhoneNo.Text,txtHourlyRate.Text,dtpDate.Value,dtpTime.Value,Convert.ToInt32(cboDuration.Text), Convert.ToDecimal(txtTotalCost.Text),"Yes");
 
-                       
+            booking.AddBooking();
+                                   
 
             //Cormation message
             MessageBox.Show("A Booking has been made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -294,8 +295,8 @@ namespace BabysittingSys
             chkPayment.Checked = false;
             
 
-            firstBookingID++;
-            txtBookingID.Text = firstBookingID.ToString();
+            txtBookingID.Text = Bookings.GetNextBookingID().ToString();
+            txtClientID.Focus();
         }
 
         private void calculateTotal()

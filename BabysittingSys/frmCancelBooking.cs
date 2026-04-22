@@ -67,174 +67,74 @@ namespace BabysittingSys
 
         private void frmCancelBooking_Load (object sender, EventArgs e)
         {
-            cboBookingID.Items.Add("3004");
-            cboBookingID.Items.Add("3005");
-            cboBookingID.Items.Add("3007");
+            
             
         }
 
-        private void cboBookingID_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (cboBookingID.Text == "3004")
+            if (txtBookingID.Text.Equals(""))
             {
-                cboClientID.Text = "1013";
-                txtClientName.Text = "Anna Joy";
-                txtClientEmail.Text = "anna.joy23@example.com";
-                txtClientPhoneNo.Text = "0832451129";
-                cboSitterName.Text = "Aoife Murphy";
-                txtSitterID.Text = "2004";
-                txtSitterEmail.Text = "murphy.a@gmail.com";
-                txtSitterPhoneNo.Text = "0850379963";
-                txtHourlyRate.Text = "24";
-                /*dtpDate.Value = new DateTime(2025, 4, 06);
-                dtpTime.Value = new DateTime(2025, 4, 06, 19, 30, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 3;
-                txtTotalCost.Text = "72";
-                chkPayment.Checked = true;
+                MessageBox.Show("Booking ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBookingID.Focus();
+                return;
             }
 
-            else if (cboBookingID.Text == "3005")
+            DataSet ds = Bookings.GetBookingByID(Convert.ToInt32(txtBookingID.Text));
+
+            if (ds.Tables["Booking_By_ID"].Rows.Count == 0)
             {
-                cboClientID.Text = "1024";
-                txtClientName.Text = "Mark Kim";
-                txtClientEmail.Text = "mark.kim89@example.com";
-                txtClientPhoneNo.Text = "0856729041";
-                cboSitterName.Text = "Caoimhe Walsh";
-                txtSitterID.Text = "2007";
-                txtSitterEmail.Text = "walshc@gmail.com";
-                txtSitterPhoneNo.Text = "0813960070";
-                txtHourlyRate.Text = "18";
-                /*dtpDate.Value = new DateTime(2025, 8, 23);
-                dtpTime.Value = new DateTime(2025, 8, 23, 12, 00, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 5;
-                txtTotalCost.Text = "130";
-                chkPayment.Checked = true;
+                MessageBox.Show("No Booking found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBookingID.Focus();
+                return;
             }
 
-            else if (cboBookingID.Text == "3007")
-            {
-                cboClientID.Text = "1015";
-                txtClientName.Text = "Sarah Cole";
-                txtClientEmail.Text = "sarah.cole04@example.com";
-                txtClientPhoneNo.Text = "0873195570";
-                cboSitterName.Text = "Sarah O'Grady";
-                txtSitterID.Text = "2003";
-                txtSitterEmail.Text = "sarah2@gmail.com";
-                txtSitterPhoneNo.Text = "0848261852";
-                txtHourlyRate.Text = "12";
-                /** dtpDate.Value = new DateTime(2025, 6, 10);
-                 dtpTime.Value = new DateTime(2025, 6, 10, 7, 45, 00);*/ //Kept giving me issues
-                cboDuration.SelectedIndex = 2;
-                txtTotalCost.Text = "48";
-                chkPayment.Checked = true;
+            DataRow dr = ds.Tables["Booking_By_ID"].Rows[0];
 
-            }
+            txtClientID.Text = dr["ClientID"].ToString();
+            txtClientName.Text = dr["ClientName"].ToString();
+            txtClientEmail.Text = dr["ClientEmail"].ToString();
+            txtClientPhoneNo.Text = dr["ClientPhone"].ToString();
+            txtSitterID.Text = dr["SitterID"].ToString();
+            cboSitterName.Text = dr["SitterName"].ToString();
+            txtSitterEmail.Text = dr["SitterEmail"].ToString();
+            txtSitterPhoneNo.Text = dr["SitterPhoneNo"].ToString();
+            txtHourlyRate.Text = dr["HourlyRate"].ToString();
+            dtpDate.Value = Convert.ToDateTime(dr["BookDate"]);
+            dtpTime.Value = Convert.ToDateTime(dr["BookTime"]);
+            cboDuration.Text = dr["Duration"].ToString();
+            txtTotalCost.Text = dr["TotalCost"].ToString();
+            chkPayment.Checked = dr["Payment"].ToString() == "Yes";
         }
 
         private void btnCancelBooking_Click(object sender, EventArgs e)
         {
-            if (txtClientName.Text.Equals(""))
-            {
-                MessageBox.Show("Name must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientName.Focus();
-                return;
-            }
-            else if (txtClientName.Text.All(c => char.IsDigit(c)))
-            {
-                MessageBox.Show("Name cannot contain numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientName.Focus();
-                return;
-            }
-
-            //Validate email
-
-            string email = txtClientEmail.Text;
-
-            string emailPattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
-
-            if (txtClientEmail.Text.Equals(""))
-            {
-                MessageBox.Show("Email must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientEmail.Focus();
-                return;
-            }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(email, emailPattern))
-            {
-                MessageBox.Show("Invalid email format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientEmail.Focus();
-                return;
-            }
-
-            if (txtClientPhoneNo.Text.Equals(""))
-            {
-                MessageBox.Show("Phone Number must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientPhoneNo.Focus();
-                return;
-            }
-            else if (!txtClientPhoneNo.Text.All(char.IsDigit) || !txtClientPhoneNo.Text.StartsWith("08"))
-            {
-                MessageBox.Show("Phone number is invalid! Phone number has to be all digits and start with 08", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientPhoneNo.Focus();
-                return;
-            }
-            else if (txtClientPhoneNo.Text.Length != 10)
-            {
-                MessageBox.Show("Phone number must be 10 characters long!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientPhoneNo.Focus();
-                return;
-            }
-
-            if (txtClientName.Text == "")
-            {
-                MessageBox.Show("Please enter client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientName.Focus();
-                return;
-            }
-
-            if (cboSitterName.SelectedIndex == 0)
-            {
-                MessageBox.Show("Please select a sitter", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboSitterName.Focus();
-                return;
-            }
-
-            if (dtpDate.Value.Date < DateTime.Today)
-            {
-                MessageBox.Show("You cannot select a past date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpDate.Value = DateTime.Today;
-                return;
-            }
-
-            if (dtpTime.Value.Date < DateTime.Today)
-            {
-                MessageBox.Show("You cannot select a past hour.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpTime.Value = DateTime.Today;
-                return;
-            }
-
-            if (cboDuration.SelectedIndex == 0)
-            {
-                MessageBox.Show("Please select a duration", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboDuration.Focus();
-                return;
-            }
-
-            if (!chkPayment.Checked)
-            {
-                MessageBox.Show("Please agree to the payment terms.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                chkPayment.Focus();
-                return;
-            }
 
             //save data - 2nd semester
+            if (txtBookingID.Text.Equals(""))
+            {
+                MessageBox.Show("Booking ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBookingID.Focus();
+                return;
+            }
 
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel booking?", "Confirm Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (dialog == DialogResult.No) 
+            {
+                return;
+            }
+
+            Bookings booking = new Bookings(Convert.ToInt32(txtBookingID.Text), Convert.ToInt32(txtClientID.Text), txtClientName.Text, txtClientEmail.Text, txtClientPhoneNo.Text, Convert.ToInt32(txtSitterID.Text), cboSitterName.Text, txtSitterEmail.Text, txtSitterPhoneNo.Text, txtHourlyRate.Text, dtpDate.Value, dtpTime.Value, Convert.ToInt32(cboDuration.Text), Convert.ToDecimal(txtTotalCost.Text), "Yes");
+            
+            booking.CancelBooking();
 
             //Cormation message
             MessageBox.Show("Booking has been cancelled", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-            cboBookingID.SelectedIndex = -1;
-            cboClientID.SelectedIndex = -1;
+            txtBookingID.Clear();
+            txtClientID.Clear();
             txtClientName.Clear();
             txtClientPhoneNo.Clear();
             txtClientEmail.Clear();
@@ -248,30 +148,13 @@ namespace BabysittingSys
             dtpTime.Value = DateTime.Now;
             chkPayment.Checked = false;
 
+            txtBookingID.Focus();
+
             grpCancelBooking.Visible = false;
 
         }
 
-        private void calculateTotal()
-        {
-            if (decimal.TryParse(txtHourlyRate.Text, out decimal rate))
-            {
-                int hours = cboDuration.SelectedIndex + 1;
-                txtTotalCost.Text = (rate * hours).ToString("0.00");
-            }
-        }
-
-        private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            calculateTotal();
-        }
-
-        private void txtTotalCost_TextChanged(object sender, EventArgs e)
-        {
-            calculateTotal();
-        }
-
-       
+        
     }
 
 }

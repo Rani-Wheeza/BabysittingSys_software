@@ -40,8 +40,11 @@
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCancelBooking = new System.Windows.Forms.GroupBox();
-            this.cboClientID = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtBookingID = new System.Windows.Forms.TextBox();
+            this.txtClientID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpClientDetails = new System.Windows.Forms.GroupBox();
             this.txtClientEmail = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -72,8 +75,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboBookingID = new System.Windows.Forms.ComboBox();
             this.mnuMainMenu.SuspendLayout();
             this.grpCancelBooking.SuspendLayout();
             this.grpClientDetails.SuspendLayout();
@@ -181,9 +182,11 @@
             // 
             // grpCancelBooking
             // 
-            this.grpCancelBooking.Controls.Add(this.cboBookingID);
-            this.grpCancelBooking.Controls.Add(this.cboClientID);
+            this.grpCancelBooking.Controls.Add(this.btnSearch);
+            this.grpCancelBooking.Controls.Add(this.txtBookingID);
+            this.grpCancelBooking.Controls.Add(this.txtClientID);
             this.grpCancelBooking.Controls.Add(this.label2);
+            this.grpCancelBooking.Controls.Add(this.label1);
             this.grpCancelBooking.Controls.Add(this.grpClientDetails);
             this.grpCancelBooking.Controls.Add(this.grpSitterDetails);
             this.grpCancelBooking.Controls.Add(this.dtpDate);
@@ -198,7 +201,6 @@
             this.grpCancelBooking.Controls.Add(this.label7);
             this.grpCancelBooking.Controls.Add(this.label6);
             this.grpCancelBooking.Controls.Add(this.label4);
-            this.grpCancelBooking.Controls.Add(this.label1);
             this.grpCancelBooking.Location = new System.Drawing.Point(107, 41);
             this.grpCancelBooking.Margin = new System.Windows.Forms.Padding(2);
             this.grpCancelBooking.Name = "grpCancelBooking";
@@ -208,26 +210,56 @@
             this.grpCancelBooking.TabStop = false;
             this.grpCancelBooking.Text = "Cancel Booking";
             // 
-            // cboClientID
+            // btnSearch
             // 
-            this.cboClientID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboClientID.FormattingEnabled = true;
-            this.cboClientID.Location = new System.Drawing.Point(136, 73);
-            this.cboClientID.Margin = new System.Windows.Forms.Padding(2);
-            this.cboClientID.Name = "cboClientID";
-            this.cboClientID.Size = new System.Drawing.Size(98, 21);
-            this.cboClientID.TabIndex = 35;
+            this.btnSearch.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnSearch.Location = new System.Drawing.Point(263, 29);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(87, 27);
+            this.btnSearch.TabIndex = 48;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtBookingID
+            // 
+            this.txtBookingID.Location = new System.Drawing.Point(136, 29);
+            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBookingID.MaxLength = 50;
+            this.txtBookingID.Name = "txtBookingID";
+            this.txtBookingID.Size = new System.Drawing.Size(101, 20);
+            this.txtBookingID.TabIndex = 39;
+            // 
+            // txtClientID
+            // 
+            this.txtClientID.Location = new System.Drawing.Point(136, 88);
+            this.txtClientID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtClientID.MaxLength = 50;
+            this.txtClientID.Name = "txtClientID";
+            this.txtClientID.Size = new System.Drawing.Size(101, 20);
+            this.txtClientID.TabIndex = 37;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(52, 76);
+            this.label2.Location = new System.Drawing.Point(56, 88);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 17);
-            this.label2.TabIndex = 32;
+            this.label2.TabIndex = 38;
             this.label2.Text = "Client ID";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(33, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 17);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Booking ID";
             // 
             // grpClientDetails
             // 
@@ -569,28 +601,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Date";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Booking ID";
-            // 
-            // cboBookingID
-            // 
-            this.cboBookingID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBookingID.FormattingEnabled = true;
-            this.cboBookingID.Location = new System.Drawing.Point(136, 28);
-            this.cboBookingID.Margin = new System.Windows.Forms.Padding(2);
-            this.cboBookingID.Name = "cboBookingID";
-            this.cboBookingID.Size = new System.Drawing.Size(98, 21);
-            this.cboBookingID.TabIndex = 36;
-            this.cboBookingID.SelectedIndexChanged += new System.EventHandler(this.cboBookingID_SelectedIndexChanged);
-            // 
             // frmCancelBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -641,10 +651,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.ComboBox cboClientID;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox grpClientDetails;
         private System.Windows.Forms.TextBox txtClientEmail;
         private System.Windows.Forms.Label label12;
@@ -663,6 +670,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboSitterName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cboBookingID;
+        private System.Windows.Forms.TextBox txtBookingID;
+        private System.Windows.Forms.TextBox txtClientID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -65,96 +65,9 @@ namespace BabysittingSys
 
         private void frmUpdateClient_Load(object sender, EventArgs e)
         {
-            /*cboClientID.Items.Add("1013");
-            cboClientID.Items.Add("1024");
-            cboClientID.Items.Add("1015");
-            cboClientID.Items.Add("1036");
-            cboClientID.Items.Add("1017");*/
-        }
-
-        /*private void cboClientID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboClientID.Text == "1013")
-            {
-                txtFirstName.Text = "Anna";
-                txtLastName.Text = "Joy";
-                txtEmail.Text = "anna.joy23@example.com";
-                txtPhoneNo.Text = "0832451129";
-                txtCounty.Text = "Kerry";
-                txtTown.Text = "Killerney";
-                txtStreet.Text = "56 Some Street";
-                txtEirCode.Text = "V93 1234";
-                cboNoOfChildren.SelectedIndex = 2;
-                cboAgeOfChild.SelectedIndex = 3;
-                cboLanguage.SelectedIndex = 5;
-                txtDescription.Text = "New to the area and hoping to connect with trustworthy sitters " +
-                    "for date nights and last-minute support";
-            }
-            else if (cboClientID.Text == "1024")
-            {
-                txtFirstName.Text = "Mark";
-                txtLastName.Text = "Kim";
-                txtEmail.Text = "mark.kim89@example.com";
-                txtPhoneNo.Text = "0856729041";
-                txtCounty.Text = "Dublin";
-                txtTown.Text = "Dublin 2";
-                txtStreet.Text = "10 St. Stephen’s Green";
-                txtEirCode.Text = "D02 XY45";
-                cboNoOfChildren.SelectedIndex = 1;
-                cboAgeOfChild.SelectedIndex = 2;
-                cboLanguage.SelectedIndex = 2;
-                txtDescription.Text = "We need a dependable babysitter comfortable with pets " +
-                    "and light homework help for our 8-year-old.";
-            }
-            else if (cboClientID.Text == "1015")
-            {
-                txtFirstName.Text = "Sarah";
-                txtLastName.Text = "Cole";
-                txtEmail.Text = "sarah.cole04@example.com";
-                txtPhoneNo.Text = "0873195570";
-                txtCounty.Text = "Cork";
-                txtTown.Text = "Cork city";
-                txtStreet.Text = "34 Patrick Street";
-                txtEirCode.Text = "T12 ABC1";
-                cboNoOfChildren.SelectedIndex = 4;
-                cboAgeOfChild.SelectedIndex = 4;
-                cboLanguage.SelectedIndex = 6;
-                txtDescription.Text = "Family of three looking for someone patient and " +
-                    "energetic to mind our toddler a few hours a week";
-            }
-            else if (cboClientID.Text == "1036")
-            {
-                txtFirstName.Text = "Daniel";
-                txtLastName.Text = "O'Reilly";
-                txtEmail.Text = "daniel.oreilly@example.com";
-                txtPhoneNo.Text = "0869102234";
-                txtCounty.Text = "Carlow";
-                txtTown.Text = "Carlow";
-                txtStreet.Text = "12 Church Lane";
-                txtEirCode.Text = "R93 9999";
-                cboNoOfChildren.SelectedIndex = 3;
-                cboAgeOfChild.SelectedIndex = 3;
-                cboLanguage.SelectedIndex = 4;
-                txtDescription.Text = "Family of three looking for someone patient " +
-                    "and energetic to mind our toddler a few hours a week";
-            }
-            else if (cboClientID.Text == "1017")
-            {
-                txtFirstName.Text = "Lily";
-                txtLastName.Text = "Brenda";
-                txtEmail.Text = "lily.banda99@example.com";
-                txtPhoneNo.Text = "0894307786";
-                txtCounty.Text = "Donegal";
-                txtTown.Text = "Letterkenny";
-                txtStreet.Text = "5 Main Street";
-                txtEirCode.Text = "F92 5678";
-                cboNoOfChildren.SelectedIndex = 2;
-                cboAgeOfChild.SelectedIndex = 1;
-                cboLanguage.SelectedIndex = 1;
-                txtDescription.Text = "Busy working parents seeking a caring, punctual " +
-                    "babysitter who can help with after-school care.";
-            }
-        }*/
+           
+        }              
+            
 
         private void btnSearch_Click(object sender, EventArgs e)
         {

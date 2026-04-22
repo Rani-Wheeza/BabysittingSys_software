@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BabysittingSys
 {
@@ -46,15 +47,19 @@ namespace BabysittingSys
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
             conn.Open();
 
-            string strSQL = "SELECT * FROM ADMIN WHERE AdminID = " + adminID + "Email = '" + email + "Password = '" + password + "'";
+            string strSQL = "SELECT * FROM ADMIN WHERE AdminID = " + adminID + " AND Email = '" + email + "'" + " AND Password = '" + password + "'";
 
+            //MessageBox.Show(strSQL);
             OracleCommand cmd = new OracleCommand(strSQL, conn);
             
             OracleDataAdapter da = new OracleDataAdapter(cmd);
 
             da.Fill(ds, "Admin_Login");
+            //MessageBox.Show("Rows found: " + ds.Tables["Admin_Login"].Rows.Count.ToString());
+            
 
             conn.Close();
+
             return ds;
         }//Don't forget to make an Admin table
     }

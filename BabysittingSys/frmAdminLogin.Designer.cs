@@ -215,9 +215,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label4.Location = new System.Drawing.Point(501, 329);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 16);
+            this.label4.Size = new System.Drawing.Size(75, 16);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Rw1811317!";
+            this.label4.Text = "Rw1811317";
             // 
             // frmAdminLogin
             // 

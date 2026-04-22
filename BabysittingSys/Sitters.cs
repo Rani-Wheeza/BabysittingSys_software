@@ -206,7 +206,9 @@ namespace BabysittingSys
             //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
 
             //Insert into Sitters table
-            string strSQL1 = "INSERT INTO SITTERS VALUES (" + this.SitterID + ",'" + this.FirstName + "','" + this.LastName + "','" + this.Email + "','" + this.PhoneNo + "','" + "TO_DATE('" + this.DOB.ToString("dd-mm-yyyy") + "','DD-MM-YYYY'),'" + this.County + "','" + this.Town + "','" + this.Street + "','" + this.EirCode + "','" + this.ChildCareCertified + "','" + this.MedicalCertified + "','" + this.Language + "','" + this.Description + "','" + this.HourlyRate + "')";
+            string strSQL1 = "INSERT INTO SITTERS VALUES (" + this.SitterID + ",'" + this.FirstName + "','" + this.LastName + "','" + this.Email + "','" + this.PhoneNo + "','" + 
+                            "TO_DATE('" + this.DOB.ToString("dd-mm-yyyy") + "','DD-MM-YYYY'),'" + this.County + "','" + this.Town + "','" + this.Street + "','" + this.EirCode + "','" + 
+                            this.ChildCareCertified + "','" + this.MedicalCertified + "','" + this.Language + "','" + this.Description + "','" + this.HourlyRate + "')";
                     
 
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
@@ -218,7 +220,8 @@ namespace BabysittingSys
             cmd1.ExecuteNonQuery();
 
             //Insert Into S_Availability table
-            string strSQL2 = "INSERT INTO S_Availability VALUES (" + this.AvailabilityID + "," + this.SitterID + ",'" + this.Monday + "','" + this.Tuesday + "','" + this.Wednesday + "','" + this.Thursday + "','" + this.Friday + "','" + this.Saturday + "','" + this.Sunday + "')";
+            string strSQL2 = "INSERT INTO S_Availability VALUES (" + this.AvailabilityID + "," + this.SitterID + ",'" + this.Monday + "','" + this.Tuesday + "','" + 
+                              this.Wednesday + "','" + this.Thursday + "','" + this.Friday + "','" + this.Saturday + "','" + this.Sunday + "')";
 
             OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
             cmd2.ExecuteNonQuery();
@@ -233,8 +236,7 @@ namespace BabysittingSys
             DataSet ds = new DataSet();
 
             //to open the db connection
-            //String orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";// is redundant
-
+            
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
             conn.Open();
@@ -242,10 +244,13 @@ namespace BabysittingSys
             //String strSQL = "SELECT * FROM Sitters WHERE SitterID = " + sitterID;
 
             //This is being used since sitters information is split between 2 tables.
-            string strSQl = "SELECT s.*, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, a.Friday, a.Saturday, a.Sunday " + 
-                            "FROM Sitters s " + "JOIN S_Availability a ON s.SitterID = a.SitterID " + "WHERE s.SitterID = " + sitterID;
+            /*string strSQl = "SELECT s.*, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, a.Friday, a.Saturday, a.Sunday " + 
+                            "FROM Sitters s " + "JOIN S_Availability a ON s.SitterID = a.SitterID " + "WHERE s.SitterID = " + sitterID;*/
 
-            OracleCommand cmd = new OracleCommand(strSQl, conn);
+            string strSQL = "SELECT s.*, a.*" + "FROM SITTERS s, S_Availability a " + "WHERE s.SitterID = a.SItterID " +
+                            "AND s.SitterID = " + sitterID;
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
 
             OracleDataAdapter da = new OracleDataAdapter(cmd);
 
@@ -309,16 +314,45 @@ namespace BabysittingSys
             return ds;
         }
 
+        public void UpdateSitter()
+        {
+            OracleConnection conn = new OracleConnection( DataBase.connectionString);
+            conn.Open();
+
+            string strSQL1 = "UPDATE SITTERS SET " + "FirstName = '" + this.FirstName + "','" + "LastName = '" + this.LastName + "','" + "Email = '" + this.Email + "','" + "PhoneNo = '" + this.PhoneNo + "','" +
+                            "DOB = TO_DATE('" + this.DOB.ToString("dd-mm-yyyy") + "','DD-MM-YYYY'),'" + "County = '" + this.County + "','" + "Town = '" + this.Town + "','" + "Street = '" + this.Street + "','" + "Eircode = '" + this.EirCode + "','" +
+                             "ChildCareCertified = '" + this.ChildCareCertified + "','" + "MedicalCertified = '" + this.MedicalCertified + "','" + "Language = '" + this.Language + "','" + "Description = '" + this.Description + "','" + "HourlyRate = '" + this.HourlyRate + "' " + 
+                             "WHERE SitterID = " + this.SitterID;
+
+            OracleCommand cmd1 = new OracleCommand(strSQL1, conn);
+            cmd1.ExecuteNonQuery();
+
+            string strSQL2 = "UPDATE S_Availability SET "+ "Monday = '" + this.Monday + "','" + "Tuesday = '" + this.Tuesday + "','" + "Wednesday = '" +
+                              this.Wednesday + "','" + "Thursday = '" + this.Thursday + "','" + "Friday = '" + this.Friday + "','" + "Saturday = '" + this.Saturday + "','" + "Sunday = '" + this.Sunday + "' " +
+                              "WHERE SitterID = " + this.SitterID;
+
+            OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
+            cmd2.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+
         public void DeleteSitter()
         {
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
             conn.Open();
 
-            string strSQL = "DELETE FROM SITTERS WHERE SitterID = " + this.SitterID;
+            string strSQL1 = "DELETE FROM SITTERS WHERE SitterID = " + this.SitterID;
 
-            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            OracleCommand cmd1 = new OracleCommand(strSQL1, conn);
+            cmd1.ExecuteNonQuery();
 
-            cmd.ExecuteNonQuery();
+            string strSQL2 = "DELETE FROM S_Availability WHERE SitterID = " + this.SitterID;
+
+            OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
+            cmd2.ExecuteNonQuery();
+
             conn.Close();
         }
 

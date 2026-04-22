@@ -103,7 +103,7 @@ namespace BabysittingSys
                 return;
             }
 
-            DataSet ds = Admin.CheckAdminLogin(Convert.ToInt32(txtID.Text), txtEmail.Text, txtPassword.Text);
+            DataSet ds = Admin.CheckAdminLogin(Convert.ToInt32(txtID.Text.Trim()), txtEmail.Text.Trim(), txtPassword.Text.Trim());
 
             if (ds.Tables["Admin_Login"].Rows.Count == 0) 
             {

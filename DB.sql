@@ -86,10 +86,9 @@ Sunday VARCHAR2 (5) NOT NULL);
 
 --Admin Table
 CREATE TABLE ADMIN(
-ID NUMBER (4) PRIMARY KEY,
+AdminID NUMBER (4) PRIMARY KEY,
 Email VARCHAR2 (30) NOT NULL,
-Password VARCHAR2 (30) NOT NULL
-);
+Password VARCHAR2 (30) NOT NULL);
 
 
 --Add data to the Clients table
@@ -183,9 +182,10 @@ VALUES(4004,2004,'Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'No');
 
 --Add data to the Admin table
 --1A
-INSERT INTO ADMIN(ID,Email,Password)
-VALUES(9718,'admin@gmail.com', 'Rw1811317!');
+INSERT INTO ADMIN(AdminID,Email,Password)
+VALUES(9718,'admin@gmail.com','Rw1811317');
 
+COMMIT;
 
 
 

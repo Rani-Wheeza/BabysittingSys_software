@@ -22,7 +22,7 @@ namespace BabysittingSys
         private string HourlyRate;
         private DateTime BookDate;
         private DateTime BookTime;
-        private string Duration;
+        private int Duration;
         private decimal TotalCost;
         private string Payement;
 
@@ -40,13 +40,13 @@ namespace BabysittingSys
             HourlyRate = "";
             BookDate = DateTime.Now;
             BookTime = DateTime.Now;
-            Duration = "";
+            Duration = 0;
             TotalCost = 0;
             Payement = "";
 
         }
 
-        public Bookings(int bookingID, int clientID, string clientName, string clientEmail, string clientPhoneNo, int sitterID, string sitterName, string sitterEmail, string sitterPhoneNo, string hourlyRate, DateTime bookDate, DateTime bookTime, string duration, decimal totalCost, string payement)
+        public Bookings(int bookingID, int clientID, string clientName, string clientEmail, string clientPhoneNo, int sitterID, string sitterName, string sitterEmail, string sitterPhoneNo, string hourlyRate, DateTime bookDate, DateTime bookTime, int duration, decimal totalCost, string payement)
         {
             setBookingID(bookingID);
             setClientID(clientID);
@@ -77,7 +77,7 @@ namespace BabysittingSys
         public string getHourlyRate() { return HourlyRate; }
         public DateTime getBookDate() { return BookDate; }
         public DateTime getBookTime() { return BookTime; }
-        public string getDuration() { return Duration; }
+        public int getDuration() { return Duration; }
         public decimal getTotalCost() { return TotalCost; }
         public string getPayement() { return Payement; }
 
@@ -94,7 +94,7 @@ namespace BabysittingSys
         public void setHourlyRate(string hourlyRate) { HourlyRate = hourlyRate; }
         public void setBookDate(DateTime bookDate) { BookDate = bookDate; }
         public void setBookTime(DateTime bookTime) { BookTime = bookTime; }
-        public void setDuration(string duration) { Duration = duration; }
+        public void setDuration(int duration) { Duration = duration; }
         public void setTotalCost(decimal totalCost) { TotalCost = totalCost; }
         public void setPayment(string payment) { Payement = payment; }
 
@@ -200,6 +200,34 @@ namespace BabysittingSys
 
         }
 
+        public void UpdateBooking()
+        {
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "UPDATE BOOKINGS SET " + "ClientID = " + this.ClientID + ", " + "ClientName = '" + this.ClientName + "', " + "ClientEmail = '" + this.ClientEmail + "', " +
+                            "ClientPhoneNo = '" + this.ClientPhoneNo + "', " + "SitterID = '" + this.SitterID + ", " + "SitterName = '" + this.SitterName + "', " + "SitterEmail = '" + 
+                            this.SitterEmail + "', " + "SitterPhoneNo = '" + this.SitterPhoneNo + "', " + "HourlyRate = '" + this.HourlyRate + "', " + "BookDate = TO_DATE('" + this.BookDate.ToString("dd-MM-yyyy") + "','DD-MM-YYYY'), " +
+                            "BookTime = TO_DATE('" + this.BookTime.ToString("HH:mm") + "','HH24:MI'), " + "Duration = '" + this.Duration + "', " + "TotalCost = '" + this.TotalCost + "', " + "Payment = '" + this.Payement + "' " +
+                            "WHERE BookingID = " + this.BookingID;
+
+            OracleCommand cmd = new OracleCommand( strSQL, conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void CancelBooking()
+        {
+            OracleConnection conn = new OracleConnection( DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "DELETE FROM BOOKINGS WHERE BookingID = " + this.BookingID;
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
 
 
     }
