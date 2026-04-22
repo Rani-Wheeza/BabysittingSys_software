@@ -10,8 +10,6 @@ namespace BabysittingSys
 {
     public class Bookings
     {
-        //public string BookingID { get; set; } public string ParentID { get; set; } public string BabysitterID { get; set; } public DateTime StartTime { get; set; } public DateTime EndTime { get; set; } public decimal TotalCost { get; set; } public Bookings(string bookingID, string parentID, string babysitterID, DateTime startTime, DateTime endTime, decimal totalCost) { BookingID = bookingID; ParentID = parentID; BabysitterID = babysitterID; StartTime = startTime; EndTime = endTime; TotalCost = totalCost; }
-
         private int BookingID;
         private int ClientID;
         private string ClientName;
@@ -25,7 +23,7 @@ namespace BabysittingSys
         private DateTime BookDate;
         private DateTime BookTime;
         private string Duration;
-        private string TotalCost;
+        private decimal TotalCost;
         private string Payement;
 
         public Bookings()
@@ -43,12 +41,12 @@ namespace BabysittingSys
             BookDate = DateTime.Now;
             BookTime = DateTime.Now;
             Duration = "";
-            TotalCost = "";
+            TotalCost = 0;
             Payement = "";
 
         }
 
-        public Bookings(int bookingID, int clientID, string clientName, string clientEmail, string clientPhoneNo, int sitterID, string sitterName, string sitterEmail, string sitterPhoneNo, string hourlyRate, DateTime bookDate, DateTime bookTime, string duration, string totalCost, string payement)
+        public Bookings(int bookingID, int clientID, string clientName, string clientEmail, string clientPhoneNo, int sitterID, string sitterName, string sitterEmail, string sitterPhoneNo, string hourlyRate, DateTime bookDate, DateTime bookTime, string duration, decimal totalCost, string payement)
         {
             setBookingID(bookingID);
             setClientID(clientID);
@@ -80,7 +78,7 @@ namespace BabysittingSys
         public DateTime getBookDate() { return BookDate; }
         public DateTime getBookTime() { return BookTime; }
         public string getDuration() { return Duration; }
-        public string getTotalCost() { return TotalCost; }
+        public decimal getTotalCost() { return TotalCost; }
         public string getPayement() { return Payement; }
 
         //Setters
@@ -97,7 +95,7 @@ namespace BabysittingSys
         public void setBookDate(DateTime bookDate) { BookDate = bookDate; }
         public void setBookTime(DateTime bookTime) { BookTime = bookTime; }
         public void setDuration(string duration) { Duration = duration; }
-        public void setTotalCost(String totalCost) { TotalCost = totalCost; }
+        public void setTotalCost(decimal totalCost) { TotalCost = totalCost; }
         public void setPayment(string payment) { Payement = payment; }
 
 

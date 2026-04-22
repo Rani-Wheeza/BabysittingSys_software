@@ -91,17 +91,35 @@ namespace BabysittingSys
 
         private void frmMakeBooking_Load(object sender, EventArgs e)
         {
-            
+            txtBookingID.Text = Bookings.GetNextBookingID().ToString();
+
+            cboSitterName.DataSource = null;
+            cboSitterName.SelectedIndex = -1;
+
+            txtClientName.ReadOnly = true;
+            txtClientEmail.ReadOnly = true;
+            txtClientPhoneNo.ReadOnly = true;
+
+            txtSitterID.ReadOnly = true;
+            txtSitterEmail.ReadOnly = true;
+            txtSitterPhoneNo.ReadOnly = true;
+            txtHourlyRate.ReadOnly = true;
+            txtTotalCost.ReadOnly = true;
         }
 
 
         private void cboSitterName_SelectedIndexChanged(object sender, EventArgs e)
         {                       
 
-            if (cboSitterName.SelectedIndex != -1) 
+            if (cboSitterName.SelectedIndex != -1 || cboSitterName.SelectedValue == null) 
             {
                 return;
 
+            }
+
+            if (cboSitterName.SelectedValue is DataRowView)
+            {
+                return;
             }
 
             int sitterID = Convert.ToInt32(cboSitterName.SelectedValue);
@@ -113,8 +131,8 @@ namespace BabysittingSys
                 DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
 
                 txtSitterID.Text = dr["SitterID"].ToString();
-                txtSitterEmail.Text = dr["SiterEmail"].ToString();
-                txtSitterPhoneNo.Text = dr["SitterPhoneNo"].ToString();
+                txtSitterEmail.Text = dr["Email"].ToString();
+                txtSitterPhoneNo.Text = dr["PhoneNo"].ToString();
                 txtHourlyRate.Text = dr["HourlyRate"].ToString();
 
                 calculateTotal();
@@ -131,18 +149,29 @@ namespace BabysittingSys
                 return;
             }
 
+            if (!txtClientID.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Client ID must be numeric", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
+            }
+
             DataSet ds = Clients.GetClientByID(Convert.ToInt32(txtClientID.Text));
 
             if (ds.Tables["Client_By_ID"].Rows.Count > 0)
             {
-                DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
-
-                txtClientName.Text = dr["ClientName"].ToString();
-                txtClientEmail.Text = dr["ClientEmail"].ToString();
-                txtClientPhoneNo.Text = dr["ClientPhoneNo"].ToString();
-                
-                calculateTotal();
+                MessageBox.Show("No Client ID found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientID.Focus();
+                return;
             }
+
+            DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
+
+            txtClientName.Text = dr["FirstName"].ToString() + "" + dr["LastName"].ToString();
+            txtClientEmail.Text = dr["Email"].ToString();
+            txtClientPhoneNo.Text = dr["PhoneNo"].ToString();
+
+            //calculateTotal();
         }
 
         private void btnMakeBooking_Click(object sender, EventArgs e)
@@ -241,7 +270,7 @@ namespace BabysittingSys
             }
 
             //save data - 2nd semester
-            //Bookings booking = new Bookings(Convert.ToInt32(txtBookingID.Text), Convert.ToInt32(txtClientID.Text),txtClientName,txtClientEmail,txtClientPhoneNo, Convert.ToInt32(txtSitterID.Text),cboSitterName,txtSitterEmail,txtSitterPhoneNo,txtHourlyRate);
+            //Bookings booking = new Bookings(Convert.ToInt32(txtBookingID.Text), Convert.ToInt32(txtClientID.Text),txtClientName,txtClientEmail,txtClientPhoneNo, Convert.ToInt32(txtSitterID.Text),cboSitterName,txtSitterEmail,txtSitterPhoneNo,txtHourlyRate,);
 
                        
 
@@ -271,11 +300,22 @@ namespace BabysittingSys
 
         private void calculateTotal()
         {
-            if(decimal.TryParse(txtHourlyRate.Text, out decimal rate))
+            if(txtHourlyRate.Text.Equals("") || cboDuration.Text.Equals(""))
+            {
+                txtTotalCost.Text = "";
+                return;
+            }
+
+            decimal rate = Convert.ToDecimal(txtHourlyRate.Text);
+            int hours = Convert.ToInt32(cboDuration.Text);
+
+            txtTotalCost.Text = (rate * hours).ToString("0.00");
+
+            /*if(decimal.TryParse(txtHourlyRate.Text, out decimal rate))
             {
                 int hours = cboDuration.SelectedIndex + 1;
                 txtTotalCost.Text = (rate *  hours).ToString("0.00");
-            }
+            }*/
         }
 
         private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
@@ -283,11 +323,24 @@ namespace BabysittingSys
             calculateTotal();
         }
 
-        private void txtTotalCost_TextChanged(object sender, EventArgs e)
-        {
-            calculateTotal();
-        }
-
        
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dayName = dtpDate.Value.DayOfWeek.ToString();
+
+            DataSet ds = Sitters.GetAvailableSitters(dayName);
+
+            cboSitterName.DataSource = ds.Tables["Available_Sitters"];
+            cboSitterName.DisplayMember = "SitterName";
+            cboSitterName.ValueMember = "SitterID";
+            cboSitterName.SelectedIndex = -1;
+
+            txtSitterID.Clear();
+            txtSitterEmail.Clear();
+            txtSitterPhoneNo.Clear();
+            txtHourlyRate.Clear();
+            txtTotalCost.Clear();
+        }
     }
 }

@@ -48,23 +48,39 @@ namespace BabysittingSys
             nextForm.Show();
         }
 
-        private void mnuLoginClient_Click(object sender, EventArgs e)
-        {
-            frmAdminLogin nextForm = new frmAdminLogin();
-            this.Hide();
-            nextForm.Show();
-        }
-
-        private void mnuLoginSitter_Click(object sender, EventArgs e)
-        {
-            frmAdminLogin nextForm = new frmAdminLogin();
-            this.Hide();
-            nextForm.Show();
-        }
+       
 
         private void mnuLoginAdmin_Click(object sender, EventArgs e)
         {
             frmAdminLogin nextForm = new frmAdminLogin();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuUpdateClient_Click(object sender, EventArgs e)
+        {
+            frmUpdateClient nextForm = new frmUpdateClient();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuRemoveClient_Click(object sender, EventArgs e)
+        {
+            frmRemoveClient nextForm = new frmRemoveClient();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuUpdateSitter_Click(object sender, EventArgs e)
+        {
+            frmUpdateSitter nextForm = new frmUpdateSitter ();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuRemoveSitter_Click(object sender, EventArgs e)
+        {
+            frmRemoveSitter nextForm = new frmRemoveSitter();
             this.Hide();
             nextForm.Show();
         }

@@ -39,6 +39,8 @@
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
             this.grpMakeBooking = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtClientID = new System.Windows.Forms.TextBox();
             this.chkPayment = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -72,8 +74,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtBookingID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtClientID = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.mnuMainMenu.SuspendLayout();
             this.grpMakeBooking.SuspendLayout();
             this.grpClientDetails.SuspendLayout();
@@ -195,20 +195,41 @@
             this.grpMakeBooking.Controls.Add(this.txtBookingID);
             this.grpMakeBooking.Controls.Add(this.label1);
             this.grpMakeBooking.Location = new System.Drawing.Point(118, 43);
-            this.grpMakeBooking.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpMakeBooking.Margin = new System.Windows.Forms.Padding(2);
             this.grpMakeBooking.Name = "grpMakeBooking";
-            this.grpMakeBooking.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpMakeBooking.Padding = new System.Windows.Forms.Padding(2);
             this.grpMakeBooking.Size = new System.Drawing.Size(775, 531);
             this.grpMakeBooking.TabIndex = 4;
             this.grpMakeBooking.TabStop = false;
             this.grpMakeBooking.Text = "Make Booking";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(265, 79);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(84, 33);
+            this.btnSearch.TabIndex = 31;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtClientID
+            // 
+            this.txtClientID.Location = new System.Drawing.Point(122, 87);
+            this.txtClientID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtClientID.MaxLength = 50;
+            this.txtClientID.Name = "txtClientID";
+            this.txtClientID.Size = new System.Drawing.Size(121, 20);
+            this.txtClientID.TabIndex = 22;
             // 
             // chkPayment
             // 
             this.chkPayment.AutoSize = true;
             this.chkPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPayment.Location = new System.Drawing.Point(497, 460);
-            this.chkPayment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkPayment.Margin = new System.Windows.Forms.Padding(2);
             this.chkPayment.Name = "chkPayment";
             this.chkPayment.Size = new System.Drawing.Size(237, 19);
             this.chkPayment.TabIndex = 30;
@@ -246,9 +267,9 @@
             this.grpClientDetails.Controls.Add(this.label13);
             this.grpClientDetails.Controls.Add(this.txtClientName);
             this.grpClientDetails.Location = new System.Drawing.Point(20, 128);
-            this.grpClientDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpClientDetails.Margin = new System.Windows.Forms.Padding(2);
             this.grpClientDetails.Name = "grpClientDetails";
-            this.grpClientDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpClientDetails.Padding = new System.Windows.Forms.Padding(2);
             this.grpClientDetails.Size = new System.Drawing.Size(291, 175);
             this.grpClientDetails.TabIndex = 29;
             this.grpClientDetails.TabStop = false;
@@ -257,7 +278,7 @@
             // txtClientEmail
             // 
             this.txtClientEmail.Location = new System.Drawing.Point(102, 72);
-            this.txtClientEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClientEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientEmail.MaxLength = 35;
             this.txtClientEmail.Name = "txtClientEmail";
             this.txtClientEmail.Size = new System.Drawing.Size(152, 20);
@@ -288,7 +309,7 @@
             // txtClientPhoneNo
             // 
             this.txtClientPhoneNo.Location = new System.Drawing.Point(102, 127);
-            this.txtClientPhoneNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClientPhoneNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientPhoneNo.Name = "txtClientPhoneNo";
             this.txtClientPhoneNo.Size = new System.Drawing.Size(152, 20);
             this.txtClientPhoneNo.TabIndex = 19;
@@ -307,7 +328,7 @@
             // txtClientName
             // 
             this.txtClientName.Location = new System.Drawing.Point(102, 28);
-            this.txtClientName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClientName.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientName.MaxLength = 50;
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(152, 20);
@@ -328,7 +349,7 @@
             // 
             this.btnMakeBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMakeBooking.Location = new System.Drawing.Point(302, 454);
-            this.btnMakeBooking.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMakeBooking.Margin = new System.Windows.Forms.Padding(2);
             this.btnMakeBooking.Name = "btnMakeBooking";
             this.btnMakeBooking.Size = new System.Drawing.Size(116, 29);
             this.btnMakeBooking.TabIndex = 27;
@@ -341,7 +362,7 @@
             this.dtpTime.CustomFormat = "hh:mm tt";
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTime.Location = new System.Drawing.Point(497, 327);
-            this.dtpTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(152, 20);
@@ -350,13 +371,14 @@
             // dtpDate
             // 
             this.dtpDate.Location = new System.Drawing.Point(122, 330);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDate.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.dtpDate.MinDate = new System.DateTime(2025, 10, 20, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(152, 20);
             this.dtpDate.TabIndex = 25;
             this.dtpDate.Value = new System.DateTime(2025, 11, 24, 0, 0, 0, 0);
+            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // cboDuration
             // 
@@ -374,7 +396,7 @@
             "9",
             "10"});
             this.cboDuration.Location = new System.Drawing.Point(122, 388);
-            this.cboDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboDuration.Margin = new System.Windows.Forms.Padding(2);
             this.cboDuration.Name = "cboDuration";
             this.cboDuration.Size = new System.Drawing.Size(121, 21);
             this.cboDuration.TabIndex = 23;
@@ -383,7 +405,7 @@
             // txtTotalCost
             // 
             this.txtTotalCost.Location = new System.Drawing.Point(498, 378);
-            this.txtTotalCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTotalCost.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotalCost.MaxLength = 4;
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.ReadOnly = true;
@@ -391,7 +413,7 @@
             this.txtTotalCost.TabIndex = 22;
             this.txtTotalCost.Text = "0.00";
             this.txtTotalCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotalCost.TextChanged += new System.EventHandler(this.txtTotalCost_TextChanged);
+            
             // 
             // grpSitterDetails
             // 
@@ -406,9 +428,9 @@
             this.grpSitterDetails.Controls.Add(this.cboSitterName);
             this.grpSitterDetails.Controls.Add(this.label3);
             this.grpSitterDetails.Location = new System.Drawing.Point(382, 28);
-            this.grpSitterDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpSitterDetails.Margin = new System.Windows.Forms.Padding(2);
             this.grpSitterDetails.Name = "grpSitterDetails";
-            this.grpSitterDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpSitterDetails.Padding = new System.Windows.Forms.Padding(2);
             this.grpSitterDetails.Size = new System.Drawing.Size(316, 275);
             this.grpSitterDetails.TabIndex = 11;
             this.grpSitterDetails.TabStop = false;
@@ -417,7 +439,7 @@
             // txtSitterID
             // 
             this.txtSitterID.Location = new System.Drawing.Point(114, 31);
-            this.txtSitterID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSitterID.Margin = new System.Windows.Forms.Padding(2);
             this.txtSitterID.MaxLength = 4;
             this.txtSitterID.Name = "txtSitterID";
             this.txtSitterID.ReadOnly = true;
@@ -438,7 +460,7 @@
             // txtHourlyRate
             // 
             this.txtHourlyRate.Location = new System.Drawing.Point(116, 228);
-            this.txtHourlyRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHourlyRate.Margin = new System.Windows.Forms.Padding(2);
             this.txtHourlyRate.MaxLength = 4;
             this.txtHourlyRate.Name = "txtHourlyRate";
             this.txtHourlyRate.Size = new System.Drawing.Size(188, 20);
@@ -458,7 +480,7 @@
             // txtSitterPhoneNo
             // 
             this.txtSitterPhoneNo.Location = new System.Drawing.Point(116, 179);
-            this.txtSitterPhoneNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSitterPhoneNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtSitterPhoneNo.MaxLength = 10;
             this.txtSitterPhoneNo.Name = "txtSitterPhoneNo";
             this.txtSitterPhoneNo.Size = new System.Drawing.Size(188, 20);
@@ -467,7 +489,7 @@
             // txtSitterEmail
             // 
             this.txtSitterEmail.Location = new System.Drawing.Point(114, 126);
-            this.txtSitterEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSitterEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtSitterEmail.MaxLength = 35;
             this.txtSitterEmail.Name = "txtSitterEmail";
             this.txtSitterEmail.Size = new System.Drawing.Size(188, 20);
@@ -500,7 +522,7 @@
             this.cboSitterName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSitterName.FormattingEnabled = true;
             this.cboSitterName.Location = new System.Drawing.Point(114, 74);
-            this.cboSitterName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboSitterName.Margin = new System.Windows.Forms.Padding(2);
             this.cboSitterName.Name = "cboSitterName";
             this.cboSitterName.Size = new System.Drawing.Size(189, 21);
             this.cboSitterName.TabIndex = 4;
@@ -564,7 +586,7 @@
             // txtBookingID
             // 
             this.txtBookingID.Location = new System.Drawing.Point(124, 28);
-            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
             this.txtBookingID.MaxLength = 4;
             this.txtBookingID.Name = "txtBookingID";
             this.txtBookingID.ReadOnly = true;
@@ -582,27 +604,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Booking ID";
             // 
-            // txtClientID
-            // 
-            this.txtClientID.Location = new System.Drawing.Point(122, 87);
-            this.txtClientID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtClientID.MaxLength = 50;
-            this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(121, 20);
-            this.txtClientID.TabIndex = 22;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(265, 79);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(84, 33);
-            this.btnSearch.TabIndex = 31;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // frmMakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -611,7 +612,7 @@
             this.ClientSize = new System.Drawing.Size(1004, 606);
             this.Controls.Add(this.grpMakeBooking);
             this.Controls.Add(this.mnuMainMenu);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMakeBooking";
             this.Text = "frmMakeBooking";
             this.Load += new System.EventHandler(this.frmMakeBooking_Load);

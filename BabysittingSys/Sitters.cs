@@ -330,8 +330,9 @@ namespace BabysittingSys
             conn.Open();
 
             string strSQL = "SELECT s.SitterID, s.FirstName || ' ' || s.LastName AS SitterName" +
-                "FROM SITTERS s, S_Availability a" + "WHERE s.SitterID = a.SitterID AND " + dayName + " = 'Yes ' " + 
-                "ORDER BY s.SitterID";
+                            "FROM SITTERS s, S_Availability a" + 
+                            "WHERE s.SitterID = a.SitterID " + "AND a." + dayName + " = 'Yes ' " + 
+                            "ORDER BY s.SitterID";
 
             OracleCommand cmd = new OracleCommand( strSQL, conn);
             OracleDataAdapter da = new OracleDataAdapter(cmd);
