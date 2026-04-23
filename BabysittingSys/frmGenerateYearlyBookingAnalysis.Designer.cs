@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cboYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chtBookingAnalysis = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -76,20 +76,20 @@
             // 
             // chtBookingAnalysis
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chtBookingAnalysis.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtBookingAnalysis.Legends.Add(legend2);
+            chartArea10.Name = "ChartArea1";
+            this.chtBookingAnalysis.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chtBookingAnalysis.Legends.Add(legend10);
             this.chtBookingAnalysis.Location = new System.Drawing.Point(228, 116);
             this.chtBookingAnalysis.Name = "chtBookingAnalysis";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Total Hours";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Monthly Bookings";
-            this.chtBookingAnalysis.Series.Add(series3);
-            this.chtBookingAnalysis.Series.Add(series4);
+            series19.ChartArea = "ChartArea1";
+            series19.Legend = "Legend1";
+            series19.Name = "Total Hours";
+            series20.ChartArea = "ChartArea1";
+            series20.Legend = "Legend1";
+            series20.Name = "Monthly Bookings";
+            this.chtBookingAnalysis.Series.Add(series19);
+            this.chtBookingAnalysis.Series.Add(series20);
             this.chtBookingAnalysis.Size = new System.Drawing.Size(510, 431);
             this.chtBookingAnalysis.TabIndex = 8;
             this.chtBookingAnalysis.Text = "chart1";
@@ -118,6 +118,7 @@
             this.mnuHome.Name = "mnuHome";
             this.mnuHome.Size = new System.Drawing.Size(52, 20);
             this.mnuHome.Text = "Home";
+            this.mnuHome.Click += new System.EventHandler(this.mnuHome_Click_1);
             // 
             // mnuClient
             // 
@@ -133,15 +134,17 @@
             // 
             this.mnuClientList.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuClientList.Name = "mnuClientList";
-            this.mnuClientList.Size = new System.Drawing.Size(143, 22);
+            this.mnuClientList.Size = new System.Drawing.Size(180, 22);
             this.mnuClientList.Text = "Client List";
+            this.mnuClientList.Click += new System.EventHandler(this.mnuClientList_Click);
             // 
             // mnuSearchClient
             // 
             this.mnuSearchClient.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSearchClient.Name = "mnuSearchClient";
-            this.mnuSearchClient.Size = new System.Drawing.Size(143, 22);
+            this.mnuSearchClient.Size = new System.Drawing.Size(180, 22);
             this.mnuSearchClient.Text = "Search Client";
+            this.mnuSearchClient.Click += new System.EventHandler(this.mnuSearchClient_Click);
             // 
             // mnuSitter
             // 
@@ -156,15 +159,17 @@
             // 
             this.mnuSitterList.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSitterList.Name = "mnuSitterList";
-            this.mnuSitterList.Size = new System.Drawing.Size(139, 22);
+            this.mnuSitterList.Size = new System.Drawing.Size(180, 22);
             this.mnuSitterList.Text = "Sitter List";
+            this.mnuSitterList.Click += new System.EventHandler(this.mnuSitterList_Click);
             // 
             // mnuSearchSitter
             // 
             this.mnuSearchSitter.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSearchSitter.Name = "mnuSearchSitter";
-            this.mnuSearchSitter.Size = new System.Drawing.Size(139, 22);
+            this.mnuSearchSitter.Size = new System.Drawing.Size(180, 22);
             this.mnuSearchSitter.Text = "Search Sitter";
+            this.mnuSearchSitter.Click += new System.EventHandler(this.mnuSearchSitter_Click);
             // 
             // mnuExit
             // 
@@ -173,6 +178,7 @@
             this.mnuExit.Name = "mnuExit";
             this.mnuExit.Size = new System.Drawing.Size(37, 20);
             this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click_1);
             // 
             // mnuBack
             // 
@@ -181,6 +187,7 @@
             this.mnuBack.Name = "mnuBack";
             this.mnuBack.Size = new System.Drawing.Size(44, 20);
             this.mnuBack.Text = "Back";
+            this.mnuBack.Click += new System.EventHandler(this.mnuBack_Click_1);
             // 
             // bookingToolStripMenuItem
             // 
@@ -195,15 +202,17 @@
             // 
             this.bookingListToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff;
             this.bookingListToolStripMenuItem.Name = "bookingListToolStripMenuItem";
-            this.bookingListToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.bookingListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bookingListToolStripMenuItem.Text = "Booking List";
+            this.bookingListToolStripMenuItem.Click += new System.EventHandler(this.bookingListToolStripMenuItem_Click);
             // 
             // searchBookingToolStripMenuItem
             // 
             this.searchBookingToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff;
             this.searchBookingToolStripMenuItem.Name = "searchBookingToolStripMenuItem";
-            this.searchBookingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.searchBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.searchBookingToolStripMenuItem.Text = "Search Booking";
+            this.searchBookingToolStripMenuItem.Click += new System.EventHandler(this.searchBookingToolStripMenuItem_Click);
             // 
             // mnuAnalysis
             // 
@@ -217,8 +226,9 @@
             // 
             this.generateYearlySitterAnalysisToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff;
             this.generateYearlySitterAnalysisToolStripMenuItem.Name = "generateYearlySitterAnalysisToolStripMenuItem";
-            this.generateYearlySitterAnalysisToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.generateYearlySitterAnalysisToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.generateYearlySitterAnalysisToolStripMenuItem.Text = "GenerateYearly Sitter Analysis";
+            this.generateYearlySitterAnalysisToolStripMenuItem.Click += new System.EventHandler(this.generateYearlySitterAnalysisToolStripMenuItem_Click);
             // 
             // frmGenerateYearlyBookingAnalysis
             // 
