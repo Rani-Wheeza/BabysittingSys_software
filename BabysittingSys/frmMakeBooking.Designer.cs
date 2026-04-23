@@ -377,7 +377,7 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(152, 20);
             this.dtpDate.TabIndex = 25;
-            this.dtpDate.Value = new System.DateTime(2025, 11, 24, 0, 0, 0, 0);
+            this.dtpDate.Value = new System.DateTime(2026, 4, 23, 0, 0, 0, 0);
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // cboDuration
@@ -413,7 +413,6 @@
             this.txtTotalCost.TabIndex = 22;
             this.txtTotalCost.Text = "0.00";
             this.txtTotalCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            
             // 
             // grpSitterDetails
             // 

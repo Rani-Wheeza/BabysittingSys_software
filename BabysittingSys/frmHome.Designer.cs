@@ -43,6 +43,7 @@
             this.mnuLoginAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mnuBooking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             this.mnuHome,
             this.mnuClient,
             this.mnuSitter,
+            this.mnuBooking,
             this.mnuAdmin,
             this.mnuExit});
             this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
@@ -85,7 +87,7 @@
             // 
             this.mnuRegisterClient.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuRegisterClient.Name = "mnuRegisterClient";
-            this.mnuRegisterClient.Size = new System.Drawing.Size(180, 22);
+            this.mnuRegisterClient.Size = new System.Drawing.Size(151, 22);
             this.mnuRegisterClient.Text = "Register Client";
             this.mnuRegisterClient.Click += new System.EventHandler(this.mnuRegisterClient_Click);
             // 
@@ -93,7 +95,7 @@
             // 
             this.mnuUpdateClient.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuUpdateClient.Name = "mnuUpdateClient";
-            this.mnuUpdateClient.Size = new System.Drawing.Size(180, 22);
+            this.mnuUpdateClient.Size = new System.Drawing.Size(151, 22);
             this.mnuUpdateClient.Text = "Update Client";
             this.mnuUpdateClient.Click += new System.EventHandler(this.mnuUpdateClient_Click);
             // 
@@ -101,7 +103,7 @@
             // 
             this.mnuRemoveClient.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuRemoveClient.Name = "mnuRemoveClient";
-            this.mnuRemoveClient.Size = new System.Drawing.Size(180, 22);
+            this.mnuRemoveClient.Size = new System.Drawing.Size(151, 22);
             this.mnuRemoveClient.Text = "Remove Client";
             this.mnuRemoveClient.Click += new System.EventHandler(this.mnuRemoveClient_Click);
             // 
@@ -127,7 +129,7 @@
             // 
             this.mnuUpdateSitter.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuUpdateSitter.Name = "mnuUpdateSitter";
-            this.mnuUpdateSitter.Size = new System.Drawing.Size(180, 22);
+            this.mnuUpdateSitter.Size = new System.Drawing.Size(147, 22);
             this.mnuUpdateSitter.Text = "Update Sitter";
             this.mnuUpdateSitter.Click += new System.EventHandler(this.mnuUpdateSitter_Click);
             // 
@@ -135,7 +137,7 @@
             // 
             this.mnuRemoveSitter.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuRemoveSitter.Name = "mnuRemoveSitter";
-            this.mnuRemoveSitter.Size = new System.Drawing.Size(180, 22);
+            this.mnuRemoveSitter.Size = new System.Drawing.Size(147, 22);
             this.mnuRemoveSitter.Text = "Remove Sitter";
             this.mnuRemoveSitter.Click += new System.EventHandler(this.mnuRemoveSitter_Click);
             // 
@@ -174,6 +176,13 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // mnuBooking
+            // 
+            this.mnuBooking.Name = "mnuBooking";
+            this.mnuBooking.Size = new System.Drawing.Size(63, 20);
+            this.mnuBooking.Text = "Booking";
+            this.mnuBooking.Click += new System.EventHandler(this.mnuBooking_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +218,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuUpdateClient;
         private System.Windows.Forms.ToolStripMenuItem mnuRemoveClient;
         private System.Windows.Forms.ToolStripMenuItem mnuRemoveSitter;
+        private System.Windows.Forms.ToolStripMenuItem mnuBooking;
     }
 }
 

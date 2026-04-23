@@ -71,16 +71,9 @@ namespace BabysittingSys
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtBookingID.Text.Equals(""))
-            {
-                MessageBox.Show("Booking ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtBookingID.Focus();
-                return;
-            }
-
             DataSet ds = Bookings.GetBookingByID(Convert.ToInt32(txtBookingID.Text));
 
-            if (ds.Tables["Booking_By_ID"].Rows.Count == 0) 
+            if (ds.Tables["Booking_By_ID"].Rows.Count == 0)
             {
                 MessageBox.Show("No Booking found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBookingID.Focus();
@@ -92,17 +85,27 @@ namespace BabysittingSys
             txtClientID.Text = dr["ClientID"].ToString();
             txtClientName.Text = dr["ClientName"].ToString();
             txtClientEmail.Text = dr["ClientEmail"].ToString();
-            txtClientPhoneNo.Text = dr["ClientPhone"].ToString();
+            txtClientPhoneNo.Text = dr["ClientPhoneNo"].ToString();
+
             txtSitterID.Text = dr["SitterID"].ToString();
-            cboSitterName.Text = dr["SitterName"].ToString();
             txtSitterEmail.Text = dr["SitterEmail"].ToString();
             txtSitterPhoneNo.Text = dr["SitterPhoneNo"].ToString();
             txtHourlyRate.Text = dr["HourlyRate"].ToString();
-            dtpDate.Value = Convert.ToDateTime(dr["BookDate"]);
-            dtpTime.Value = Convert.ToDateTime(dr["BookTime"]);
+
+            dtpDate.MinDate = Convert.ToDateTime(dr["BookDate"]);
+            dtpTime.MinDate = Convert.ToDateTime(dr["BookTime"]);
             cboDuration.Text = dr["Duration"].ToString();
             txtTotalCost.Text = dr["TotalCost"].ToString();
-            chkPayment.Checked = dr["Payment"].ToString() == "Yes";
+            chkPayment.Checked = dr["Payement"].ToString() == "Yes";
+
+            // now load sitter combo for that day
+            string dayName = dtpDate.Value.DayOfWeek.ToString();
+            DataSet dsSitters = Sitters.GetAvailableSitters(dayName);
+
+            cboSitterName.DataSource = dsSitters.Tables["AvailableSitters"];
+            cboSitterName.DisplayMember = "SitterName";
+            cboSitterName.ValueMember = "SitterID";
+            cboSitterName.SelectedValue = Convert.ToInt32(dr["SitterID"]);
         }
 
 
@@ -260,7 +263,7 @@ namespace BabysittingSys
 
             DataSet ds = Sitters.GetAvailableSitters(dayName);
 
-            cboSitterName.DataSource = ds.Tables["Available_Sitters"];
+            cboSitterName.DataSource = ds.Tables["AvailableSitters"];
             cboSitterName.DisplayMember = "SitterName";
             cboSitterName.ValueMember = "SitterID";
             cboSitterName.SelectedIndex = -1;
@@ -270,6 +273,41 @@ namespace BabysittingSys
             txtSitterPhoneNo.Clear();
             txtHourlyRate.Clear();
             txtTotalCost.Clear();
+        }
+
+        private void cboSitterName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cboSitterName.SelectedIndex == -1 || cboSitterName.SelectedValue == null)
+            {
+                return;
+
+            }
+
+            if (cboSitterName.SelectedValue is DataRowView)
+            {
+                return;
+            }
+
+            int sitterID = Convert.ToInt32(cboSitterName.SelectedValue);
+
+            DataSet ds = Sitters.GetSitterByID(sitterID);
+
+            if (ds.Tables["Sitter_By_ID"].Rows.Count == 0)
+            {
+                MessageBox.Show("No Sitter found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
+
+            txtSitterID.Text = dr["SitterID"].ToString();
+            txtSitterEmail.Text = dr["Email"].ToString();
+            txtSitterPhoneNo.Text = dr["PhoneNo"].ToString();
+            txtHourlyRate.Text = dr["HourlyRate"].ToString();
+
+            calculateTotal();
         }
     }
 }

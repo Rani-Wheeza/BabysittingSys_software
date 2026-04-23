@@ -109,7 +109,7 @@
             this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
             this.mnuMainMenu.Name = "mnuMainMenu";
             this.mnuMainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mnuMainMenu.Size = new System.Drawing.Size(967, 24);
+            this.mnuMainMenu.Size = new System.Drawing.Size(1135, 24);
             this.mnuMainMenu.TabIndex = 9;
             this.mnuMainMenu.Text = "menuStrip1";
             // 
@@ -202,7 +202,7 @@
             // 
             this.mnuBookingList.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuBookingList.Name = "mnuBookingList";
-            this.mnuBookingList.Size = new System.Drawing.Size(180, 22);
+            this.mnuBookingList.Size = new System.Drawing.Size(156, 22);
             this.mnuBookingList.Text = "Booking List";
             this.mnuBookingList.Click += new System.EventHandler(this.bookingListToolStripMenuItem_Click);
             // 
@@ -210,7 +210,7 @@
             // 
             this.mnuSearchBooking.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSearchBooking.Name = "mnuSearchBooking";
-            this.mnuSearchBooking.Size = new System.Drawing.Size(180, 22);
+            this.mnuSearchBooking.Size = new System.Drawing.Size(156, 22);
             this.mnuSearchBooking.Text = "Search Booking";
             this.mnuSearchBooking.Click += new System.EventHandler(this.searchBookingToolStripMenuItem_Click);
             // 
@@ -235,7 +235,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(967, 662);
+            this.ClientSize = new System.Drawing.Size(1135, 648);
             this.Controls.Add(this.mnuMainMenu);
             this.Controls.Add(this.chtBookingAnalysis);
             this.Controls.Add(this.cboYear);

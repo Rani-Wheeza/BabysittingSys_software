@@ -94,7 +94,7 @@
             this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
             this.mnuMainMenu.Name = "mnuMainMenu";
             this.mnuMainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mnuMainMenu.Size = new System.Drawing.Size(998, 24);
+            this.mnuMainMenu.Size = new System.Drawing.Size(1036, 24);
             this.mnuMainMenu.TabIndex = 1;
             this.mnuMainMenu.Text = "menuStrip1";
             // 
@@ -182,11 +182,6 @@
             // 
             // grpCancelBooking
             // 
-            this.grpCancelBooking.Controls.Add(this.btnSearch);
-            this.grpCancelBooking.Controls.Add(this.txtBookingID);
-            this.grpCancelBooking.Controls.Add(this.txtClientID);
-            this.grpCancelBooking.Controls.Add(this.label2);
-            this.grpCancelBooking.Controls.Add(this.label1);
             this.grpCancelBooking.Controls.Add(this.grpClientDetails);
             this.grpCancelBooking.Controls.Add(this.grpSitterDetails);
             this.grpCancelBooking.Controls.Add(this.dtpDate);
@@ -201,7 +196,7 @@
             this.grpCancelBooking.Controls.Add(this.label7);
             this.grpCancelBooking.Controls.Add(this.label6);
             this.grpCancelBooking.Controls.Add(this.label4);
-            this.grpCancelBooking.Location = new System.Drawing.Point(107, 41);
+            this.grpCancelBooking.Location = new System.Drawing.Point(100, 103);
             this.grpCancelBooking.Margin = new System.Windows.Forms.Padding(2);
             this.grpCancelBooking.Name = "grpCancelBooking";
             this.grpCancelBooking.Padding = new System.Windows.Forms.Padding(2);
@@ -213,7 +208,7 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnSearch.Location = new System.Drawing.Point(263, 29);
+            this.btnSearch.Location = new System.Drawing.Point(357, 57);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(87, 27);
             this.btnSearch.TabIndex = 48;
@@ -223,7 +218,7 @@
             // 
             // txtBookingID
             // 
-            this.txtBookingID.Location = new System.Drawing.Point(136, 29);
+            this.txtBookingID.Location = new System.Drawing.Point(230, 57);
             this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
             this.txtBookingID.MaxLength = 50;
             this.txtBookingID.Name = "txtBookingID";
@@ -232,7 +227,7 @@
             // 
             // txtClientID
             // 
-            this.txtClientID.Location = new System.Drawing.Point(136, 88);
+            this.txtClientID.Location = new System.Drawing.Point(102, 26);
             this.txtClientID.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientID.MaxLength = 50;
             this.txtClientID.Name = "txtClientID";
@@ -243,7 +238,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 88);
+            this.label2.Location = new System.Drawing.Point(22, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 17);
@@ -254,7 +249,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 29);
+            this.label1.Location = new System.Drawing.Point(127, 57);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 17);
@@ -263,24 +258,26 @@
             // 
             // grpClientDetails
             // 
+            this.grpClientDetails.Controls.Add(this.txtClientID);
+            this.grpClientDetails.Controls.Add(this.label2);
             this.grpClientDetails.Controls.Add(this.txtClientEmail);
             this.grpClientDetails.Controls.Add(this.label12);
             this.grpClientDetails.Controls.Add(this.label11);
             this.grpClientDetails.Controls.Add(this.txtClientPhoneNo);
             this.grpClientDetails.Controls.Add(this.label13);
             this.grpClientDetails.Controls.Add(this.txtClientName);
-            this.grpClientDetails.Location = new System.Drawing.Point(34, 117);
+            this.grpClientDetails.Location = new System.Drawing.Point(30, 49);
             this.grpClientDetails.Margin = new System.Windows.Forms.Padding(2);
             this.grpClientDetails.Name = "grpClientDetails";
             this.grpClientDetails.Padding = new System.Windows.Forms.Padding(2);
-            this.grpClientDetails.Size = new System.Drawing.Size(291, 175);
+            this.grpClientDetails.Size = new System.Drawing.Size(291, 217);
             this.grpClientDetails.TabIndex = 34;
             this.grpClientDetails.TabStop = false;
             this.grpClientDetails.Text = "Client Details";
             // 
             // txtClientEmail
             // 
-            this.txtClientEmail.Location = new System.Drawing.Point(102, 72);
+            this.txtClientEmail.Location = new System.Drawing.Point(102, 112);
             this.txtClientEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientEmail.MaxLength = 35;
             this.txtClientEmail.Name = "txtClientEmail";
@@ -291,7 +288,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(17, 75);
+            this.label12.Location = new System.Drawing.Point(17, 115);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(42, 17);
@@ -302,7 +299,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(17, 128);
+            this.label11.Location = new System.Drawing.Point(17, 168);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 17);
@@ -311,7 +308,7 @@
             // 
             // txtClientPhoneNo
             // 
-            this.txtClientPhoneNo.Location = new System.Drawing.Point(102, 127);
+            this.txtClientPhoneNo.Location = new System.Drawing.Point(102, 167);
             this.txtClientPhoneNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientPhoneNo.Name = "txtClientPhoneNo";
             this.txtClientPhoneNo.Size = new System.Drawing.Size(152, 20);
@@ -321,7 +318,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(17, 30);
+            this.label13.Location = new System.Drawing.Point(17, 70);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(84, 17);
@@ -330,7 +327,7 @@
             // 
             // txtClientName
             // 
-            this.txtClientName.Location = new System.Drawing.Point(102, 28);
+            this.txtClientName.Location = new System.Drawing.Point(102, 68);
             this.txtClientName.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientName.MaxLength = 50;
             this.txtClientName.Name = "txtClientName";
@@ -606,9 +603,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(998, 571);
+            this.ClientSize = new System.Drawing.Size(1036, 645);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtBookingID);
             this.Controls.Add(this.grpCancelBooking);
             this.Controls.Add(this.mnuMainMenu);
+            this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCancelBooking";
             this.Text = "frmCancelBooking";

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.cboYear = new System.Windows.Forms.ComboBox();
             this.chtSitterAnalysis = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -80,48 +80,48 @@
             // 
             // chtSitterAnalysis
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chtSitterAnalysis.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtSitterAnalysis.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chtSitterAnalysis.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chtSitterAnalysis.Legends.Add(legend2);
             this.chtSitterAnalysis.Location = new System.Drawing.Point(57, 118);
             this.chtSitterAnalysis.Name = "chtSitterAnalysis";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Sitter A";
-            series2.BorderWidth = 3;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Sitter B";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Sitter C";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Sitter D";
-            series5.BorderWidth = 3;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "Sitter E";
-            series6.BorderWidth = 4;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.Name = "Top Earnings";
-            this.chtSitterAnalysis.Series.Add(series1);
-            this.chtSitterAnalysis.Series.Add(series2);
-            this.chtSitterAnalysis.Series.Add(series3);
-            this.chtSitterAnalysis.Series.Add(series4);
-            this.chtSitterAnalysis.Series.Add(series5);
-            this.chtSitterAnalysis.Series.Add(series6);
+            series7.BorderWidth = 3;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Legend = "Legend1";
+            series7.Name = "Sitter A";
+            series8.BorderWidth = 3;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Legend = "Legend1";
+            series8.Name = "Sitter B";
+            series9.BorderWidth = 3;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Legend = "Legend1";
+            series9.Name = "Sitter C";
+            series10.BorderWidth = 3;
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.Legend = "Legend1";
+            series10.Name = "Sitter D";
+            series11.BorderWidth = 3;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series11.Legend = "Legend1";
+            series11.Name = "Sitter E";
+            series12.BorderWidth = 4;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Legend = "Legend1";
+            series12.Name = "Top Earnings";
+            this.chtSitterAnalysis.Series.Add(series7);
+            this.chtSitterAnalysis.Series.Add(series8);
+            this.chtSitterAnalysis.Series.Add(series9);
+            this.chtSitterAnalysis.Series.Add(series10);
+            this.chtSitterAnalysis.Series.Add(series11);
+            this.chtSitterAnalysis.Series.Add(series12);
             this.chtSitterAnalysis.Size = new System.Drawing.Size(829, 431);
             this.chtSitterAnalysis.TabIndex = 5;
             this.chtSitterAnalysis.Text = "Chart Sitter";
@@ -141,7 +141,7 @@
             this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
             this.mnuMainMenu.Name = "mnuMainMenu";
             this.mnuMainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mnuMainMenu.Size = new System.Drawing.Size(942, 24);
+            this.mnuMainMenu.Size = new System.Drawing.Size(1158, 24);
             this.mnuMainMenu.TabIndex = 10;
             this.mnuMainMenu.Text = "menuStrip1";
             // 
@@ -234,7 +234,7 @@
             // 
             this.mnuBookingList.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuBookingList.Name = "mnuBookingList";
-            this.mnuBookingList.Size = new System.Drawing.Size(180, 22);
+            this.mnuBookingList.Size = new System.Drawing.Size(156, 22);
             this.mnuBookingList.Text = "Booking List";
             this.mnuBookingList.Click += new System.EventHandler(this.mnuBookingList_Click);
             // 
@@ -242,7 +242,7 @@
             // 
             this.mnuSearchBooking.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSearchBooking.Name = "mnuSearchBooking";
-            this.mnuSearchBooking.Size = new System.Drawing.Size(180, 22);
+            this.mnuSearchBooking.Size = new System.Drawing.Size(156, 22);
             this.mnuSearchBooking.Text = "Search Booking";
             this.mnuSearchBooking.Click += new System.EventHandler(this.mnuSearchBooking_Click);
             // 
@@ -267,13 +267,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(942, 607);
+            this.ClientSize = new System.Drawing.Size(1158, 629);
             this.Controls.Add(this.mnuMainMenu);
             this.Controls.Add(this.chtSitterAnalysis);
             this.Controls.Add(this.cboYear);
             this.Controls.Add(this.label1);
             this.Name = "frmGenerateYearlySitterAnalysis";
-            this.Text = " ";
+            this.Text = " frmGenerateYearlySitterAnalysis";
             this.Load += new System.EventHandler(this.frmGenerateYearlySitterAnalysis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chtSitterAnalysis)).EndInit();
             this.mnuMainMenu.ResumeLayout(false);

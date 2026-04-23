@@ -84,5 +84,12 @@ namespace BabysittingSys
             this.Hide();
             nextForm.Show();
         }
+
+        private void mnuBooking_Click(object sender, EventArgs e)
+        {
+            frmMakeBooking nextForm = new frmMakeBooking();
+            this.Hide();
+            nextForm.Show();
+        }
     }
 }

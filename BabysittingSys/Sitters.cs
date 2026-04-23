@@ -206,8 +206,8 @@ namespace BabysittingSys
             //string orabd = "Data Source = studentOracle:1521/orcl; User ID = T00244793; Password = ca4#mptyxU9i;";
 
             //Insert into Sitters table
-            string strSQL1 = "INSERT INTO SITTERS VALUES (" + this.SitterID + ",'" + this.FirstName + "','" + this.LastName + "','" + this.Email + "','" + this.PhoneNo + "','" + 
-                            "TO_DATE('" + this.DOB.ToString("dd-mm-yyyy") + "','DD-MM-YYYY'),'" + this.County + "','" + this.Town + "','" + this.Street + "','" + this.EirCode + "','" + 
+            string strSQL1 = "INSERT INTO SITTERS VALUES (" + this.SitterID + ",'" + this.FirstName + "','" + this.LastName + "','" + this.Email + "','" + this.PhoneNo + "'," + 
+                            "TO_DATE('" + this.DOB.ToString("dd-MM-yyyy") + "','DD-MM-YYYY'),'" + this.County + "','" + this.Town + "','" + this.Street + "','" + this.EirCode + "','" + 
                             this.ChildCareCertified + "','" + this.MedicalCertified + "','" + this.Language + "','" + this.Description + "','" + this.HourlyRate + "')";
                     
 
@@ -296,7 +296,7 @@ namespace BabysittingSys
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
             conn.Open();
 
-            string strSQL = "SELECT s.SitterID, s.FirstName, s.LastName, s.Email, s.PhoneNo, s.DOB, s.County, s.Town, s.Street, s.EirCode, " +
+            string strSQL = "SELECT s.SitterID, s.FirstName, s.LastName, s.Email, s.PhoneNo, s.DOB, s.County, s.Town, s.Street, s.Eircode, " +
                             "s.ChildCareCertified, s.MedicalCertified, s.Languages, s.Description, s.HourlyRate, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, " +
                             "a.Friday, a.Saturday, a.Sunday " +
                             "FROM Sitters s, S_Availability a " +
@@ -316,25 +316,81 @@ namespace BabysittingSys
 
         public void UpdateSitter()
         {
-            OracleConnection conn = new OracleConnection( DataBase.connectionString);
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
             conn.Open();
 
-            string strSQL1 = "UPDATE SITTERS SET " + "FirstName = '" + this.FirstName + "','" + "LastName = '" + this.LastName + "','" + "Email = '" + this.Email + "','" + "PhoneNo = '" + this.PhoneNo + "','" +
-                            "DOB = TO_DATE('" + this.DOB.ToString("dd-mm-yyyy") + "','DD-MM-YYYY'),'" + "County = '" + this.County + "','" + "Town = '" + this.Town + "','" + "Street = '" + this.Street + "','" + "Eircode = '" + this.EirCode + "','" +
-                             "ChildCareCertified = '" + this.ChildCareCertified + "','" + "MedicalCertified = '" + this.MedicalCertified + "','" + "Languages = '" + this.Language + "','" + "Description = '" + this.Description + "','" + "HourlyRate = '" + this.HourlyRate + "' " + 
+            string safeFirstName = this.FirstName.Replace("'", "''");
+            string safeLastName = this.LastName.Replace("'", "''");
+            string safeEmail = this.Email.Replace("'", "''");
+            string safePhoneNo = this.PhoneNo.Replace("'", "''");
+            string safeCounty = this.County.Replace("'", "''");
+            string safeTown = this.Town.Replace("'", "''");
+            string safeStreet = this.Street.Replace("'", "''");
+            string safeEirCode = this.EirCode.Replace("'", "''");
+            string safeChildCareCertified = this.ChildCareCertified.Replace("'", "''");
+            string safeMedicalCertified = this.MedicalCertified.Replace("'", "''");
+            string safeLanguage = this.Language.Replace("'", "''");
+            string safeDescription = this.Description.Replace("'", "''");
+            string safeHourlyRate = this.HourlyRate.Replace("'", "''");
+
+            string strSQL1 = "UPDATE SITTERS SET " +
+                             "FirstName = '" + safeFirstName + "', " +
+                             "LastName = '" + safeLastName + "', " +
+                             "Email = '" + safeEmail + "', " +
+                             "PhoneNo = '" + safePhoneNo + "', " +
+                             "DOB = TO_DATE('" + this.DOB.ToString("dd-MM-yyyy") + "','DD-MM-YYYY'), " +
+                             "County = '" + safeCounty + "', " +
+                             "Town = '" + safeTown + "', " +
+                             "Street = '" + safeStreet + "', " +
+                             "EirCode = '" + safeEirCode + "', " +
+                             "ChildCareCertified = '" + safeChildCareCertified + "', " +
+                             "MedicalCertified = '" + safeMedicalCertified + "', " +
+                             "Languages = '" + safeLanguage + "', " +
+                             "Description = '" + safeDescription + "', " +
+                             "HourlyRate = '" + safeHourlyRate + "' " +
                              "WHERE SitterID = " + this.SitterID;
 
             OracleCommand cmd1 = new OracleCommand(strSQL1, conn);
             cmd1.ExecuteNonQuery();
 
-            string strSQL2 = "UPDATE S_Availability SET "+ "Monday = '" + this.Monday + "','" + "Tuesday = '" + this.Tuesday + "','" + "Wednesday = '" +
-                              this.Wednesday + "','" + "Thursday = '" + this.Thursday + "','" + "Friday = '" + this.Friday + "','" + "Saturday = '" + this.Saturday + "','" + "Sunday = '" + this.Sunday + "' " +
-                              "WHERE SitterID = " + this.SitterID;
+            string strSQL2 = "UPDATE S_Availability SET " +
+                             "Monday = '" + this.Monday + "', " +
+                             "Tuesday = '" + this.Tuesday + "', " +
+                             "Wednesday = '" + this.Wednesday + "', " +
+                             "Thursday = '" + this.Thursday + "', " +
+                             "Friday = '" + this.Friday + "', " +
+                             "Saturday = '" + this.Saturday + "', " +
+                             "Sunday = '" + this.Sunday + "' " +
+                             "WHERE SitterID = " + this.SitterID;
 
             OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
             cmd2.ExecuteNonQuery();
 
             conn.Close();
+
+
+            /*OracleConnection conn = new OracleConnection( DataBase.connectionString);
+            conn.Open();
+
+            string strSQL1 = "UPDATE SITTERS SET " + "FirstName = '" + this.FirstName + "', " + "LastName = '" + this.LastName + "', " + "Email = '" + this.Email + "', " + "PhoneNo = '" + this.PhoneNo + "', " +
+                            "DOB = TO_DATE('" + this.DOB.ToString("dd-MM-yyyy") + "','DD-MM-YYYY'),'" + "County = '" + this.County + "', " + "Town = '" + this.Town + "', " + "Street = '" + this.Street + "', " + "Eircode = '" + this.EirCode + "','" +
+                             "ChildCareCertified = '" + this.ChildCareCertified + "', " + "MedicalCertified = '" + this.MedicalCertified + "', " + "Languages = '" + this.Language + "', " + "Description = '" + this.Description + "', " + "HourlyRate = '" + this.HourlyRate + "' " + 
+                             "WHERE SitterID = " + this.SitterID;
+
+            OracleCommand cmd1 = new OracleCommand(strSQL1, conn);
+            cmd1.ExecuteNonQuery();
+
+            string strSQL2 = "UPDATE S_Availability SET "+ "Monday = '" + this.Monday + "', " + "Tuesday = '" + this.Tuesday + "', " + "Wednesday = '" +
+                              this.Wednesday + "', " + "Thursday = '" + this.Thursday + "', " + "Friday = '" + this.Friday + "', " + "Saturday = '" + this.Saturday + "', " + "Sunday = '" + this.Sunday + "' " +
+                              "WHERE SitterID = " + this.SitterID;
+
+            OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
+            cmd2.ExecuteNonQuery();
+
+            conn.Close();*/
+            //Failed to find what is missing to prevent ir fomr updatng the data.
+            //It does retrive it but for some in bits and pieces. If its newly in put data it is fully retrived while if it is data already in the table is does not fill in the combo boxes
+
         }
 
 
@@ -343,12 +399,12 @@ namespace BabysittingSys
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
             conn.Open();
 
-            string strSQL1 = "DELETE FROM SITTERS WHERE SitterID = " + this.SitterID;
+            string strSQL1 = "DELETE FROM S_Availability WHERE SitterID = " + this.SitterID;
 
             OracleCommand cmd1 = new OracleCommand(strSQL1, conn);
             cmd1.ExecuteNonQuery();
 
-            string strSQL2 = "DELETE FROM S_Availability WHERE SitterID = " + this.SitterID;
+            string strSQL2 =  "DELETE FROM SITTERS WHERE SitterID = " + this.SitterID;
 
             OracleCommand cmd2 = new OracleCommand(strSQL2, conn);
             cmd2.ExecuteNonQuery();
@@ -363,9 +419,9 @@ namespace BabysittingSys
             OracleConnection conn = new OracleConnection( DataBase.connectionString);
             conn.Open();
 
-            string strSQL = "SELECT s.SitterID, s.FirstName || ' ' || s.LastName AS SitterName" +
-                            "FROM SITTERS s, S_Availability a" + 
-                            "WHERE s.SitterID = a.SitterID " + "AND a." + dayName + " = 'Yes ' " + 
+            string strSQL = "SELECT s.SitterID, s.FirstName || ' ' || s.LastName AS SitterName " +
+                            "FROM SITTERS s, S_Availability a " + 
+                            "WHERE s.SitterID = a.SitterID " + "AND a. " + dayName + " = 'Yes' " + 
                             "ORDER BY s.SitterID";
 
             OracleCommand cmd = new OracleCommand( strSQL, conn);

@@ -173,7 +173,7 @@ namespace BabysittingSys
             txtEirCode.Text = dr["EirCode"].ToString();
             cboNoOfChildren.Text = dr["NoOfChildren"].ToString();
             cboAgeOfChild.Text = dr["AgeOfChild"].ToString();
-            cboLanguage.Text = dr["Language"].ToString();
+            cboLanguage.Text = dr["Languages"].ToString();
             txtDescription.Text = dr["Description"].ToString();
 
         }

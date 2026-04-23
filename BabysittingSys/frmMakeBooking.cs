@@ -111,7 +111,7 @@ namespace BabysittingSys
         private void cboSitterName_SelectedIndexChanged(object sender, EventArgs e)
         {                       
 
-            if (cboSitterName.SelectedIndex != -1 || cboSitterName.SelectedValue == null) 
+            if (cboSitterName.SelectedIndex == -1 || cboSitterName.SelectedValue == null) 
             {
                 return;
 
@@ -126,17 +126,21 @@ namespace BabysittingSys
 
             DataSet ds = Sitters.GetSitterByID(sitterID);
 
-            if (ds.Tables["Sitter_By_ID"].Rows.Count > 0)
+            if (ds.Tables["Sitter_By_ID"].Rows.Count == 0)
             {
-                DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
-
-                txtSitterID.Text = dr["SitterID"].ToString();
-                txtSitterEmail.Text = dr["Email"].ToString();
-                txtSitterPhoneNo.Text = dr["PhoneNo"].ToString();
-                txtHourlyRate.Text = dr["HourlyRate"].ToString();
-
-                calculateTotal();
+                MessageBox.Show("No Sitter found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                return;
             }
+
+            DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
+
+            txtSitterID.Text = dr["SitterID"].ToString();
+            txtSitterEmail.Text = dr["Email"].ToString();
+            txtSitterPhoneNo.Text = dr["PhoneNo"].ToString();
+            txtHourlyRate.Text = dr["HourlyRate"].ToString();
+
+            calculateTotal();
 
         }
 
@@ -158,83 +162,75 @@ namespace BabysittingSys
 
             DataSet ds = Clients.GetClientByID(Convert.ToInt32(txtClientID.Text));
 
-            if (ds.Tables["Client_By_ID"].Rows.Count > 0)
+            if (ds.Tables["Client_By_ID"].Rows.Count == 0)
             {
                 MessageBox.Show("No Client ID found with that ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtClientID.Focus();
                 return;
             }
 
-            DataRow dr = ds.Tables["Sitter_By_ID"].Rows[0];
+            DataRow dr = ds.Tables["Client_By_ID"].Rows[0];
 
-            txtClientName.Text = dr["FirstName"].ToString() + "" + dr["LastName"].ToString();
+            txtClientName.Text = dr["FirstName"].ToString() + " " + dr["LastName"].ToString();
             txtClientEmail.Text = dr["Email"].ToString();
             txtClientPhoneNo.Text = dr["PhoneNo"].ToString();
 
             //calculateTotal();
         }
 
+
+        private void calculateTotal()
+        {
+            if (txtHourlyRate.Text.Equals("") || cboDuration.Text.Equals(""))
+            {
+                txtTotalCost.Text = "";
+                return;
+            }
+
+            decimal rate = Convert.ToDecimal(txtHourlyRate.Text);
+            int hours = Convert.ToInt32(cboDuration.Text);
+
+            txtTotalCost.Text = (rate * hours).ToString("0.00");
+
+            /*if(decimal.TryParse(txtHourlyRate.Text, out decimal rate))
+            {
+                int hours = cboDuration.SelectedIndex + 1;
+                txtTotalCost.Text = (rate *  hours).ToString("0.00");
+            }*/
+        }
+
+        private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            calculateTotal();
+        }
+
+
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dayName = dtpDate.Value.DayOfWeek.ToString();
+            //MessageBox.Show(dayName);
+
+            DataSet ds = Sitters.GetAvailableSitters(dayName);
+
+            //MessageBox.Show("Rows found: " + ds.Tables["AvailableSitters"].Rows.Count.ToString());
+
+            cboSitterName.DataSource = ds.Tables["AvailableSitters"];
+            cboSitterName.DisplayMember = "SitterName";
+            cboSitterName.ValueMember = "SitterID";
+            cboSitterName.SelectedIndex = -1;
+
+            txtSitterID.Clear();
+            txtSitterEmail.Clear();
+            txtSitterPhoneNo.Clear();
+            txtHourlyRate.Clear();
+            txtTotalCost.Clear();
+        }
+
         private void btnMakeBooking_Click(object sender, EventArgs e)
         {
-            if (txtClientName.Text.Equals(""))
-            {
-                MessageBox.Show("Name must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientName.Focus();
-                return;
-            }
-            else if (txtClientName.Text.All(c => char.IsDigit(c)))
-            {
-                MessageBox.Show("Name cannot contain numbers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientName.Focus();
-                return;
-            }
-
-            //Validate email
-
-            string email = txtClientEmail.Text;
-
-            string emailPattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
-
-            if (txtClientEmail.Text.Equals(""))
-            {
-                MessageBox.Show("Email must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientEmail.Focus();
-                return;
-            }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(email, emailPattern))
-            {
-                MessageBox.Show("Invalid email format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientEmail.Focus();
-                return;
-            }
-
-            if (txtClientPhoneNo.Text.Equals(""))
-            {
-                MessageBox.Show("Phone Number must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientPhoneNo.Focus();
-                return;
-            }
-            else if (!txtClientPhoneNo.Text.All(char.IsDigit) || !txtClientPhoneNo.Text.StartsWith("08"))
-            {
-                MessageBox.Show("Phone number is invalid! Phone number has to be all digits and start with 08", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientPhoneNo.Focus();
-                return;
-            }
-            else if (txtClientPhoneNo.Text.Length != 10)
-            {
-                MessageBox.Show("Phone number must be 10 characters long!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientPhoneNo.Focus();
-                return;
-            }
-
-            if (txtClientName.Text == "")
-            {
-                MessageBox.Show("Please enter client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClientName.Focus();
-                return;
-            }
-
-            if (cboSitterName.SelectedIndex == 0)
+            
+            if (cboSitterName.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a sitter", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboSitterName.Focus();
@@ -255,7 +251,7 @@ namespace BabysittingSys
                 return;
             }
 
-            if (cboDuration.SelectedIndex == 0) 
+            if (cboDuration.SelectedIndex == -1) 
             { 
                 MessageBox.Show("Please select a duration", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboDuration.Focus();
@@ -299,49 +295,5 @@ namespace BabysittingSys
             txtClientID.Focus();
         }
 
-        private void calculateTotal()
-        {
-            if(txtHourlyRate.Text.Equals("") || cboDuration.Text.Equals(""))
-            {
-                txtTotalCost.Text = "";
-                return;
-            }
-
-            decimal rate = Convert.ToDecimal(txtHourlyRate.Text);
-            int hours = Convert.ToInt32(cboDuration.Text);
-
-            txtTotalCost.Text = (rate * hours).ToString("0.00");
-
-            /*if(decimal.TryParse(txtHourlyRate.Text, out decimal rate))
-            {
-                int hours = cboDuration.SelectedIndex + 1;
-                txtTotalCost.Text = (rate *  hours).ToString("0.00");
-            }*/
-        }
-
-        private void cboDuration_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            calculateTotal();
-        }
-
-       
-
-        private void dtpDate_ValueChanged(object sender, EventArgs e)
-        {
-            string dayName = dtpDate.Value.DayOfWeek.ToString();
-
-            DataSet ds = Sitters.GetAvailableSitters(dayName);
-
-            cboSitterName.DataSource = ds.Tables["Available_Sitters"];
-            cboSitterName.DisplayMember = "SitterName";
-            cboSitterName.ValueMember = "SitterID";
-            cboSitterName.SelectedIndex = -1;
-
-            txtSitterID.Clear();
-            txtSitterEmail.Clear();
-            txtSitterPhoneNo.Clear();
-            txtHourlyRate.Clear();
-            txtTotalCost.Clear();
-        }
     }
 }

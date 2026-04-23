@@ -73,13 +73,6 @@ namespace BabysittingSys
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtBookingID.Text.Equals(""))
-            {
-                MessageBox.Show("Booking ID must be entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtBookingID.Focus();
-                return;
-            }
-
             DataSet ds = Bookings.GetBookingByID(Convert.ToInt32(txtBookingID.Text));
 
             if (ds.Tables["Booking_By_ID"].Rows.Count == 0)
@@ -94,17 +87,27 @@ namespace BabysittingSys
             txtClientID.Text = dr["ClientID"].ToString();
             txtClientName.Text = dr["ClientName"].ToString();
             txtClientEmail.Text = dr["ClientEmail"].ToString();
-            txtClientPhoneNo.Text = dr["ClientPhone"].ToString();
+            txtClientPhoneNo.Text = dr["ClientPhoneNo"].ToString();
+
             txtSitterID.Text = dr["SitterID"].ToString();
-            cboSitterName.Text = dr["SitterName"].ToString();
             txtSitterEmail.Text = dr["SitterEmail"].ToString();
             txtSitterPhoneNo.Text = dr["SitterPhoneNo"].ToString();
             txtHourlyRate.Text = dr["HourlyRate"].ToString();
-            dtpDate.Value = Convert.ToDateTime(dr["BookDate"]);
-            dtpTime.Value = Convert.ToDateTime(dr["BookTime"]);
+
+            dtpDate.MinDate = Convert.ToDateTime(dr["BookDate"]);
+            dtpTime.MinDate = Convert.ToDateTime(dr["BookTime"]);
             cboDuration.Text = dr["Duration"].ToString();
             txtTotalCost.Text = dr["TotalCost"].ToString();
-            chkPayment.Checked = dr["Payment"].ToString() == "Yes";
+            chkPayment.Checked = dr["Payement"].ToString() == "Yes";
+
+            // now load sitter combo for that day
+            string dayName = dtpDate.Value.DayOfWeek.ToString();
+            DataSet dsSitters = Sitters.GetAvailableSitters(dayName);
+
+            cboSitterName.DataSource = dsSitters.Tables["AvailableSitters"];
+            cboSitterName.DisplayMember = "SitterName";
+            cboSitterName.ValueMember = "SitterID";
+            cboSitterName.SelectedValue = Convert.ToInt32(dr["SitterID"]);
         }
 
         private void btnCancelBooking_Click(object sender, EventArgs e)
@@ -144,8 +147,8 @@ namespace BabysittingSys
             txtHourlyRate.Clear();
             cboSitterName.SelectedIndex = -1;
             cboDuration.SelectedIndex = -1;
-            dtpDate.Value = DateTime.Now;
-            dtpTime.Value = DateTime.Now;
+            dtpDate.MinDate = DateTime.Now;
+            dtpTime.MinDate = DateTime.Now;
             chkPayment.Checked = false;
 
             txtBookingID.Focus();

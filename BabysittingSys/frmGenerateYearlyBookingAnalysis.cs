@@ -15,7 +15,7 @@ namespace BabysittingSys
     {
         frmHome Parent; 
 
-        private readonly int[][] yearlyBookingData = new int[][]
+        /*private readonly int[][] yearlyBookingData = new int[][]
        {
             new int[] { 10,12,8,15,20,25,22,18,14,17,19,23 },//2021
             new int[] { 9,11,13,16,21,24,15,20,15,18,20,25 },//2022
@@ -31,7 +31,7 @@ namespace BabysittingSys
             new int[] { 58,66,62,78,88,95,91,98,94,82,71,64 },//2023
             new int[] { 61,70,68,82,93,102,99,105,98,90,77,69 },//2024
             new int[] { 65,75,72,88,100,110,108,115,107,96,82,75 }//2025
-        };
+        };*/
 
         private readonly string[] months =
         {
@@ -73,83 +73,6 @@ namespace BabysittingSys
             {
                 Application.Exit();
             }
-        }
-               
-
-        private void frmGenerateYearlyBookingAnalysis_Load(object sender, EventArgs e)
-        {
-            cboYear.Items.Add("2021");
-            cboYear.Items.Add("2022");
-            cboYear.Items.Add("2023");
-            cboYear.Items.Add("2024");
-            cboYear.Items.Add("2025");
-
-            cboYear.SelectedIndex = 0;
-
-            InitializeChart();
-            UpdateChart(0);
-        }
-
-
-
-        private void InitializeChart()
-        {
-            chtBookingAnalysis.Series.Clear();
-
-            chtBookingAnalysis.ChartAreas[0].AxisX.Title = "Month";
-
-            chtBookingAnalysis.ChartAreas[0].AxisY.Title = "Total Bookings & Hours";
-
-
-            Series series = new Series
-            {
-                Name = "Monthly Bookings",
-                ChartType = SeriesChartType.Column,
-                BorderWidth = 3,
-                Color = System.Drawing.Color.DarkGoldenrod,
-                IsValueShownAsLabel = true
-
-            };
-            chtBookingAnalysis.Series.Add(series);
-
-            Series hoursSeries = new Series
-            {
-                Name = "Total Hours",
-                ChartType = SeriesChartType.Line,
-                BorderWidth = 3,
-                Color = System.Drawing.Color.DarkTurquoise,
-                IsValueShownAsLabel = true,
-                YAxisType = AxisType.Secondary
-            };
-
-            chtBookingAnalysis.Series.Add(hoursSeries);
-            chtBookingAnalysis.ChartAreas[0].AxisY2.Title = "Hours";
-            
-
-        }
-
-        private void UpdateChart(int yearIndex)
-        {
-
-            var bookingSeries = chtBookingAnalysis.Series["Monthly Bookings"];
-            bookingSeries.Points.Clear();
-
-            var hoursSeries = chtBookingAnalysis.Series["Total Hours"];
-            hoursSeries.Points.Clear();
-
-            for (int i = 0; i < months.Length; i++)
-            {
-                int bookings = yearlyBookingData[yearIndex][i];
-                int hours = yearlyHourData[yearIndex][i];
-
-                bookingSeries.Points.AddXY(months[i], bookings);
-                hoursSeries.Points.AddXY(months[i], hours);
-            }
-        }
-
-        private void cboYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateChart(cboYear.SelectedIndex);
         }
 
         private void mnuClientList_Click(object sender, EventArgs e)
@@ -200,6 +123,123 @@ namespace BabysittingSys
             this.Hide();
             nextForm.Show();
         }
+        private void frmGenerateYearlyBookingAnalysis_Load(object sender, EventArgs e)
+        {
+            cboYear.Items.Add("2021");
+            cboYear.Items.Add("2022");
+            cboYear.Items.Add("2023");
+            cboYear.Items.Add("2024");
+            cboYear.Items.Add("2025");
 
+            cboYear.SelectedIndex = 0;
+
+            InitializeChart();
+            UpdateChart(Convert.ToInt32(cboYear.Text));
+        }
+
+
+
+        private void InitializeChart()
+        {
+            chtBookingAnalysis.Series.Clear();
+
+            chtBookingAnalysis.ChartAreas[0].AxisX.Title = "Month";
+
+            chtBookingAnalysis.ChartAreas[0].AxisY.Title = "Total Bookings & Hours";
+
+
+            Series series = new Series
+            {
+                Name = "Monthly Bookings",
+                ChartType = SeriesChartType.Column,
+                BorderWidth = 3,
+                Color = System.Drawing.Color.DarkGoldenrod,
+                IsValueShownAsLabel = true
+
+            };
+            chtBookingAnalysis.Series.Add(series);
+
+            Series hoursSeries = new Series
+            {
+                Name = "Total Hours",
+                ChartType = SeriesChartType.Line,
+                BorderWidth = 3,
+                Color = System.Drawing.Color.DarkTurquoise,
+                IsValueShownAsLabel = true,
+                YAxisType = AxisType.Secondary
+            };
+
+            chtBookingAnalysis.Series.Add(hoursSeries);
+            chtBookingAnalysis.ChartAreas[0].AxisY2.Title = "Hours";
+            
+
+        }
+
+        private void UpdateChart(int year)
+        {
+            var chart = chtBookingAnalysis;
+
+            
+            chart.Width = 800;
+            chart.Height = 450;
+                        
+            chart.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 85);
+                        
+            chart.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Arial", 10);
+            chart.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Arial", 10);
+
+            chart.ChartAreas[0].AxisX.Interval = 1;
+            chart.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+                        
+            chart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            chart.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+                        
+            chart.Legends[0].Docking = Docking.Top;
+            chart.Legends[0].Font = new Font("Arial", 10);
+
+            
+            var bookingSeries = chtBookingAnalysis.Series["Monthly Bookings"];
+            bookingSeries.Points.Clear();
+            bookingSeries["PointWidth"] = "0.5";
+
+            var hoursSeries = chtBookingAnalysis.Series["Total Hours"];
+            hoursSeries.Points.Clear();
+
+            DataSet ds = Bookings.GetYearlyBookingAnalysis(year);
+
+            int[] bookingTotals = new int[12];
+            int[] hoursTotals = new int[12];
+
+            foreach (DataRow dr in ds.Tables["YearlyBookingAnalysis"].Rows) 
+            {
+                int monthNo = Convert.ToInt32(dr["MonthNo"]);
+                int totalBookings = Convert.ToInt32(dr["TotalBookings"]);
+                int totalHours = Convert.ToInt32(dr["TotalHours"]);
+
+                bookingTotals[monthNo - 1] = totalBookings;
+                hoursTotals[monthNo - 1] = totalHours;
+            }
+
+            for (int i = 0; i < months.Length; i++)
+            {
+                
+                bookingSeries.Points.AddXY(months[i], bookingTotals[i]);
+                hoursSeries.Points.AddXY(months[i], hoursTotals[i]);
+
+            }
+                        
+        }
+
+        private void cboYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboYear.SelectedIndex != -1) 
+            {
+                UpdateChart(Convert.ToInt32(cboYear.Text));
+            }
+
+            //UpdateChart(cboYear.SelectedIndex);
+        }
+
+        
     }
 }

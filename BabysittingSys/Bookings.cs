@@ -56,6 +56,7 @@ namespace BabysittingSys
             setSitterID(sitterID);
             setSitterName(sitterName);
             setSitterEmail(sitterEmail);
+            setSitterPhoneNo(sitterPhoneNo);
             setHourlyRate(hourlyRate);
             setBookDate(bookDate);
             setBookTime(bookTime);
@@ -155,13 +156,44 @@ namespace BabysittingSys
 
         public void AddBooking()
         {
-            //to open the db connection
-           
+            string safeClientName = this.ClientName.Replace("'", "''");
+            string safeClientEmail = this.ClientEmail.Replace("'", "''");
+            string safeClientPhoneNo = this.ClientPhoneNo.Replace("'", "''");
+            string safeSitterName = this.SitterName.Replace("'", "''");
+            string safeSitterEmail = this.SitterEmail.Replace("'", "''");
+            string safeSitterPhoneNo = this.SitterPhoneNo.Replace("'", "''");
+            string safePayement = this.Payement.Replace("'", "''");
 
-            string strSQL = "INSERT INTO BOOKINGS VALUES (" + this.BookingID + ",'" + this.ClientID + "','" + this.ClientName +  "','" + this.ClientEmail + "','" + 
-                            this.ClientPhoneNo + "','" + this.SitterID+ "','" + this.SitterName + "','" + this.SitterEmail + "','" + this.SitterPhoneNo + "','" + 
-                            this.HourlyRate + "','" + "TO_DATE('" + this.BookDate.ToString("dd-MM-yyyy") + "','DD-MM-YYYY')," + 
-                            "TO_DATE('" + this.BookTime.ToString("HH:mm") + "','HH24:MI')," + this.Duration + "','" + this.TotalCost + "','" + this.Payement + "')";
+            string strSQL = "INSERT INTO BOOKINGS VALUES (" +
+                            this.BookingID + ", " +
+                            this.ClientID + ", '" +
+                            safeClientName + "', '" +
+                            safeClientEmail + "', '" +
+                            safeClientPhoneNo + "', " +
+                            this.SitterID + ", '" +
+                            safeSitterName + "', '" +
+                            safeSitterEmail + "', '" +
+                            safeSitterPhoneNo + "', " +
+                            this.HourlyRate + ", " +
+                            "TO_DATE('" + this.BookDate.ToString("dd-MM-yyyy") + "', 'DD-MM-YYYY'), " +
+                            "TO_DATE('" + this.BookTime.ToString("HH:mm") + "', 'HH24:MI'), " +
+                            this.Duration + ", " +
+                            this.TotalCost + ", '" +
+                            safePayement + "')";
+
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            /*//to open the db connection           
+            string strSQL = "INSERT INTO BOOKINGS VALUES (" + this.BookingID + ", " + this.ClientID + ", '" + this.ClientName +  "', '" + this.ClientEmail + "', '" + 
+                            this.ClientPhoneNo + "', " + this.SitterID+ " ,'" + this.SitterName + "', '" + this.SitterEmail + "', '" + this.SitterPhoneNo + "','" + 
+                            this.HourlyRate + "' " + "TO_DATE('" + this.BookDate.ToString("dd-MM-yyyy") + "', 'DD-MM-YYYY'), " + 
+                            "TO_DATE('" + this.BookTime.ToString("HH:mm") + "','HH24:MI'), " + this.Duration + ", " + this.TotalCost + " , '" + this.Payement + "')";
 
             OracleConnection conn = new OracleConnection(DataBase.connectionString);
 
@@ -171,7 +203,7 @@ namespace BabysittingSys
 
             cmd.ExecuteNonQuery();
 
-            conn.Close();
+            conn.Close();*/
 
 
         }
@@ -186,7 +218,7 @@ namespace BabysittingSys
 
             conn.Open();
 
-            String strSQL = "SELECT * FROM Bookings WHERE BookingID = " + bookingID;
+            String strSQL = "SELECT * FROM BOOKINGS WHERE BookingID = " + bookingID;
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 
@@ -206,9 +238,9 @@ namespace BabysittingSys
             conn.Open();
 
             string strSQL = "UPDATE BOOKINGS SET " + "ClientID = " + this.ClientID + ", " + "ClientName = '" + this.ClientName + "', " + "ClientEmail = '" + this.ClientEmail + "', " +
-                            "ClientPhoneNo = '" + this.ClientPhoneNo + "', " + "SitterID = '" + this.SitterID + ", " + "SitterName = '" + this.SitterName + "', " + "SitterEmail = '" + 
+                            "ClientPhoneNo = '" + this.ClientPhoneNo + "', " + "SitterID = " + this.SitterID + ", " + "SitterName = '" + this.SitterName + "', " + "SitterEmail = '" + 
                             this.SitterEmail + "', " + "SitterPhoneNo = '" + this.SitterPhoneNo + "', " + "HourlyRate = '" + this.HourlyRate + "', " + "BookDate = TO_DATE('" + this.BookDate.ToString("dd-MM-yyyy") + "','DD-MM-YYYY'), " +
-                            "BookTime = TO_DATE('" + this.BookTime.ToString("HH:mm") + "','HH24:MI'), " + "Duration = '" + this.Duration + "', " + "TotalCost = '" + this.TotalCost + "', " + "Payment = '" + this.Payement + "' " +
+                            "BookTime = TO_DATE('" + this.BookTime.ToString("HH:mm") + "','HH24:MI'), " + "Duration = '" + this.Duration + "', " + "TotalCost = '" + this.TotalCost + "', " + "Payement = '" + this.Payement + "' " +
                             "WHERE BookingID = " + this.BookingID;
 
             OracleCommand cmd = new OracleCommand( strSQL, conn);
@@ -247,6 +279,42 @@ namespace BabysittingSys
 
             return ds;
 
+        }
+
+        public static DataSet GetYearlyBookingAnalysis(int year)
+        {
+            DataSet ds = new DataSet();
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "SELECT EXTRACT(MONTH FROM BookDate) AS MonthNo, " + "COUNT(*) AS TotalBookings, " + "SUM(Duration) AS TotalHours " + 
+                            "FROM BOOKINGS " + "WHERE EXTRACT(YEAR FROM BookDate) = " + year + " " +
+                            "GROUP BY EXTRACT(MONTH FROM BookDate) " + "ORDER BY MonthNo"; 
+                        
+            OracleCommand cmd = new OracleCommand( strSQL, conn);
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.Fill(ds, "YearlyBookingAnalysis");
+            conn.Close();
+            return ds;
+        }
+
+        public static DataSet GetYearlySitterAnalysis(int year)
+        {
+            DataSet ds = new DataSet();
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "SELECT EXTRACT(MONTH FROM BookDate) AS MonthNo, " + "SUM(TotalCost) AS TotalEarnings " +
+                            "FROM BOOKINGS " + "WHERE EXTRACT(YEAR FROM BookDate) = " + year + " " +
+                            "GROUP BY EXTRACT(MONTH FROM BookDate) " + "ORDER BY MonthNo";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.Fill(ds, "YearlySitterAnalysis");
+            conn.Close();
+            return ds;
         }
 
     }

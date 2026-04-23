@@ -40,6 +40,9 @@
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
             this.grpUpdateBooking = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtBookingID = new System.Windows.Forms.TextBox();
+            this.txtClientID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.grpClientDetails = new System.Windows.Forms.GroupBox();
             this.txtClientEmail = new System.Windows.Forms.TextBox();
@@ -57,7 +60,6 @@
             this.txtSitterEmail = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.cboSitterName = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.chkPayment = new System.Windows.Forms.CheckBox();
@@ -72,9 +74,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtClientID = new System.Windows.Forms.TextBox();
-            this.txtBookingID = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.cboSitterName = new System.Windows.Forms.ComboBox();
             this.mnuMainMenu.SuspendLayout();
             this.grpUpdateBooking.SuspendLayout();
             this.grpClientDetails.SuspendLayout();
@@ -209,6 +209,35 @@
             this.grpUpdateBooking.TabIndex = 4;
             this.grpUpdateBooking.TabStop = false;
             this.grpUpdateBooking.Text = "Update Booking";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnSearch.Location = new System.Drawing.Point(247, 28);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(87, 27);
+            this.btnSearch.TabIndex = 48;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtBookingID
+            // 
+            this.txtBookingID.Location = new System.Drawing.Point(122, 28);
+            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBookingID.MaxLength = 50;
+            this.txtBookingID.Name = "txtBookingID";
+            this.txtBookingID.Size = new System.Drawing.Size(101, 20);
+            this.txtBookingID.TabIndex = 35;
+            // 
+            // txtClientID
+            // 
+            this.txtClientID.Location = new System.Drawing.Point(122, 87);
+            this.txtClientID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtClientID.MaxLength = 50;
+            this.txtClientID.Name = "txtClientID";
+            this.txtClientID.Size = new System.Drawing.Size(101, 20);
+            this.txtClientID.TabIndex = 22;
             // 
             // label2
             // 
@@ -399,16 +428,6 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "Email";
             // 
-            // cboSitterName
-            // 
-            this.cboSitterName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSitterName.FormattingEnabled = true;
-            this.cboSitterName.Location = new System.Drawing.Point(114, 74);
-            this.cboSitterName.Margin = new System.Windows.Forms.Padding(2);
-            this.cboSitterName.Name = "cboSitterName";
-            this.cboSitterName.Size = new System.Drawing.Size(189, 21);
-            this.cboSitterName.TabIndex = 4;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -429,7 +448,7 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(152, 20);
             this.dtpDate.TabIndex = 31;
-            this.dtpDate.Value = new System.DateTime(2025, 10, 20, 0, 0, 0, 0);
+            this.dtpDate.Value = new System.DateTime(2026, 4, 23, 0, 0, 0, 0);
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // chkPayment
@@ -575,34 +594,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Booking ID";
             // 
-            // txtClientID
+            // cboSitterName
             // 
-            this.txtClientID.Location = new System.Drawing.Point(122, 87);
-            this.txtClientID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtClientID.MaxLength = 50;
-            this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(101, 20);
-            this.txtClientID.TabIndex = 22;
-            // 
-            // txtBookingID
-            // 
-            this.txtBookingID.Location = new System.Drawing.Point(122, 28);
-            this.txtBookingID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBookingID.MaxLength = 50;
-            this.txtBookingID.Name = "txtBookingID";
-            this.txtBookingID.Size = new System.Drawing.Size(101, 20);
-            this.txtBookingID.TabIndex = 35;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnSearch.Location = new System.Drawing.Point(247, 28);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(87, 27);
-            this.btnSearch.TabIndex = 48;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.cboSitterName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSitterName.FormattingEnabled = true;
+            this.cboSitterName.Location = new System.Drawing.Point(114, 74);
+            this.cboSitterName.Margin = new System.Windows.Forms.Padding(2);
+            this.cboSitterName.Name = "cboSitterName";
+            this.cboSitterName.Size = new System.Drawing.Size(189, 21);
+            this.cboSitterName.TabIndex = 4;
+            this.cboSitterName.SelectedIndexChanged += new System.EventHandler(this.cboSitterName_SelectedIndexChanged);
             // 
             // frmUpdateBooking
             // 
@@ -673,10 +674,10 @@
         private System.Windows.Forms.TextBox txtSitterEmail;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cboSitterName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBookingID;
         private System.Windows.Forms.TextBox txtClientID;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cboSitterName;
     }
 }

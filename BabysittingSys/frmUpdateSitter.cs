@@ -92,7 +92,7 @@ namespace BabysittingSys
             txtTown.Text = dr["Town"].ToString();
             txtStreet.Text = dr["Street"].ToString();
             txtEirCode.Text = dr["EirCode"].ToString();
-            cboLanguage.Text = dr["Language"].ToString();
+            cboLanguage.Text = dr["Languages"].ToString();
             cboChildCareCertified.Text = dr["ChildCareCertified"].ToString();
             cboMedicalCertified.Text = dr["MedicalCertified"].ToString();
             txtDescription.Text = dr["Description"].ToString();
