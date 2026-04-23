@@ -297,10 +297,10 @@ namespace BabysittingSys
             conn.Open();
 
             string strSQL = "SELECT s.SitterID, s.FirstName, s.LastName, s.Email, s.PhoneNo, s.DOB, s.County, s.Town, s.Street, s.EirCode, " +
-                            "s.ChildCareCertified, s.MedicalCertified, s.Language, s.Description, s.HourlyRate, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, " +
+                            "s.ChildCareCertified, s.MedicalCertified, s.Languages, s.Description, s.HourlyRate, a.Monday, a.Tuesday, a.Wednesday, a.Thursday, " +
                             "a.Friday, a.Saturday, a.Sunday " +
                             "FROM Sitters s, S_Availability a " +
-                            "WHERE s.SitterID = a.SitterID" +
+                            "WHERE s.SitterID = a.SitterID " +
                             "ORDER BY s.SitterID";
 
             OracleCommand cmd = new OracleCommand(strSQL, conn);
@@ -321,7 +321,7 @@ namespace BabysittingSys
 
             string strSQL1 = "UPDATE SITTERS SET " + "FirstName = '" + this.FirstName + "','" + "LastName = '" + this.LastName + "','" + "Email = '" + this.Email + "','" + "PhoneNo = '" + this.PhoneNo + "','" +
                             "DOB = TO_DATE('" + this.DOB.ToString("dd-mm-yyyy") + "','DD-MM-YYYY'),'" + "County = '" + this.County + "','" + "Town = '" + this.Town + "','" + "Street = '" + this.Street + "','" + "Eircode = '" + this.EirCode + "','" +
-                             "ChildCareCertified = '" + this.ChildCareCertified + "','" + "MedicalCertified = '" + this.MedicalCertified + "','" + "Language = '" + this.Language + "','" + "Description = '" + this.Description + "','" + "HourlyRate = '" + this.HourlyRate + "' " + 
+                             "ChildCareCertified = '" + this.ChildCareCertified + "','" + "MedicalCertified = '" + this.MedicalCertified + "','" + "Languages = '" + this.Language + "','" + "Description = '" + this.Description + "','" + "HourlyRate = '" + this.HourlyRate + "' " + 
                              "WHERE SitterID = " + this.SitterID;
 
             OracleCommand cmd1 = new OracleCommand(strSQL1, conn);

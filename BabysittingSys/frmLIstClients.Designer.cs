@@ -41,12 +41,12 @@
             this.mnuSearchSitter = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookingListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBooking = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBookingList = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSearchBooking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAnalysis = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuGenerateYearlyBookingAnalysis = new System.Windows.Forms.ToolStripMenuItem();
             this.generateYearlySitterAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnugenerateYearlyBookingAnalysis = new System.Windows.Forms.ToolStripMenuItem();
             this.grpClientsList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplayClients)).BeginInit();
             this.mnuMainMenu.SuspendLayout();
@@ -57,19 +57,19 @@
             this.grpClientsList.Controls.Add(this.btnClearAll);
             this.grpClientsList.Controls.Add(this.btnDisplayClients);
             this.grpClientsList.Controls.Add(this.dgvDisplayClients);
-            this.grpClientsList.Location = new System.Drawing.Point(41, 52);
-            this.grpClientsList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpClientsList.Location = new System.Drawing.Point(11, 55);
+            this.grpClientsList.Margin = new System.Windows.Forms.Padding(2);
             this.grpClientsList.Name = "grpClientsList";
-            this.grpClientsList.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grpClientsList.Size = new System.Drawing.Size(923, 471);
+            this.grpClientsList.Padding = new System.Windows.Forms.Padding(2);
+            this.grpClientsList.Size = new System.Drawing.Size(1429, 472);
             this.grpClientsList.TabIndex = 0;
             this.grpClientsList.TabStop = false;
             this.grpClientsList.Text = "Clients List";
             // 
             // btnClearAll
             // 
-            this.btnClearAll.Location = new System.Drawing.Point(413, 419);
-            this.btnClearAll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClearAll.Location = new System.Drawing.Point(681, 428);
+            this.btnClearAll.Margin = new System.Windows.Forms.Padding(2);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(118, 32);
             this.btnClearAll.TabIndex = 2;
@@ -79,8 +79,8 @@
             // 
             // btnDisplayClients
             // 
-            this.btnDisplayClients.Location = new System.Drawing.Point(413, 36);
-            this.btnDisplayClients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDisplayClients.Location = new System.Drawing.Point(681, 37);
+            this.btnDisplayClients.Margin = new System.Windows.Forms.Padding(2);
             this.btnDisplayClients.Name = "btnDisplayClients";
             this.btnDisplayClients.Size = new System.Drawing.Size(118, 32);
             this.btnDisplayClients.TabIndex = 1;
@@ -90,13 +90,14 @@
             // 
             // dgvDisplayClients
             // 
+            this.dgvDisplayClients.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgvDisplayClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDisplayClients.Location = new System.Drawing.Point(44, 100);
-            this.dgvDisplayClients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvDisplayClients.Location = new System.Drawing.Point(20, 100);
+            this.dgvDisplayClients.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDisplayClients.Name = "dgvDisplayClients";
             this.dgvDisplayClients.RowHeadersWidth = 51;
             this.dgvDisplayClients.RowTemplate.Height = 24;
-            this.dgvDisplayClients.Size = new System.Drawing.Size(864, 294);
+            this.dgvDisplayClients.Size = new System.Drawing.Size(1387, 315);
             this.dgvDisplayClients.TabIndex = 0;
             // 
             // mnuMainMenu
@@ -109,13 +110,13 @@
             this.mnuSitter,
             this.mnuExit,
             this.mnuBack,
-            this.bookingToolStripMenuItem,
+            this.mnuBooking,
             this.mnuAnalysis});
             this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
             this.mnuMainMenu.Name = "mnuMainMenu";
             this.mnuMainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mnuMainMenu.Size = new System.Drawing.Size(975, 24);
-            this.mnuMainMenu.TabIndex = 2;
+            this.mnuMainMenu.Size = new System.Drawing.Size(1451, 24);
+            this.mnuMainMenu.TabIndex = 10;
             this.mnuMainMenu.Text = "menuStrip1";
             // 
             // mnuHome
@@ -123,6 +124,7 @@
             this.mnuHome.Name = "mnuHome";
             this.mnuHome.Size = new System.Drawing.Size(52, 20);
             this.mnuHome.Text = "Home";
+            this.mnuHome.Click += new System.EventHandler(this.mnuHome_Click);
             // 
             // mnuClient
             // 
@@ -137,8 +139,9 @@
             // 
             this.mnuSearchClient.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSearchClient.Name = "mnuSearchClient";
-            this.mnuSearchClient.Size = new System.Drawing.Size(143, 22);
+            this.mnuSearchClient.Size = new System.Drawing.Size(180, 22);
             this.mnuSearchClient.Text = "Search Client";
+            this.mnuSearchClient.Click += new System.EventHandler(this.mnuSearchClient_Click);
             // 
             // mnuSitter
             // 
@@ -155,6 +158,7 @@
             this.mnuSitterList.Name = "mnuSitterList";
             this.mnuSitterList.Size = new System.Drawing.Size(139, 22);
             this.mnuSitterList.Text = "Sitter List";
+            this.mnuSitterList.Click += new System.EventHandler(this.mnuSitterList_Click);
             // 
             // mnuSearchSitter
             // 
@@ -162,6 +166,7 @@
             this.mnuSearchSitter.Name = "mnuSearchSitter";
             this.mnuSearchSitter.Size = new System.Drawing.Size(139, 22);
             this.mnuSearchSitter.Text = "Search Sitter";
+            this.mnuSearchSitter.Click += new System.EventHandler(this.mnuSearchSitter_Click);
             // 
             // mnuExit
             // 
@@ -170,6 +175,7 @@
             this.mnuExit.Name = "mnuExit";
             this.mnuExit.Size = new System.Drawing.Size(37, 20);
             this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuBack
             // 
@@ -178,45 +184,41 @@
             this.mnuBack.Name = "mnuBack";
             this.mnuBack.Size = new System.Drawing.Size(44, 20);
             this.mnuBack.Text = "Back";
+            this.mnuBack.Click += new System.EventHandler(this.mnuBack_Click);
             // 
-            // bookingToolStripMenuItem
+            // mnuBooking
             // 
-            this.bookingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bookingListToolStripMenuItem,
-            this.searchBookingToolStripMenuItem});
-            this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
-            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.bookingToolStripMenuItem.Text = "Booking";
+            this.mnuBooking.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuBookingList,
+            this.mnuSearchBooking});
+            this.mnuBooking.Name = "mnuBooking";
+            this.mnuBooking.Size = new System.Drawing.Size(63, 20);
+            this.mnuBooking.Text = "Booking";
             // 
-            // bookingListToolStripMenuItem
+            // mnuBookingList
             // 
-            this.bookingListToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff;
-            this.bookingListToolStripMenuItem.Name = "bookingListToolStripMenuItem";
-            this.bookingListToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.bookingListToolStripMenuItem.Text = "Booking List";
+            this.mnuBookingList.BackColor = System.Drawing.Color.PeachPuff;
+            this.mnuBookingList.Name = "mnuBookingList";
+            this.mnuBookingList.Size = new System.Drawing.Size(156, 22);
+            this.mnuBookingList.Text = "Booking List";
+            this.mnuBookingList.Click += new System.EventHandler(this.mnuBookingList_Click);
             // 
-            // searchBookingToolStripMenuItem
+            // mnuSearchBooking
             // 
-            this.searchBookingToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff;
-            this.searchBookingToolStripMenuItem.Name = "searchBookingToolStripMenuItem";
-            this.searchBookingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.searchBookingToolStripMenuItem.Text = "Search Booking";
+            this.mnuSearchBooking.BackColor = System.Drawing.Color.PeachPuff;
+            this.mnuSearchBooking.Name = "mnuSearchBooking";
+            this.mnuSearchBooking.Size = new System.Drawing.Size(156, 22);
+            this.mnuSearchBooking.Text = "Search Booking";
+            this.mnuSearchBooking.Click += new System.EventHandler(this.mnuSearchBooking_Click);
             // 
             // mnuAnalysis
             // 
             this.mnuAnalysis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuGenerateYearlyBookingAnalysis,
-            this.generateYearlySitterAnalysisToolStripMenuItem});
+            this.generateYearlySitterAnalysisToolStripMenuItem,
+            this.mnugenerateYearlyBookingAnalysis});
             this.mnuAnalysis.Name = "mnuAnalysis";
             this.mnuAnalysis.Size = new System.Drawing.Size(62, 20);
             this.mnuAnalysis.Text = "Analysis";
-            // 
-            // mnuGenerateYearlyBookingAnalysis
-            // 
-            this.mnuGenerateYearlyBookingAnalysis.BackColor = System.Drawing.Color.PeachPuff;
-            this.mnuGenerateYearlyBookingAnalysis.Name = "mnuGenerateYearlyBookingAnalysis";
-            this.mnuGenerateYearlyBookingAnalysis.Size = new System.Drawing.Size(248, 22);
-            this.mnuGenerateYearlyBookingAnalysis.Text = "Generate Yearly Booking Analysis";
             // 
             // generateYearlySitterAnalysisToolStripMenuItem
             // 
@@ -224,13 +226,22 @@
             this.generateYearlySitterAnalysisToolStripMenuItem.Name = "generateYearlySitterAnalysisToolStripMenuItem";
             this.generateYearlySitterAnalysisToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.generateYearlySitterAnalysisToolStripMenuItem.Text = "GenerateYearly Sitter Analysis";
+            this.generateYearlySitterAnalysisToolStripMenuItem.Click += new System.EventHandler(this.generateYearlySitterAnalysisToolStripMenuItem_Click);
+            // 
+            // mnugenerateYearlyBookingAnalysis
+            // 
+            this.mnugenerateYearlyBookingAnalysis.BackColor = System.Drawing.Color.PeachPuff;
+            this.mnugenerateYearlyBookingAnalysis.Name = "mnugenerateYearlyBookingAnalysis";
+            this.mnugenerateYearlyBookingAnalysis.Size = new System.Drawing.Size(248, 22);
+            this.mnugenerateYearlyBookingAnalysis.Text = "Generate Yearly Booking Analysis";
+            this.mnugenerateYearlyBookingAnalysis.Click += new System.EventHandler(this.mnugenerateYearlyBookingAnalysis_Click);
             // 
             // frmLIstClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(975, 546);
+            this.ClientSize = new System.Drawing.Size(1451, 549);
             this.Controls.Add(this.mnuMainMenu);
             this.Controls.Add(this.grpClientsList);
             this.Name = "frmLIstClients";
@@ -260,11 +271,11 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSearchSitter;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.ToolStripMenuItem mnuBack;
-        private System.Windows.Forms.ToolStripMenuItem bookingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bookingListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchBookingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuBooking;
+        private System.Windows.Forms.ToolStripMenuItem mnuBookingList;
+        private System.Windows.Forms.ToolStripMenuItem mnuSearchBooking;
         private System.Windows.Forms.ToolStripMenuItem mnuAnalysis;
-        private System.Windows.Forms.ToolStripMenuItem mnuGenerateYearlyBookingAnalysis;
         private System.Windows.Forms.ToolStripMenuItem generateYearlySitterAnalysisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnugenerateYearlyBookingAnalysis;
     }
 }

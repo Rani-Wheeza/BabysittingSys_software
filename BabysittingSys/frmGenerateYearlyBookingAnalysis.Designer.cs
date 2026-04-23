@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cboYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chtBookingAnalysis = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -45,9 +45,9 @@
             this.mnuSearchSitter = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookingListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBooking = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBookingList = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSearchBooking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAnalysis = new System.Windows.Forms.ToolStripMenuItem();
             this.generateYearlySitterAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chtBookingAnalysis)).BeginInit();
@@ -76,20 +76,20 @@
             // 
             // chtBookingAnalysis
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chtBookingAnalysis.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.chtBookingAnalysis.Legends.Add(legend10);
+            chartArea1.Name = "ChartArea1";
+            this.chtBookingAnalysis.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chtBookingAnalysis.Legends.Add(legend1);
             this.chtBookingAnalysis.Location = new System.Drawing.Point(228, 116);
             this.chtBookingAnalysis.Name = "chtBookingAnalysis";
-            series19.ChartArea = "ChartArea1";
-            series19.Legend = "Legend1";
-            series19.Name = "Total Hours";
-            series20.ChartArea = "ChartArea1";
-            series20.Legend = "Legend1";
-            series20.Name = "Monthly Bookings";
-            this.chtBookingAnalysis.Series.Add(series19);
-            this.chtBookingAnalysis.Series.Add(series20);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Total Hours";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Monthly Bookings";
+            this.chtBookingAnalysis.Series.Add(series1);
+            this.chtBookingAnalysis.Series.Add(series2);
             this.chtBookingAnalysis.Size = new System.Drawing.Size(510, 431);
             this.chtBookingAnalysis.TabIndex = 8;
             this.chtBookingAnalysis.Text = "chart1";
@@ -104,7 +104,7 @@
             this.mnuSitter,
             this.mnuExit,
             this.mnuBack,
-            this.bookingToolStripMenuItem,
+            this.mnuBooking,
             this.mnuAnalysis});
             this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
             this.mnuMainMenu.Name = "mnuMainMenu";
@@ -134,7 +134,7 @@
             // 
             this.mnuClientList.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuClientList.Name = "mnuClientList";
-            this.mnuClientList.Size = new System.Drawing.Size(180, 22);
+            this.mnuClientList.Size = new System.Drawing.Size(143, 22);
             this.mnuClientList.Text = "Client List";
             this.mnuClientList.Click += new System.EventHandler(this.mnuClientList_Click);
             // 
@@ -142,7 +142,7 @@
             // 
             this.mnuSearchClient.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSearchClient.Name = "mnuSearchClient";
-            this.mnuSearchClient.Size = new System.Drawing.Size(180, 22);
+            this.mnuSearchClient.Size = new System.Drawing.Size(143, 22);
             this.mnuSearchClient.Text = "Search Client";
             this.mnuSearchClient.Click += new System.EventHandler(this.mnuSearchClient_Click);
             // 
@@ -159,7 +159,7 @@
             // 
             this.mnuSitterList.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSitterList.Name = "mnuSitterList";
-            this.mnuSitterList.Size = new System.Drawing.Size(180, 22);
+            this.mnuSitterList.Size = new System.Drawing.Size(139, 22);
             this.mnuSitterList.Text = "Sitter List";
             this.mnuSitterList.Click += new System.EventHandler(this.mnuSitterList_Click);
             // 
@@ -167,7 +167,7 @@
             // 
             this.mnuSearchSitter.BackColor = System.Drawing.Color.PeachPuff;
             this.mnuSearchSitter.Name = "mnuSearchSitter";
-            this.mnuSearchSitter.Size = new System.Drawing.Size(180, 22);
+            this.mnuSearchSitter.Size = new System.Drawing.Size(139, 22);
             this.mnuSearchSitter.Text = "Search Sitter";
             this.mnuSearchSitter.Click += new System.EventHandler(this.mnuSearchSitter_Click);
             // 
@@ -189,30 +189,30 @@
             this.mnuBack.Text = "Back";
             this.mnuBack.Click += new System.EventHandler(this.mnuBack_Click_1);
             // 
-            // bookingToolStripMenuItem
+            // mnuBooking
             // 
-            this.bookingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bookingListToolStripMenuItem,
-            this.searchBookingToolStripMenuItem});
-            this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
-            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.bookingToolStripMenuItem.Text = "Booking";
+            this.mnuBooking.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuBookingList,
+            this.mnuSearchBooking});
+            this.mnuBooking.Name = "mnuBooking";
+            this.mnuBooking.Size = new System.Drawing.Size(63, 20);
+            this.mnuBooking.Text = "Booking";
             // 
-            // bookingListToolStripMenuItem
+            // mnuBookingList
             // 
-            this.bookingListToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff;
-            this.bookingListToolStripMenuItem.Name = "bookingListToolStripMenuItem";
-            this.bookingListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bookingListToolStripMenuItem.Text = "Booking List";
-            this.bookingListToolStripMenuItem.Click += new System.EventHandler(this.bookingListToolStripMenuItem_Click);
+            this.mnuBookingList.BackColor = System.Drawing.Color.PeachPuff;
+            this.mnuBookingList.Name = "mnuBookingList";
+            this.mnuBookingList.Size = new System.Drawing.Size(180, 22);
+            this.mnuBookingList.Text = "Booking List";
+            this.mnuBookingList.Click += new System.EventHandler(this.bookingListToolStripMenuItem_Click);
             // 
-            // searchBookingToolStripMenuItem
+            // mnuSearchBooking
             // 
-            this.searchBookingToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff;
-            this.searchBookingToolStripMenuItem.Name = "searchBookingToolStripMenuItem";
-            this.searchBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchBookingToolStripMenuItem.Text = "Search Booking";
-            this.searchBookingToolStripMenuItem.Click += new System.EventHandler(this.searchBookingToolStripMenuItem_Click);
+            this.mnuSearchBooking.BackColor = System.Drawing.Color.PeachPuff;
+            this.mnuSearchBooking.Name = "mnuSearchBooking";
+            this.mnuSearchBooking.Size = new System.Drawing.Size(180, 22);
+            this.mnuSearchBooking.Text = "Search Booking";
+            this.mnuSearchBooking.Click += new System.EventHandler(this.searchBookingToolStripMenuItem_Click);
             // 
             // mnuAnalysis
             // 
@@ -265,9 +265,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSearchSitter;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.ToolStripMenuItem mnuBack;
-        private System.Windows.Forms.ToolStripMenuItem bookingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bookingListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchBookingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuBooking;
+        private System.Windows.Forms.ToolStripMenuItem mnuBookingList;
+        private System.Windows.Forms.ToolStripMenuItem mnuSearchBooking;
         private System.Windows.Forms.ToolStripMenuItem mnuAnalysis;
         private System.Windows.Forms.ToolStripMenuItem generateYearlySitterAnalysisToolStripMenuItem;
     }

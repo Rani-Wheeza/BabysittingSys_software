@@ -229,6 +229,25 @@ namespace BabysittingSys
             conn.Close();
         }
 
+        public static DataSet GetAllBookings()
+        {
+            DataSet ds =  new DataSet();
+
+            OracleConnection conn = new OracleConnection(DataBase.connectionString);
+            conn.Open();
+
+            string strSQL = "SELECT * FROM BOOKINGS ORDER BY BookingID";
+
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.Fill(ds, "Bookings");
+
+            conn.Close();
+
+            return ds;
+
+        }
 
     }
             

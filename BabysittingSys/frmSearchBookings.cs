@@ -12,9 +12,98 @@ namespace BabysittingSys
 {
     public partial class frmSearchBookings : Form
     {
+        frmAdminDashBoard Parent;
+
         public frmSearchBookings()
         {
             InitializeComponent();
+        }
+
+        public frmSearchBookings(frmAdminDashBoard parent)
+        {
+            InitializeComponent();
+            this.Parent = parent;   
+        }
+
+        private void mnuBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Parent.Visible = true;
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            //Get confirmation from user on if they would kie to exit the app/form
+            DialogResult dialog = MessageBox.Show("Are you sure you want to exit?", "Conformation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //check if user clicked yes
+            if (dialog == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void mnuHome_Click(object sender, EventArgs e)
+        {
+            frmHome nextForm = new frmHome();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuClientList_Click(object sender, EventArgs e)
+        {
+            frmLIstClients nextForm = new frmLIstClients();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuSearchClient_Click(object sender, EventArgs e)
+        {
+            frmSearchClient nextForm = new frmSearchClient();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuSitterList_Click(object sender, EventArgs e)
+        {
+            frmListSitters nextForm = new frmListSitters();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuSearchSitter_Click(object sender, EventArgs e)
+        {
+            frmSearchSitters nextForm = new frmSearchSitters();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuBookingList_Click(object sender, EventArgs e)
+        {
+            frmListBookings nextForm = new frmListBookings();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnuSearchBooking_Click(object sender, EventArgs e)
+        {
+            frmSearchBookings nextForm = new frmSearchBookings();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void generateYearlySitterAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGenerateYearlySitterAnalysis nextForm = new frmGenerateYearlySitterAnalysis();
+            this.Hide();
+            nextForm.Show();
+        }
+
+        private void mnugenerateYearlyBookingAnalysis_Click(object sender, EventArgs e)
+        {
+            frmGenerateYearlyBookingAnalysis nextForm = new frmGenerateYearlyBookingAnalysis();
+            this.Hide();
+            nextForm.Show();
         }
 
         private void frmSearchBookings_Load(object sender, EventArgs e)
@@ -64,5 +153,7 @@ namespace BabysittingSys
 
             txtBookingID.Focus();
         }
+
+        
     }
 }

@@ -182,21 +182,21 @@ namespace BabysittingSys
 
         private void bookingListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmHome nextForm = new frmHome();
+            frmListBookings nextForm = new frmListBookings();
             this.Hide();
             nextForm.Show();
         }
 
         private void searchBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmHome nextForm = new frmHome();
+            frmSearchBookings nextForm = new frmSearchBookings();
             this.Hide();
             nextForm.Show();
         }
 
         private void generateYearlySitterAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmHome nextForm = new frmHome();
+            frmGenerateYearlySitterAnalysis nextForm = new frmGenerateYearlySitterAnalysis();
             this.Hide();
             nextForm.Show();
         }
